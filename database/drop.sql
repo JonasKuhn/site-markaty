@@ -5,7 +5,7 @@
 # Project name:                                                          #
 # Author:                                                                #
 # Script type:           Database drop script                            #
-# Created on:            2020-11-04 20:47                                #
+# Created on:            2020-11-06 20:16                                #
 # ---------------------------------------------------------------------- #
 
 

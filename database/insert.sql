@@ -13,15 +13,15 @@ INSERT INTO `tb_catalogo` (`cod_catalogo`, `nome`, `descricao`) VALUES
 (1, 'Catálogo de Produtos', 'Trabalhamos com estruturas e equipamentos industriais');
 
 #ADICIONAR DADOS NA TABELA EMPRESA
-INSERT INTO `tb_empresa` (`cod_empresa`, `nome_fantasia`, `cnpj`, `logradouro`, `nr`, `complemento`, `bairro`, `tel_whatsapp`, `tel_fixo`, `email`, `instagram`, `facebook`, `maps`, `logomarca`) VALUES
-(1, 'MARKATY', '21635445000118', 'Rua Industrial', '32', 'PAVILHAO 3', 'Bairro Industrial', '49999711289', '4936770390', 'juridico@ludwigcontabilidade.com.br', 'insta', 'face', 'maps', 'logo.png');
+INSERT INTO `tb_empresa` (`cod_empresa`, `nome_fantasia`, `cnpj`, `logradouro`, `nr`, `complemento`, `bairro`, `tel_whatsapp`, `tel_fixo`, `email`, `instagram`, `facebook`, `maps`, `logomarca`, `cod_catalogo`, `cod_cidade`) VALUES
+(1, 'MARKATY', '21635445000118', 'Rua Industrial', '32', 'PAVILHAO 3', 'Bairro Industrial', '49999711289', '4936770390', 'juridico@ludwigcontabilidade.com.br', 'insta', 'face', 'maps', 'logo.png', 1, 1);
 
 #ADICIONAR DADOS NA TABELA SOBRE
 INSERT INTO `tb_sobre` (`cod_sobre`, `titulo`, `descricao`, `img_sobre`, `video`, `cod_empresa`) VALUES
 (1, 'TITULO PARA O SOBRE', 'descricao', 'sobre.png', 'link.mp4', 1);
 
 #ADICIONAR DADOS NA TABELA BANNER
-INSERT INTO `tb_banner` (`cod_banner`, `nome_img`, `fl_ativo`, `titulo`, `descricao`, `cod_empresa`) VALUES
+INSERT INTO `tb_banner` (`cod_banner`, `img_banner`, `fl_ativo`, `titulo`, `descricao`, `cod_empresa`) VALUES
 (1, 'banner1.png', TRUE, 'titulo banner', 'descricao banner', 1);
 
 #ADICIONAR DADOS NA TABELA QUALIDADE

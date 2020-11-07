@@ -32,6 +32,17 @@ R$10.00 / hora
 
 DIAS DE PRODUCAO 
 
-DIA        TEMPO 
-03/11      02:30
-04/11      19:30 ate
+DIA         TEMPO 
+03/11       02:30
+04/11       01:30
+05/11       01:00
+06/11       01:40
+
+
+--------------------------------------------------
+VARIAVEIS DE LINKS
+
+PRIMEIRA VARIAVEL = ldl
+SEGUNDA VARIAVEL = ldk
+TERCEIRA VARIAVEL = ldj
+QUARTA VARIAVEL = ldh

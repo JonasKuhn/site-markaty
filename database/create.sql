@@ -5,7 +5,7 @@
 # Project name:                                                          #
 # Author:                                                                #
 # Script type:           Database creation script                        #
-# Created on:            2020-11-04 20:47                                #
+# Created on:            2020-11-06 20:16                                #
 # ---------------------------------------------------------------------- #
 
 
@@ -163,10 +163,10 @@ CREATE TABLE `tb_sobre` (
 
 CREATE TABLE `tb_banner` (
     `cod_banner` INTEGER NOT NULL,
-    `nome_img` TEXT NOT NULL,
-    `fl_ativo` BOOL NOT NULL,
     `titulo` VARCHAR(150),
     `descricao` TEXT,
+    `fl_ativo` BOOL NOT NULL,
+    `img_banner` TEXT NOT NULL,
     `cod_empresa` INTEGER,
     CONSTRAINT `PK_tb_banner` PRIMARY KEY (`cod_banner`)
 );
