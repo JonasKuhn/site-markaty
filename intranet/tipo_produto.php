@@ -11,37 +11,34 @@ if (isset($msg) && $msg != false && $msg == "alt") {
 <div class="container-fluid">
     <div class="card mb-3">
         <div class="card-header text-center">
-            <h3>Qualidades da Empresa</h3>
+            <h3>Tipo de Produto</h3>
         </div>
         <div class="card-body">
-            <a href="?url=adc_qualidade.php" title="Nova - Qualidade da empresa"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>
+            <a href="?url=adc_tipo_produto.php" title="Novo - <?= $menu; ?>"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Descrição</th>
                             <th>Editar / Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $selectQualidade = "CALL sel_qualidade();";
+                        $selectTipoProduto = "CALL sel_tipo_produto();";
 
-                        $queryQualidade = $pdo->query($selectQualidade);
+                        $queryTipoProduto = $pdo->query($selectTipoProduto);
 
-                        while ($dados = $queryQualidade->fetch()) {
-                            $cod = $dados['cod_qualidade'];
-                            $nome = $dados['nome'];
-                            $descricao = $dados['descricao'];
+                        while ($dados = $queryTipoProduto->fetch()) {
+                            $cod = $dados['cod_tipo_produto'];
+                            $nome = $dados['descricao'];
                             $var = $MyCripty->enc($cod);
                             ?>
                             <tr>
                                 <td><?= $nome; ?></td>
-                                <td><?= $descricao; ?></td>
                                 <td>
-                                    <a href="?url=edtqualidade.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
-                                    <a href="?url=delbdhistoria.php&ldl=<?= $var; ?>" 
+                                    <a href="?url=edttipoproduto.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
+                                    <a href="?url=delbdtipoproduto.php&ldl=<?= $var; ?>" 
                                        onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
                                         <i class="fa fa-2x fa-trash-o"></i>
                                     </a>

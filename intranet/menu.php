@@ -19,68 +19,41 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sobre a Empresa">
                 <a class="nav-link" href="?url=sobre.php">
-                    <i class="fa fa-fw fa-history"></i>
+                    <i class="fa fa-fw fa-info"></i>
                     <span class="nav-link-text">Sobre a Empresa</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banner">
-                <a class="nav-link" href="?url=banner.php">
-                    <i class="fa fa-fw fa-suitcase"></i>
-                    <span class="nav-link-text">Banner</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Qualidade">
-                <a class="nav-link" href="?url=qualidade.php">
-                    <i class="fa fa-fw fa-phone"></i>
-                    <span class="nav-link-text">Qualidades da Empresa</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banners">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banner de Destaque">
                 <a class="nav-link" href="?url=banner.php">
                     <i class="fa fa-fw fa-image"></i>
-                    <span class="nav-link-text">Banners</span>
+                    <span class="nav-link-text">Banner de Destaque</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Qualidades da Empresa">
+                <a class="nav-link" href="?url=qualidade.php">
+                    <i class="fa fa-fw fa-certificate"></i>
+                    <span class="nav-link-text">Qualidades da Empresa</span>
                 </a>
             </li>
             
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Catálogo">
                 <a class="nav-link nav-link-collapse collapsed"  data-toggle="collapse" 
-                   href="#menuCardapio" data-parent="#menuCardapio">
-                    <i class="fa fa-fw fa-cutlery"></i>
-                    <span class="nav-link-text">Cardápio</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="menuCardapio">
-                    <li>
-                        <a href="?url=lista_cardapio.php">Lista de Cardápios</a>
-                    </li>
-                    <li>
-                        <a href="?url=itens_cardapio.php">Itens Cardápio</a>
-                    </li>
-                </ul>
-            </li>
-            <!--
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Planos Tim">
-                <a class="nav-link nav-link-collapse collapsed"  data-toggle="collapse" 
-                   href="#menuProg" data-parent="?url=tim.php">
-                    <i class="fa fa-fw fa-phone"></i>
-                    <span class="nav-link-text">Programação</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="menuProg">
-                    <li>
-                        <a href="#">Item da Programação</a>
-                    </li>
-                    <li>
-                        <a href="#">Tipos de Programação</a>
-                    </li>
-                </ul>
-            </li>
-            
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
-                <a class="nav-link" href="?url=catalogo.php">
-                    <i class="fa fa-fw fa-phone-square"></i>
+                   href="#menuCatalogo" data-parent="#menuCatalogo">
+                    <i class="fa fa-fw fa-book"></i>
                     <span class="nav-link-text">Catálogo</span>
                 </a>
+                <ul class="sidenav-second-level collapse" id="menuCatalogo">
+                    <li>
+                        <a href="?url=catalogo.php">Meu Catálogo</a>
+                    </li>
+                    <li>
+                        <a href="?url=lista_produto.php">Lista de Produtos</a>
+                    </li>
+                    <li>
+                        <a href="?url=tipo_produto.php">Tipo de Produto</a>
+                    </li>
+                </ul>
             </li>
-            -->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Usuários">
                 <a class="nav-link" href="?url=admin.php">
                     <i class="fa fa-fw fa-user-circle"></i>

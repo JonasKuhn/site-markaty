@@ -11,7 +11,7 @@ if (isset($msg) && $msg != false && $msg == "alt") {
 <div class="container-fluid">
     <div class="card mb-3">
         <div class="card-header text-center">
-            <h3>Empresa</h3>
+            <h3>Dados da Empresa</h3>
         </div>
         <div class="card-body">
             <div class="table-responsive">

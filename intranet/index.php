@@ -98,7 +98,7 @@ require_once './sessao.php';
             
             ##-----------------------BANNER--------------------##
             case 'banner.php':
-                $menu = 'Banner';
+                $menu = 'Banner de Destaque';
                 include './navegacao.php';
                 include ('./banner.php');
                 break;
@@ -115,7 +115,7 @@ require_once './sessao.php';
             
             ##-----------------------QUALIDADE--------------------##
             case 'qualidade.php':
-                $menu = 'Qualidade';
+                $menu = 'Qualidades da Empresa';
                 include './navegacao.php';
                 include ('./qualidade.php');
                 break;
@@ -147,11 +147,11 @@ require_once './sessao.php';
                 break;
 `           */
             
-            ##-----------------------ADMIN--------------------##
-            case 'admin.php':
-                $menu = 'Usuários';
+            ##-----------------------LISTA DE PRODUTOS--------------------##
+            case 'lista_produto.php':
+                $menu = 'Lista De Produto';
                 include './navegacao.php';
-                include ('./admin.php');
+                include ('./lista_produto.php');
                 break;
             /*
             case 'edtloja.php':
@@ -159,6 +159,41 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./edit/loja/edtloja.php');
                 break;
+            case 'edtbdloja.php':
+                include ('./edit/loja/edtbdloja.php');
+                break;
+`           */
+            
+            ##-----------------------TIPO DE PRODUTO----------------------##
+            case 'tipo_produto.php':
+                $menu = 'Tipo de Produto';
+                include './navegacao.php';
+                include ('./tipo_produto.php');
+                break;
+            /*
+            case 'edtloja.php':
+                $menu = 'Editar Loja';
+                include './navegacao.php';
+                include ('./edit/loja/edtloja.php');
+                break;
+            case 'edtbdloja.php':
+                include ('./edit/loja/edtbdloja.php');
+                break;
+`           */
+            
+            ##-----------------------ADMIN--------------------##
+            case 'admin.php':
+                $menu = 'Usuários';
+                include './navegacao.php';
+                include ('./admin.php');
+                break;
+            
+            case 'adc_admin.php':
+                $menu = 'Adicionar Usuário';
+                include './navegacao.php';
+                include ('./adc/adc_admin.php');
+                break;
+            /*
             case 'edtbdloja.php':
                 include ('./edit/loja/edtbdloja.php');
                 break;
@@ -175,7 +210,7 @@ require_once './sessao.php';
         <footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
-                    <small>Copyright © <?= $nome_fantasia; ?> 2019</small>
+                    <small>Copyright © <?php echo $nome_fantasia; ?> <?php echo date("Y"); ?></small>
                 </div>
             </div>
         </footer>

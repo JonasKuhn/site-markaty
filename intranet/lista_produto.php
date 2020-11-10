@@ -11,44 +11,47 @@ if (isset($msg) && $msg != false && $msg == "alt") {
 <div class="container-fluid">
     <div class="card mb-3">
         <div class="card-header text-center">
-            <h3>Imformações Sobre a História da Empresa</h3>
+            <h3>Lista de Produtos</h3>
         </div>
         <div class="card-body">
-            <a href="?url=adc_sobre.php" title="Novo - <?= $menu; ?>"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>
+            <a href="?url=adc_produto.php" title="Novo - Produtos"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Titulo</th>
+                            <th>Nome</th>
                             <th>Descrição</th>
-                            <th>Imagem Sobre</th>
-                            <th>Video</th>
+                            <th>Ativo</th>
+                            <th>Tipo de Produto</th>
+                            <th>Imagem</th>
                             <th>Editar / Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $selectSobre = "CALL sel_sobre();";
+                        $selectProduto = "CALL sel_produto();";
 
-                        $querySobre = $pdo->query($selectSobre);
+                        $queryProduto = $pdo->query($selectProduto);
 
-                        while ($dados = $querySobre->fetch()) {
-                            $cod = $dados['cod_sobre'];
-                            $titulo = $dados['titulo'];
+                        while ($dados = $queryProduto->fetch()) {
+                            $cod = $dados['cod_produto'];
+                            $nome = $dados['nome'];
                             $descricao = $dados['descricao'];
-                            $img_sobre = $dados['img_sobre'];
-                            $video = $dados['video'];
+                            $fl_ativo = $dados['fl_ativo'];
+                            $nome_tipo_produto = $dados['nome_tipo_item'];
+                            $nome_imagem = $dados['img_nome'];
                             $var = $MyCripty->enc($cod);
                             ?>
                             <tr>
-                                <td><?= $titulo; ?></td>
+                                <td><?= $nome; ?></td>
                                 <td><?= $descricao; ?></td>
-                                <td><img style=" max-height:50px;" src="imagens/sobre/<?= $img_sobre; ?>" alt="<?= $img_sobre; ?>"/></td>
-                                <td><?= $video; ?></td>
+                                <td><?= $fl_ativo; ?></td>
+                                <td><?= $nome_tipo_produto; ?></td>
+                                <td><img style=" max-height:50px;" src="imagens/produtos/<?= $nome_imagem; ?>" alt="<?= $nome_imagem; ?>"/></td>
                                 <td>
-                                    <a href="?url=edtsobre.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
-                                    <a href="?url=delbdsebre.php&ldl=<?= $var; ?>" 
-                                       onclick="return excluir('<?= $titulo; ?>');" title="EXCLUIR">
+                                    <a href="?url=edtproduto.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
+                                    <a href="?url=delbdproduto.php&ldl=<?= $var; ?>" 
+                                       onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
                                         <i class="fa fa-2x fa-trash-o"></i>
                                     </a>
                                 </td>

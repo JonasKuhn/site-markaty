@@ -14,6 +14,7 @@ if (isset($msg) && $msg != false && $msg == "alt") {
             <h3>Usuários</h3>
         </div>
         <div class="card-body">
+            <a href="?url=adc_admin.php" title="Novo - Usuário"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>

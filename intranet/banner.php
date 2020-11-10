@@ -11,9 +11,10 @@ if (isset($msg) && $msg != false && $msg == "alt") {
 <div class="container-fluid">
     <div class="card mb-3">
         <div class="card-header text-center">
-            <h3>Banner</h3>
+            <h3>Banner de Destaque</h3>
         </div>
         <div class="card-body">
+            <a href="?url=adc_banner.php" title="Novo - <?= $menu; ?>"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>

@@ -54,6 +54,34 @@ BEGIN
 END$$
 DELIMITER ;
 
+####### SELECIONAR TODOS OS DADOS PRODUTO #######
+DELIMITER $$
+CREATE PROCEDURE sel_produto()
+BEGIN
+	SELECT p.*, tp.descricao, i.nome as img_nome, c.nome as nome_tipo_item
+	FROM tb_produto as p, tb_empresa as e, tb_catalogo as c, tb_catalogo_produto as cp, tb_produto_imagem as pi, tb_imagem as i, tb_tipo_produto as tp
+	WHERE p.cod_produto = cp.cod_produto
+    AND cp.cod_catalogo = c.cod_catalogo
+    AND c.cod_catalogo = e.cod_catalogo
+    AND tp.cod_tipo_produto = p.cod_tipo_produto
+    AND p.cod_produto = pi.cod_produto
+    AND pi.cod_imagem = i.cod_imagem
+	ORDER BY p.cod_produto ASC;
+END$$
+DELIMITER ;
+
+
+####### SELECIONAR TODOS OS DADOS TIPO PRODUTO #######
+DELIMITER $$
+CREATE PROCEDURE sel_tipo_produto()
+BEGIN
+	SELECT tp.*
+	FROM tb_tipo_produto as tp, tb_produto as p
+	WHERE tp.cod_tipo_produto = p.cod_tipo_produto
+	ORDER BY tp.cod_tipo_produto ASC;
+END$$
+DELIMITER ;
+
 ####### SELECIONAR TODOS OS DADOS ADMIN #######
 DELIMITER $$
 CREATE PROCEDURE sel_admin()
