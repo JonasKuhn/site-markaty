@@ -5,7 +5,7 @@
 # Project name:                                                          #
 # Author:                                                                #
 # Script type:           Database creation script                        #
-# Created on:            2020-11-06 20:16                                #
+# Created on:            2020-11-10 20:31                                #
 # ---------------------------------------------------------------------- #
 
 
@@ -22,7 +22,7 @@
 #USE database_markaty;
 
 CREATE TABLE `tb_catalogo` (
-    `cod_catalogo` INTEGER NOT NULL,
+    `cod_catalogo` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(150) NOT NULL,
     `descricao` TEXT,
     CONSTRAINT `PK_tb_catalogo` PRIMARY KEY (`cod_catalogo`)
@@ -33,7 +33,7 @@ CREATE TABLE `tb_catalogo` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_tipo_produto` (
-    `cod_tipo_produto` INTEGER NOT NULL,
+    `cod_tipo_produto` INTEGER NOT NULL AUTO_INCREMENT,
     `descricao` TEXT,
     CONSTRAINT `PK_tb_tipo_produto` PRIMARY KEY (`cod_tipo_produto`)
 );
@@ -43,7 +43,7 @@ CREATE TABLE `tb_tipo_produto` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_estado` (
-    `cod_estado` INTEGER NOT NULL,
+    `cod_estado` INTEGER NOT NULL AUTO_INCREMENT,
     `nome_estado` VARCHAR(150) NOT NULL,
     `uf` VARCHAR(2) NOT NULL,
     CONSTRAINT `PK_tb_estado` PRIMARY KEY (`cod_estado`)
@@ -54,7 +54,7 @@ CREATE TABLE `tb_estado` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_imagem` (
-    `cod_imagem` INTEGER NOT NULL,
+    `cod_imagem` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` TEXT NOT NULL,
     CONSTRAINT `PK_tb_imagem` PRIMARY KEY (`cod_imagem`)
 );
@@ -64,7 +64,7 @@ CREATE TABLE `tb_imagem` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_produto` (
-    `cod_produto` INTEGER NOT NULL,
+    `cod_produto` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(150),
     `descricao` TEXT,
     `fl_ativo` BOOL NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE `tb_produto` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_catalogo_produto` (
-    `cod_catalogo_produto` INTEGER NOT NULL,
+    `cod_catalogo_produto` INTEGER NOT NULL AUTO_INCREMENT,
     `cod_catalogo` INTEGER,
     `cod_produto` INTEGER,
     CONSTRAINT `PK_tb_catalogo_produto` PRIMARY KEY (`cod_catalogo_produto`)
@@ -88,7 +88,7 @@ CREATE TABLE `tb_catalogo_produto` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_cidade` (
-    `cod_cidade` INTEGER NOT NULL,
+    `cod_cidade` INTEGER NOT NULL AUTO_INCREMENT,
     `nome_cidade` VARCHAR(150) NOT NULL,
     `cep` NUMERIC,
     `cod_estado` INTEGER,
@@ -100,7 +100,7 @@ CREATE TABLE `tb_cidade` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_produto_imagem` (
-    `cod_produto_imagem` INTEGER NOT NULL,
+    `cod_produto_imagem` INTEGER NOT NULL AUTO_INCREMENT,
     `cod_produto` INTEGER,
     `cod_imagem` INTEGER,
     CONSTRAINT `PK_tb_produto_imagem` PRIMARY KEY (`cod_produto_imagem`)
@@ -111,7 +111,7 @@ CREATE TABLE `tb_produto_imagem` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_empresa` (
-    `cod_empresa` INTEGER NOT NULL,
+    `cod_empresa` INTEGER NOT NULL AUTO_INCREMENT,
     `nome_fantasia` VARCHAR(100) NOT NULL,
     `cnpj` VARCHAR(18) NOT NULL,
     `logradouro` VARCHAR(100) NOT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE `tb_empresa` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_admin` (
-    `cod_admin` INTEGER NOT NULL,
+    `cod_admin` INTEGER NOT NULL AUTO_INCREMENT,
     `login` VARCHAR(100) NOT NULL,
     `senha` TEXT NOT NULL,
     `nome` VARCHAR(100) NOT NULL,
@@ -148,7 +148,7 @@ CREATE TABLE `tb_admin` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_sobre` (
-    `cod_sobre` INTEGER NOT NULL,
+    `cod_sobre` INTEGER NOT NULL AUTO_INCREMENT,
     `titulo` TEXT,
     `descricao` TEXT,
     `img_sobre` TEXT,
@@ -162,7 +162,7 @@ CREATE TABLE `tb_sobre` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_banner` (
-    `cod_banner` INTEGER NOT NULL,
+    `cod_banner` INTEGER NOT NULL AUTO_INCREMENT,
     `titulo` VARCHAR(150),
     `descricao` TEXT,
     `fl_ativo` BOOL NOT NULL,
@@ -176,7 +176,7 @@ CREATE TABLE `tb_banner` (
 # ---------------------------------------------------------------------- #
 
 CREATE TABLE `tb_qualidade` (
-    `cod_qualidade` INTEGER NOT NULL,
+    `cod_qualidade` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(100) NOT NULL,
     `descricao` TEXT NOT NULL,
     `cod_empresa` INTEGER,

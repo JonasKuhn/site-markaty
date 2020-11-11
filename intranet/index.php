@@ -41,6 +41,8 @@ require_once './sessao.php';
         <title>Dashboard - <?= $nome_fantasia; ?></title>
         <?php
     }
+
+    $cod_empresa_para_insert = 1;
     ?>
 </head>
 <!-- ---------------------CORPO PRINCIPAL------------------ -->
@@ -60,8 +62,8 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./home.php');
                 break;
-            
-            
+
+
             ##-----------------------LOJA--------------------##
             case 'empresa.php':
                 $menu = 'Empresa';
@@ -69,16 +71,16 @@ require_once './sessao.php';
                 include ('./empresa.php');
                 break;
             /*
-            case 'edtloja.php':
-                $menu = 'Editar Loja';
-                include './navegacao.php';
-                include ('./edit/loja/edtloja.php');
-                break;
-            case 'edtbdloja.php':
-                include ('./edit/loja/edtbdloja.php');
-                break;
-`           */
-            
+              case 'edtloja.php':
+              $menu = 'Editar Loja';
+              include './navegacao.php';
+              include ('./edit/loja/edtloja.php');
+              break;
+              case 'edtbdloja.php':
+              include ('./edit/loja/edtbdloja.php');
+              break;
+              ` */
+
             ##-----------------------SOBRE--------------------##
             case 'sobre.php':
                 $menu = 'Sobre a Empresa';
@@ -86,16 +88,16 @@ require_once './sessao.php';
                 include ('./sobre.php');
                 break;
             /*
-            case 'edtloja.php':
-                $menu = 'Editar Loja';
-                include './navegacao.php';
-                include ('./edit/loja/edtloja.php');
-                break;
-            case 'edtbdloja.php':
-                include ('./edit/loja/edtbdloja.php');
-                break;
-`           */
-            
+              case 'edtloja.php':
+              $menu = 'Editar Loja';
+              include './navegacao.php';
+              include ('./edit/loja/edtloja.php');
+              break;
+              case 'edtbdloja.php':
+              include ('./edit/loja/edtbdloja.php');
+              break;
+              ` */
+
             ##-----------------------BANNER--------------------##
             case 'banner.php':
                 $menu = 'Banner de Destaque';
@@ -103,16 +105,16 @@ require_once './sessao.php';
                 include ('./banner.php');
                 break;
             /*
-            case 'edtloja.php':
-                $menu = 'Editar Loja';
-                include './navegacao.php';
-                include ('./edit/loja/edtloja.php');
-                break;
-            case 'edtbdloja.php':
-                include ('./edit/loja/edtbdloja.php');
-                break;
-`           */
-            
+              case 'edtloja.php':
+              $menu = 'Editar Loja';
+              include './navegacao.php';
+              include ('./edit/loja/edtloja.php');
+              break;
+              case 'edtbdloja.php':
+              include ('./edit/loja/edtbdloja.php');
+              break;
+              ` */
+
             ##-----------------------QUALIDADE--------------------##
             case 'qualidade.php':
                 $menu = 'Qualidades da Empresa';
@@ -120,16 +122,16 @@ require_once './sessao.php';
                 include ('./qualidade.php');
                 break;
             /*
-            case 'edtloja.php':
-                $menu = 'Editar Loja';
-                include './navegacao.php';
-                include ('./edit/loja/edtloja.php');
-                break;
-            case 'edtbdloja.php':
-                include ('./edit/loja/edtbdloja.php');
-                break;
-`           */
-            
+              case 'edtloja.php':
+              $menu = 'Editar Loja';
+              include './navegacao.php';
+              include ('./edit/loja/edtloja.php');
+              break;
+              case 'edtbdloja.php':
+              include ('./edit/loja/edtbdloja.php');
+              break;
+              ` */
+
             ##-----------------------CATALOGO--------------------##
             case 'catalogo.php':
                 $menu = 'Catálogo';
@@ -137,16 +139,16 @@ require_once './sessao.php';
                 include ('./catalogo.php');
                 break;
             /*
-            case 'edtloja.php':
-                $menu = 'Editar Loja';
-                include './navegacao.php';
-                include ('./edit/loja/edtloja.php');
-                break;
-            case 'edtbdloja.php':
-                include ('./edit/loja/edtbdloja.php');
-                break;
-`           */
-            
+              case 'edtloja.php':
+              $menu = 'Editar Loja';
+              include './navegacao.php';
+              include ('./edit/loja/edtloja.php');
+              break;
+              case 'edtbdloja.php':
+              include ('./edit/loja/edtbdloja.php');
+              break;
+              ` */
+
             ##-----------------------LISTA DE PRODUTOS--------------------##
             case 'lista_produto.php':
                 $menu = 'Lista De Produto';
@@ -154,16 +156,16 @@ require_once './sessao.php';
                 include ('./lista_produto.php');
                 break;
             /*
-            case 'edtloja.php':
-                $menu = 'Editar Loja';
-                include './navegacao.php';
-                include ('./edit/loja/edtloja.php');
-                break;
-            case 'edtbdloja.php':
-                include ('./edit/loja/edtbdloja.php');
-                break;
-`           */
-            
+              case 'edtloja.php':
+              $menu = 'Editar Loja';
+              include './navegacao.php';
+              include ('./edit/loja/edtloja.php');
+              break;
+              case 'edtbdloja.php':
+              include ('./edit/loja/edtbdloja.php');
+              break;
+              ` */
+
             ##-----------------------TIPO DE PRODUTO----------------------##
             case 'tipo_produto.php':
                 $menu = 'Tipo de Produto';
@@ -171,33 +173,31 @@ require_once './sessao.php';
                 include ('./tipo_produto.php');
                 break;
             /*
-            case 'edtloja.php':
-                $menu = 'Editar Loja';
-                include './navegacao.php';
-                include ('./edit/loja/edtloja.php');
-                break;
-            case 'edtbdloja.php':
-                include ('./edit/loja/edtbdloja.php');
-                break;
-`           */
-            
+              case 'edtloja.php':
+              $menu = 'Editar Loja';
+              include './navegacao.php';
+              include ('./edit/loja/edtloja.php');
+              break;
+              case 'edtbdloja.php':
+              include ('./edit/loja/edtbdloja.php');
+              break;
+              ` */
+
             ##-----------------------ADMIN--------------------##
             case 'admin.php':
                 $menu = 'Usuários';
                 include './navegacao.php';
                 include ('./admin.php');
                 break;
-            
+
             case 'adc_admin.php':
                 $menu = 'Adicionar Usuário';
                 include './navegacao.php';
                 include ('./adc/adc_admin.php');
                 break;
-            /*
-            case 'edtbdloja.php':
-                include ('./edit/loja/edtbdloja.php');
+            case 'adcbd_admin.php':
+                include ('./adc/adcbd_admin.php');
                 break;
-`           */
 
             default :
                 $menu = 'Home';
@@ -251,6 +251,33 @@ require_once './sessao.php';
                     campo.value = "";
                 }
             }
+        </script>
+        
+        <!-- RESPONSAVEL POR FAZER APARECER E SUMIR A SENHA NO CAMPO SENHA -->
+        <script>
+            jQuery
+            // Check javascript has loaded
+            $(document).ready(function () {
+                // Click event of the showPassword button
+                $('#showPassword').on('click', function () {
+                    // Get the password field
+                    var passwordField = $('#password');
+                    // Get the current type of the password field will be password or text
+                    var passwordFieldType = passwordField.attr('type');
+                    // Check to see if the type is a password field
+                    if (passwordFieldType == 'password'){
+                        // Change the password field to text
+                        passwordField.attr('type', 'text');
+                        // Change the Text on the show password button to Hide
+                        $(this).val('Esconder');
+                    } else {
+                        // If the password field type is not a password field then set it to password
+                        passwordField.attr('type', 'password');
+                        // Change the value of the show password button to Show
+                        $(this).val('Visulizar');
+                    }
+                });
+            });
         </script>
         <script type="text/javascript">$("#tel_celular").mask("(99) 99999-9999");</script>
         <script type="text/javascript">$("#tel_fixo").mask("(99) 9999-9999");</script>

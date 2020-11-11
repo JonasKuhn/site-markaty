@@ -4,8 +4,11 @@ include_once './encrypt.php';
 $MyCripty = new MyCripty();
 
 @$msg = $_GET['msg'];
-if (isset($msg) && $msg != false && $msg == "alt") {
-    echo "<script type='text/javascript'>alert('Cadastro alterado com Sucesso!');</script>";
+if (isset($msg) && $msg != false && $msg == "adc") {
+    echo "<script type='text/javascript'>alert('Cadastro realizado com Sucesso!');</script>";
+    
+}else if(isset($msg) && $msg != false && $msg == "logexist"){
+    echo "<script type='text/javascript'>alert('Já existe um usuário com esse login!');</script>";
 }
 ?>
 <div class="container-fluid">
@@ -21,7 +24,6 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                         <tr>
                             <th>Nome</th>
                             <th>Login</th>
-                            <th>Senha</th>
                             <th>Editar / Excluir</th>
                         </tr>
                     </thead>
@@ -35,13 +37,11 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                             $cod = $dados['cod_admin'];
                             $nome = $dados['nome'];
                             $login = $dados['login'];
-                            $senha = $dados['senha'];
                             $var = $MyCripty->enc($cod);
                             ?>
                             <tr>
                                 <td><?= $nome; ?></td>
                                 <td><?= $login; ?></td>
-                                <td><?= $senha; ?></td>
                                 <td>
                                     <a href="?url=edtadmin.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
                                     <a href="?url=delbdadmin.php&ldl=<?= $var; ?>" 

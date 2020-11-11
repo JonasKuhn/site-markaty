@@ -70,7 +70,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-
 ####### SELECIONAR TODOS OS DADOS TIPO PRODUTO #######
 DELIMITER $$
 CREATE PROCEDURE sel_tipo_produto()
@@ -92,4 +91,38 @@ BEGIN
     AND a.cod_admin > 1
 	ORDER BY a.cod_empresa ASC;
 END$$
+DELIMITER ;
+
+####### INSERIR DADOS ADMIN #######
+DELIMITER $$
+CREATE PROCEDURE insere_admin(login VARCHAR(100), senha TEXT, nome VARCHAR(100), cod_empresa INT)
+BEGIN
+	DECLARE aux_admin INT;
+    DECLARE aux_admin_login INT;
+    SET aux_admin = 0;
+    SET aux_admin_login = 0;
+    
+    SELECT e.cod_empresa FROM tb_empresa as e
+    WHERE e.cod_empresa = cod_empresa
+    INTO aux_admin;
+    
+    SELECT a.cod_admin FROM tb_admin as a
+    WHERE a.login = login
+    INTO aux_admin_login; 
+    
+	IF (aux_admin_login = null) THEN
+		IF ((aux_admin != 0) AND (aux_admin != '') ) THEN
+			IF((login != '') AND (senha != '') AND (nome != '') AND (cod_empresa != ''))THEN
+				INSERT INTO tb_admin(login,senha,nome,cod_empresa) 
+				VALUES (login,senha,nome,cod_empresa);
+			ELSE
+				select 'Preencha todos os campos.';
+			END IF;
+		ELSE
+			select 'Código da empresa incorreto.';
+		END IF;
+    ELSE
+		select 'Login já existente.';
+    END IF;
+END $$
 DELIMITER ;
