@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="?$url=home.php"><?=$_SESSION['nome'];?></a>
+    <a class="navbar-brand" href="?url=home.php">Dashboard - Usuário Logado: </a>
+    <a class="navbar-brand" href="?url=edt_admin.php&ldl=<?= $_SESSION["cod_admin"]; ?>">
+        <?= $_SESSION['nome']; ?>
+    </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,7 +38,7 @@
                     <span class="nav-link-text">Qualidades da Empresa</span>
                 </a>
             </li>
-            
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Catálogo">
                 <a class="nav-link nav-link-collapse collapsed"  data-toggle="collapse" 
                    href="#menuCatalogo" data-parent="#menuCatalogo">

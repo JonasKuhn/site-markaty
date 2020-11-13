@@ -30,6 +30,11 @@ require_once './sessao.php';
             return confirm('Os dados informados estão corretos?');
         }
     </script>
+    <script>
+        function naoexcluir() {
+            return confirm('Não é possível apagar esse item!');
+        }
+    </script>
 
     <?php
     include '../connection.php';
@@ -63,19 +68,19 @@ require_once './sessao.php';
                 include ('./home.php');
                 break;
 
-
             ##-----------------------LOJA--------------------##
             case 'empresa.php':
                 $menu = 'Empresa';
                 include './navegacao.php';
                 include ('./empresa.php');
                 break;
+
+            case 'edt_empresa.php':
+                $menu = 'Editar Empresa';
+                include './navegacao.php';
+                include ('./edit/edt_empresa.php');
+                break;
             /*
-              case 'edtloja.php':
-              $menu = 'Editar Loja';
-              include './navegacao.php';
-              include ('./edit/loja/edtloja.php');
-              break;
               case 'edtbdloja.php':
               include ('./edit/loja/edtbdloja.php');
               break;
@@ -189,7 +194,6 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./admin.php');
                 break;
-
             case 'adc_admin.php':
                 $menu = 'Adicionar Usuário';
                 include './navegacao.php';
@@ -198,7 +202,17 @@ require_once './sessao.php';
             case 'adcbd_admin.php':
                 include ('./adc/adcbd_admin.php');
                 break;
-
+            case 'dropdb_admin.php':
+                include ('./drop/dropbd_admin.php');
+                break;
+            case 'edt_admin.php':
+                $menu = '<a href="?url=admin.php">Usuários </a> / Editar Usuário';
+                include './navegacao.php';
+                include ('./edit/edt_admin.php');
+                break;
+            case 'edtbd_admin.php':
+                include ('./edit/edtbd_admin.php');
+                break;
             default :
                 $menu = 'Home';
                 include './navegacao.php';
@@ -252,7 +266,7 @@ require_once './sessao.php';
                 }
             }
         </script>
-        
+
         <!-- RESPONSAVEL POR FAZER APARECER E SUMIR A SENHA NO CAMPO SENHA -->
         <script>
             jQuery
@@ -265,7 +279,7 @@ require_once './sessao.php';
                     // Get the current type of the password field will be password or text
                     var passwordFieldType = passwordField.attr('type');
                     // Check to see if the type is a password field
-                    if (passwordFieldType == 'password'){
+                    if (passwordFieldType == 'password') {
                         // Change the password field to text
                         passwordField.attr('type', 'text');
                         // Change the Text on the show password button to Hide
@@ -279,7 +293,7 @@ require_once './sessao.php';
                 });
             });
         </script>
-        <script type="text/javascript">$("#tel_celular").mask("(99) 99999-9999");</script>
+        <script type="text/javascript">$("#tel_whatsapp").mask("(99) 99999-9999");</script>
         <script type="text/javascript">$("#tel_fixo").mask("(99) 9999-9999");</script>
         <script type="text/javascript">$("#cnpj").mask("99.999.999/9999-99");</script>
         <script type="text/javascript">$("#cep").mask("99999-999");</script>

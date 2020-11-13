@@ -30,7 +30,7 @@ INSERT INTO `tb_qualidade` (`cod_qualidade`, `nome`, `descricao`, `cod_empresa`)
 
 #ADICIONAR DADOS NA TABELA ADMIN
 INSERT INTO `tb_admin` (`cod_admin`, `login`, `senha`, `nome`, `cod_empresa`) VALUES
-(1, 'admin', 'md5md5md5', 'ADMINISTRADOR', 1);
+(1, 'admin', 'madgjmpsvyaibehknqtwzdncfilorux', 'ADMINISTRADOR', 1);
 
 #ADICIONAR DADOS NA TABELA TIPO PRODUTO
 INSERT INTO `tb_tipo_produto` (`cod_tipo_produto`, `descricao`) VALUES

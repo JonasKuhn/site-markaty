@@ -2,33 +2,36 @@
 
 include_once '../connection.php';
 include_once './sessao.php';
+include_once './encrypt.php';
+$MyCripty = new MyCripty();
 
 $nome = $_POST['nome'];
 $login = $_POST['login'];
 $senha = $_POST['senha'];
 
 try {
-    $sqladmin = "CALL insere_admin('$login', '$senha', '$nome', '$cod_empresa_para_insert');";
+    $senha_crypt = $MyCripty->enc($senha);
 
-    $cmd = $pdo->prepare($sqladmin);
-    $cmd->execute();
+    $sqlSelectAdmin = "SELECT login FROM tb_admin WHERE login = '$login';";
 
-    unset($cmd);
-
-    $sqlSelectAdmin = "SELECT login FROM tb_admin WHERE senha = '$senha';";
-    
     $querySelectAdmin = $pdo->query($sqlSelectAdmin);
 
     while ($dados = $querySelectAdmin->fetch()) {
-        $login = $dados['login'];
+        $login_verifica = $dados['login'];
     }
-    
-    if ($login != null){
-        echo "<script>location.href='index.php?url=adc_admin.php&msg=logexist';</script>";
+
+    if (@$login_verifica != null) {
+        echo "<script>location.href='index.php?url=admin.php&msg=logexist';</script>";
     } else {
+        $sqladmin = "CALL insere_admin('$login', '$senha_crypt', '$nome', '$cod_empresa_para_insert');";
+
+        $cmd = $pdo->prepare($sqladmin);
+        $cmd->execute();
+
+        unset($cmd);
+        
         echo "<script>location.href='index.php?url=admin.php&msg=adc';</script>";
     }
-    
 } catch (PDOException $ex) {
     echo("<br/>"
     . "<div class='container'>"

@@ -55,7 +55,7 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                                 <td><img style=" max-height:50px;" src="imagens/logomarca/<?= $logomarca; ?>" alt="<?= $logomarca; ?>"/></td>
 
                                 <td>
-                                    <a href="?url=edtempresa.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
+                                    <a href="?url=edt_empresa.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
                                 </td>
                             </tr>
                             <?php

@@ -1,4 +1,5 @@
 <?php
+
 include_once '../connection.php';
 include_once './encrypt.php';
 $MyCripty = new MyCripty();
@@ -16,7 +17,8 @@ $result = $pdo->query($sql);
 foreach ($result as $row) {
     if (!empty($row)) {
         if ($senha_crypt === $row['senha']) {
-            $_SESSION["cod_admin"] = $row["cod_admin"];
+            $cod_admin = $MyCripty->enc($row["cod_admin"]);
+            $_SESSION["cod_admin"] = $cod_admin;
             $_SESSION["nome"] = stripslashes($row["nome"]);
             $_SESSION["login"] = stripslashes($row["login"]);
             header("Location: index.php");

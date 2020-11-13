@@ -6,9 +6,12 @@ $MyCripty = new MyCripty();
 @$msg = $_GET['msg'];
 if (isset($msg) && $msg != false && $msg == "adc") {
     echo "<script type='text/javascript'>alert('Cadastro realizado com Sucesso!');</script>";
-    
-}else if(isset($msg) && $msg != false && $msg == "logexist"){
+} else if (isset($msg) && $msg != false && $msg == "logexist") {
     echo "<script type='text/javascript'>alert('Já existe um usuário com esse login!');</script>";
+} else if (isset($msg) && $msg != false && $msg == "drop") {
+    echo "<script type='text/javascript'>alert('O cadastro foi apagado com sucesso!');</script>";
+} else if (isset($msg) && $msg != false && $msg == "alt") {
+    echo "<script type='text/javascript'>alert('O cadastro foi alterado com sucesso!');</script>";
 }
 ?>
 <div class="container-fluid">
@@ -43,11 +46,25 @@ if (isset($msg) && $msg != false && $msg == "adc") {
                                 <td><?= $nome; ?></td>
                                 <td><?= $login; ?></td>
                                 <td>
-                                    <a href="?url=edtadmin.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
-                                    <a href="?url=delbdadmin.php&ldl=<?= $var; ?>" 
-                                       onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
-                                        <i class="fa fa-2x fa-trash-o"></i>
-                                    </a>
+                                    <a href="?url=edt_admin.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
+                                    <?php
+                                    if ($cod == 1) {
+                                        ?>
+                                        <a href="#" 
+                                           onclick="return naoexcluir();"  title="EXCLUIR">
+                                            <i class="fa fa-2x fa-trash-o"></i>
+                                        </a>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <a href="?url=dropdb_admin.php&ldl=<?= $var; ?>" 
+                                           onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
+                                            <i class="fa fa-2x fa-trash-o"></i>
+                                        </a>
+                                        <?php
+                                    }
+                                    ?>
+
                                 </td>
                             </tr>
                             <?php
