@@ -30,10 +30,10 @@ $cod_cat = $dados['cod_catalogo'];
 $cod_ci = $dados['cod_cidade'];
 
 $var = $MyCripty->enc($cod_empresa);
-$var2 = $MyCripty->enc($logomarca);
+$var2 = $logomarca;
 ?>
 <div class="container col-sm-6">
-    <form class="form-horizontal" method="POST" action="?url=edtbd_empresa.php&ldl=<?= $var; ?>&ldk=<?= $var2; ?>" enctype="multipart/form-data">
+    <form class="form-horizontal" method="POST" action="?url=edtbd_empresa.php&ldl=<?= $var; ?>&ldk=<?= $logomarca; ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label class="col-sm-8 control-label">Nome Empresa:</label>
             <div class="col-sm-12">
@@ -44,8 +44,8 @@ $var2 = $MyCripty->enc($logomarca);
         <div class="form-group">
             <label class="col-sm-8 control-label">CNPJ:</label>
             <div class="col-sm-12">
-                <input onkeyup="somenteNumeros(this);" 
-                       maxlength="14"  
+                <input onkeyup="mascara(this, cnpj);" 
+                       maxlength="18"  
                        ng-model="numero.valor"
                        id="cnpj"
                        name="cnpj" type="text" 
@@ -68,14 +68,14 @@ $var2 = $MyCripty->enc($logomarca);
             <div class="col-sm-12 row">
                 <div class="col-sm-12 ">
                     <input type="text" class="form-control" 
-                       name="nr" 
-                       onkeyup="somenteNumeros(this);" 
-                       maxlength="5"  
-                       minlength="1"
-                       ng-model="numero.valor"
-                       value="<?= $nr; ?>"
-                       required
-                       placeholder="Digite o Número de Endereço da Empresa...">
+                           name="nr" 
+                           onkeyup="somenteNumeros(this);" 
+                           maxlength="5"  
+                           minlength="1"
+                           ng-model="numero.valor"
+                           value="<?= $nr; ?>"
+                           required
+                           placeholder="Digite o Número de Endereço da Empresa...">
                 </div>
             </div>
         </div>
@@ -103,10 +103,10 @@ $var2 = $MyCripty->enc($logomarca);
             <div class="col-sm-12 row">
                 <div class="col-sm-12 ">
                     <input type="text" class="form-control" 
-                       name="tel_whatsapp" 
-                       value="<?= $tel_whatsapp; ?>"
-                       id="tel_whatsapp" 
-                       placeholder="(11) 12345-6789">
+                           name="tel_whatsapp" 
+                           value="<?= $tel_whatsapp; ?>"
+                           id="tel_whatsapp" 
+                           placeholder="(11) 12345-6789">
                 </div>
             </div>
         </div>
@@ -116,10 +116,10 @@ $var2 = $MyCripty->enc($logomarca);
             <div class="col-sm-12 row">
                 <div class="col-sm-12 ">
                     <input type="text" class="form-control" 
-                       name="tel_fixo" 
-                       value="<?= $tel_fixo; ?>"
-                       id="tel_fixo" 
-                       placeholder="(11) 12345-6789">
+                           name="tel_fixo" 
+                           value="<?= $tel_fixo; ?>"
+                           id="tel_fixo" 
+                           placeholder="(11) 12345-6789">
                 </div>
             </div>
         </div>
@@ -161,10 +161,11 @@ $var2 = $MyCripty->enc($logomarca);
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
-            <label class="col-sm-8 control-label">Logo Marca: <?= $logomarca; ?></label>
             <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="file" class="form-control" name="logomarca" placeholder="Selecione a Logo Marca da Empresa...">
+                <img class="col-sm-2 " src="./imagens/logomarca/<?= $logomarca; ?>" >
+                <div class="col-sm-10">
+                    <label class="col-sm-4 control-label">Logo Marca: <?= $logomarca; ?></label>
+                    <input class="col-sm-6 " type="file" class="form-control" name="logomarca" placeholder="Selecione a Logo Marca da Empresa...">
                 </div>
             </div>
         </div>
@@ -173,7 +174,7 @@ $var2 = $MyCripty->enc($logomarca);
             <label class="col-sm-8 control-label" required >Nome da Cidade:</label>
             <div class="col-sm-12 row">
                 <div class="col-sm-12 ">
-                    <select class="form-control" name="cidade">
+                    <select class="form-control" name="cod_cidade">
                         <?php
                         include './../connection.php';
 
@@ -207,7 +208,7 @@ $var2 = $MyCripty->enc($logomarca);
             <label class="col-sm-8 control-label" required >Nome do Catálogo:</label>
             <div class="col-sm-12 row">
                 <div class="col-sm-12 ">
-                    <select class="form-control" name="catalogo">
+                    <select class="form-control" name="cod_catalogo">
                         <?php
                         include './connection.php';
 

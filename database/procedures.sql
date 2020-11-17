@@ -24,16 +24,17 @@ DELIMITER ;
 
 ####### ATUALIZAR TODOS OS DADOS DA EMPRESA #######
 DELIMITER $$
-CREATE PROCEDURE update_empresa (cod_loja INTEGER, nome_empresarial VARCHAR(100), nome_fantasia VARCHAR(100), cnpj VARCHAR(18), 
-email VARCHAR(100), tel_fixo VARCHAR(13), tel_celular VARCHAR(14), rua VARCHAR(100), nr DECIMAL(4,0), cep VARCHAR(8), 	img_logo TEXT, cod_cidade INTEGER)
+CREATE PROCEDURE update_empresa (cod_empresa INT,nome_fantasia VARCHAR(100),cnpj VARCHAR(18),logradouro VARCHAR(100),nr NUMERIC(4),complemento VARCHAR(150),bairro VARCHAR(150),
+    tel_whatsapp VARCHAR(15),tel_fixo VARCHAR(15),email TEXT,instagram TEXT,facebook TEXT,maps TEXT,logomarca TEXT,cod_catalogo INTEGER,cod_cidade INTEGER)
 BEGIN
-    IF ((cod_loja != '') && (nome_empresarial != '') && (nome_fantasia != '') && (cnpj != '') && (email != '') && (tel_fixo != '')
-    && (tel_celular != '') && (rua != '') && (nr != '') && (cep != '') && (img_logo != '') && (cod_cidade != '')) THEN
-	UPDATE tb_loja 
-        SET cod_loja=cod_loja, nome_empresarial=nome_empresarial,nome_fantasia=nome_fantasia,
-            cnpj=cnpj, email=email,tel_fixo=tel_fixo,tel_celular=tel_celular,rua=rua,nr=nr,cep=cep,
-            img_logo=img_logo,cod_cidade=cod_cidade  
-	WHERE cod_loja = cod_loja;
+    IF ((cod_empresa != '') AND (nome_fantasia != '') AND (cnpj != '') AND (logradouro != '') AND (nr != '') AND (complemento != '')
+    AND (bairro != '') AND (tel_whatsapp != '') AND (tel_fixo != '') AND (email != '') AND (instagram != '') AND (facebook != '') AND (maps != '') 
+    AND (logomarca != '') AND (cod_catalogo != '') AND (cod_cidade != '')) THEN
+		UPDATE tb_empresa
+		SET nome_fantasia=nome_fantasia,cnpj=cnpj,logradouro=logradouro,
+		nr=nr,complemento=complemento,bairro=bairro,tel_whatsapp=tel_whatsapp,tel_fixo=tel_fixo,
+		email=email,instagram=instagram,facebook=facebook,maps=maps,logomarca=logomarca,
+		cod_catalogo=cod_catalogo,cod_cidade=cod_cidade WHERE cod_empresa = cod_empresa;
     ELSE
         SELECT 'Preencha todos os campos.';
     END IF;

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="?url=home.php">Dashboard - Usuário Logado: </a>
+    <a class="navbar-brand" href="?url=home.php">Dashboard - </a>
     <a class="navbar-brand" href="?url=edt_admin.php&ldl=<?= $_SESSION["cod_admin"]; ?>">
         <?= $_SESSION['nome']; ?>
     </a>

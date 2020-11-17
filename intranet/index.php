@@ -52,7 +52,7 @@ require_once './sessao.php';
 </head>
 <!-- ---------------------CORPO PRINCIPAL------------------ -->
 <!-- RESPONSAVEL POR DEIXAR O MENU RECOLHIDO sidenav-toggled -->
-<body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Menu -->
     <?php include './menu.php'; ?>
 
@@ -80,11 +80,10 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./edit/edt_empresa.php');
                 break;
-            /*
-              case 'edtbdloja.php':
-              include ('./edit/loja/edtbdloja.php');
-              break;
-              ` */
+
+            case 'edtbd_empresa.php':
+                include ('./edit/edtbd_empresa.php');
+                break;
 
             ##-----------------------SOBRE--------------------##
             case 'sobre.php':
@@ -92,13 +91,13 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./sobre.php');
                 break;
-            /*
-              case 'edtloja.php':
-              $menu = 'Editar Loja';
-              include './navegacao.php';
-              include ('./edit/loja/edtloja.php');
-              break;
-              case 'edtbdloja.php':
+            case 'adc_sobre.php':
+                $menu = 'Adicionar Sobre';
+                include './navegacao.php';
+                include ('./adc/adc_sobre.php');
+                break;
+
+            /*  case 'edtbdloja.php':
               include ('./edit/loja/edtbdloja.php');
               break;
               ` */
@@ -295,7 +294,16 @@ require_once './sessao.php';
         </script>
         <script type="text/javascript">$("#tel_whatsapp").mask("(99) 99999-9999");</script>
         <script type="text/javascript">$("#tel_fixo").mask("(99) 9999-9999");</script>
-        <script type="text/javascript">$("#cnpj").mask("99.999.999/9999-99");</script>
+        <script type="text/javascript">
+            function cnpj(v) {
+                v = v.replace(/\D/g, "")                           //Remove tudo o que não é dígito
+                v = v.replace(/^(\d{2})(\d)/, "$1.$2")             //Coloca ponto entre o segundo e o terceiro dígitos
+                v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3") //Coloca ponto entre o quinto e o sexto dígitos
+                v = v.replace(/\.(\d{3})(\d)/, ".$1/$2")           //Coloca uma barra entre o oitavo e o nono dígitos
+                v = v.replace(/(\d{4})(\d)/, "$1-$2")              //Coloca um hífen depois do bloco de quatro dígitos
+                return v
+            }
+        </script>
         <script type="text/javascript">$("#cep").mask("99999-999");</script>
     </div>
 </body>

@@ -1,4 +1,5 @@
 <?php
+
 include './encrypt.php';
 include './sessao.php';
 include '../connection.php';
@@ -9,16 +10,21 @@ $var = $_GET['ldl'];
 $var2 = $_GET['ldk'];
 
 $cod_empresa = $MyCripty->dec($var);
-$logomarca = $MyCripty->dec($var2);
 
-if (@$_FILES['logomarca'] != '') {
-    $diretorio_img = "../imagens/logomarca/";
-    $uploadfile = $diretorio_img . basename($_FILES['logomarca']['name']);
-    $nome_logo = $_FILES['logomarca']['name'];
+$diretorio_img = "./imagens/logomarca/";
+$uploadfile = $diretorio_img . basename($_FILES['logomarca']['name']);
+$nome_logo = $_FILES['logomarca']['name'];
+
+if ($nome_logo != '') {
     move_uploaded_file($_FILES['logomarca']['tmp_name'], $uploadfile);
-}
-if ($nome_logo == '') {
-    $nome_logo = $logomarca;
+
+    $removeimagem = $diretorio_img . $var2;
+
+    if (file_exists($removeimagem)) {
+        unlink($removeimagem);
+    }
+} else if ($nome_logo == '') {
+    @$nome_logo = $logomarca;
 }
 
 $nome_fantasia = trim($_POST['nome_fantasia']);
@@ -37,8 +43,9 @@ $cod_cat = trim($_POST['cod_catalogo']);
 $cod_ci = trim($_POST['cod_cidade']);
 
 try {
-    $cmd = $pdo->prepare("CALL atualiza_loja('$cod_loja', '$nome_empresarial','$nome_fantasia','$cnpj','$email',"
-            . "'$tel_fixo','$tel_celular','$rua','$nr','$cep','$nome_logo','$cod_cidade');");
+    $cmd = $pdo->prepare("CALL update_empresa('$cod_empresa', '$nome_fantasia','$cnpj','$logradouro','$nr',"
+            . "'$complemento','$bairro','$tel_whatsapp','$tel_fixo','$email','$instagram','$facebook','$maps',"
+            . "'$nome_logo','$cod_cat','$cod_ci');");
     $cmd->execute();
     unset($cmd);
     echo "<script>location.href='index.php?url=empresa.php&msg=alt';</script>";
