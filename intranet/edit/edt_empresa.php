@@ -56,107 +56,87 @@ $var2 = $logomarca;
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">Logradouro:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" name="logradouro" value="<?= $logradouro; ?>" required placeholder="Digite o Logradouro da Empresa...">
-                </div>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" name="logradouro" value="<?= $logradouro; ?>" required placeholder="Digite o Logradouro da Empresa...">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">Número:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" 
-                           name="nr" 
-                           onkeyup="somenteNumeros(this);" 
-                           maxlength="5"  
-                           minlength="1"
-                           ng-model="numero.valor"
-                           value="<?= $nr; ?>"
-                           required
-                           placeholder="Digite o Número de Endereço da Empresa...">
-                </div>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" 
+                       name="nr" 
+                       onkeyup="somenteNumeros(this);" 
+                       maxlength="5"  
+                       minlength="1"
+                       ng-model="numero.valor"
+                       value="<?= $nr; ?>"
+                       required
+                       placeholder="Digite o Número de Endereço da Empresa...">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">Complemento:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" name="complemento" value="<?= $complemento; ?>" placeholder="Digite um Complemento para o Endereço...">
-                </div>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" name="complemento" value="<?= $complemento; ?>" placeholder="Digite um Complemento para o Endereço...">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">Bairro:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" name="bairro" value="<?= $bairro; ?>" placeholder="Digite o Bairro da Empresa...">
-                </div>
+            <div class="col-sm-12 ">
+                <input type="text" class="form-control" name="bairro" value="<?= $bairro; ?>" placeholder="Digite o Bairro da Empresa...">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">WhatsApp:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" 
-                           name="tel_whatsapp" 
-                           value="<?= $tel_whatsapp; ?>"
-                           id="tel_whatsapp" 
-                           placeholder="(11) 12345-6789">
-                </div>
+            <div class="col-sm-12 ">
+                <input type="text" class="form-control" 
+                       name="tel_whatsapp" 
+                       value="<?= $tel_whatsapp; ?>"
+                       id="tel_whatsapp" 
+                       placeholder="(11) 12345-6789">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">Telefone Fixo:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" 
-                           name="tel_fixo" 
-                           value="<?= $tel_fixo; ?>"
-                           id="tel_fixo" 
-                           placeholder="(11) 12345-6789">
-                </div>
+            <div class="col-sm-12 ">
+                <input type="text" class="form-control" 
+                       name="tel_fixo" 
+                       value="<?= $tel_fixo; ?>"
+                       id="tel_fixo" 
+                       placeholder="(11) 12345-6789">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">E-mail:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="email" class="form-control" name="email" value="<?= $email; ?>" placeholder="Digite o E-mail da Empresa...">
-                </div>
+            <div class="col-sm-12 ">
+                <input type="email" class="form-control" name="email" value="<?= $email; ?>" placeholder="Digite o E-mail da Empresa...">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">Instagram:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" name="instagram" value="<?= $instagram; ?>" placeholder="Insira o LINK do Instagram da Empresa...">
-                </div>
+            <div class="col-sm-12 ">
+                <input type="text" class="form-control" name="instagram" value="<?= $instagram; ?>" placeholder="Insira o LINK do Instagram da Empresa...">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">Facebook:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" name="facebook" value="<?= $facebook; ?>" placeholder="Insira o LINK do Facebook da Empresa...">
-                </div>
+            <div class="col-sm-12 ">
+                <input type="text" class="form-control" name="facebook" value="<?= $facebook; ?>" placeholder="Insira o LINK do Facebook da Empresa...">
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label">Maps:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <input type="text" class="form-control" name="maps" value="<?= $maps; ?>" placeholder="Insira o LINK do Maps da Empresa...">
-                </div>
+            <div class="col-sm-12 ">
+                <input type="text" class="form-control" name="maps" value="<?= $maps; ?>" placeholder="Insira o LINK do Maps da Empresa...">
             </div>
         </div>
         <hr class="b-s-dashed">
@@ -172,66 +152,62 @@ $var2 = $logomarca;
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label" required >Nome da Cidade:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <select class="form-control" name="cod_cidade">
-                        <?php
-                        include './../connection.php';
+            <div class="col-sm-12 ">
+                <select class="form-control" name="cod_cidade">
+                    <?php
+                    include './../connection.php';
 
-                        $selectCidade = "select c.* "
-                                . "from tb_cidade as c, tb_estado as e "
-                                . "where c.cod_estado = e.cod_estado;";
+                    $selectCidade = "select c.* "
+                            . "from tb_cidade as c, tb_estado as e "
+                            . "where c.cod_estado = e.cod_estado;";
 
-                        $queryCidade = $pdo->query($selectCidade);
+                    $queryCidade = $pdo->query($selectCidade);
 
-                        while ($dados = $queryCidade->fetch()) {
-                            $nome_cidade = $dados['nome_cidade'];
-                            $cod_cidade = $dados['cod_cidade'];
+                    while ($dados = $queryCidade->fetch()) {
+                        $nome_cidade = $dados['nome_cidade'];
+                        $cod_cidade = $dados['cod_cidade'];
 
-                            if ($cod_ci == $cod_cidade) {
-                                ?>
-                                <option selected="true" value="<?= $cod_cidade; ?>"><?= $cod_cidade; ?> - <?= $nome_cidade; ?></option>
-                                <?php
-                            } else if ($cod_ci != $cod_cidade) {
-                                ?>
-                                <option value="<?= $cod_cidade; ?>"><?= $cod_cidade; ?> - <?= $nome_cidade; ?></option>
-                                <?php
-                            }
+                        if ($cod_ci == $cod_cidade) {
+                            ?>
+                            <option selected="true" value="<?= $cod_cidade; ?>"><?= $cod_cidade; ?> - <?= $nome_cidade; ?></option>
+                            <?php
+                        } else if ($cod_ci != $cod_cidade) {
+                            ?>
+                            <option value="<?= $cod_cidade; ?>"><?= $cod_cidade; ?> - <?= $nome_cidade; ?></option>
+                            <?php
                         }
-                        ?>
-                    </select>
-                </div>
+                    }
+                    ?>
+                </select>
             </div>
         </div>
         <hr class="b-s-dashed">
         <div class="form-group">
             <label class="col-sm-8 control-label" required >Nome do Catálogo:</label>
-            <div class="col-sm-12 row">
-                <div class="col-sm-12 ">
-                    <select class="form-control" name="cod_catalogo">
-                        <?php
-                        include './connection.php';
+            <div class="col-sm-12 ">
+                <select class="form-control" name="cod_catalogo">
+                    <?php
+                    include './connection.php';
 
-                        $selectCatalogo = "select * from tb_catalogo";
+                    $selectCatalogo = "select * from tb_catalogo";
 
-                        $queryCatalogo = $pdo->query($selectCatalogo);
+                    $queryCatalogo = $pdo->query($selectCatalogo);
 
-                        while ($dados = $queryCatalogo->fetch()) {
-                            $cod_catalogo = $dados['cod_catalogo'];
-                            $nome = $dados['nome'];
-                            if ($cod_cat == $cod_catalogo) {
-                                ?>
-                                <option selected="true" value="<?= $cod_catalogo; ?>"><?= $cod_catalogo; ?> - <?= $nome; ?></option>
-                                <?php
-                            } else if ($cod_cat != $cod_catalogo) {
-                                ?>
-                                <option value="<?= $cod_catalogo; ?>"><?= $cod_catalogo; ?> - <?= $nome; ?></option>
-                                <?php
-                            }
+                    while ($dados = $queryCatalogo->fetch()) {
+                        $cod_catalogo = $dados['cod_catalogo'];
+                        $nome = $dados['nome'];
+                        if ($cod_cat == $cod_catalogo) {
+                            ?>
+                            <option selected="true" value="<?= $cod_catalogo; ?>"><?= $cod_catalogo; ?> - <?= $nome; ?></option>
+                            <?php
+                        } else if ($cod_cat != $cod_catalogo) {
+                            ?>
+                            <option value="<?= $cod_catalogo; ?>"><?= $cod_catalogo; ?> - <?= $nome; ?></option>
+                            <?php
                         }
-                        ?>
-                    </select>
-                </div>
+                    }
+                    ?>
+                </select>
             </div>
         </div>
         <hr class="b-s-dashed">

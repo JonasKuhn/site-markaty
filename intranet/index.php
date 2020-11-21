@@ -96,11 +96,20 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./adc/adc_sobre.php');
                 break;
-
-            /*  case 'edtbdloja.php':
-              include ('./edit/loja/edtbdloja.php');
-              break;
-              ` */
+            case 'adcbd_sobre.php':
+                include ('./adc/adcbd_sobre.php');
+                break;
+            case 'edt_sobre.php':
+                $menu = '<a href="?url=sobre.php">Sobre a Empresa </a> / Editar Sobre';
+                include './navegacao.php';
+                include ('./edit/edt_sobre.php');
+                break;
+            case 'edtbd_sobre.php':
+                include ('./edit/edtbd_sobre.php');
+                break;
+            case 'dropbd_sobre.php':
+                include ('./drop/dropbd_sobre.php');
+                break;
 
             ##-----------------------BANNER--------------------##
             case 'banner.php':
@@ -282,12 +291,12 @@ require_once './sessao.php';
                         // Change the password field to text
                         passwordField.attr('type', 'text');
                         // Change the Text on the show password button to Hide
-                        $(this).val('Esconder');
+                        $(this).removeClass('fa-eye').addClass('fa-eye-slash');
                     } else {
                         // If the password field type is not a password field then set it to password
                         passwordField.attr('type', 'password');
                         // Change the value of the show password button to Show
-                        $(this).val('Visulizar');
+                        $(this).removeClass('fa-eye-slash').addClass('fa-eye');
                     }
                 });
             });

@@ -43,7 +43,7 @@ $var = $MyCripty->enc($cod_admin);
                     <input type="password" class="form-control" id="password" name="senha" value="<?= $senhas_des; ?>" required placeholder="Digite sua senha...">
                 </div>
                 <div class="col-sm-2">
-                    <input class="btn btn-dark btn-block" type="button" id="showPassword" value="Visualizar"/>
+                    <i class="btn btn-dark btn-block fa fa-eye" type="button" id="showPassword"></i>
                 </div>
             </div>
         </div>

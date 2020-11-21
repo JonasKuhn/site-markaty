@@ -24,7 +24,7 @@ if ($nome_logo != '') {
         unlink($removeimagem);
     }
 } else if ($nome_logo == '') {
-    @$nome_logo = $logomarca;
+    @$nome_logo = $var2;
 }
 
 $nome_fantasia = trim($_POST['nome_fantasia']);

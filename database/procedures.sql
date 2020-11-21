@@ -52,6 +52,43 @@ BEGIN
 END$$
 DELIMITER ;
 
+####### INSERE OS DADOS SOBRE #######
+DELIMITER $$
+CREATE PROCEDURE insere_sobre(titulo TEXT, descricao TEXT, img_sobre TEXT,video TEXT,cod_empresa INT)
+BEGIN
+	IF ((titulo != '') AND (descricao != '') AND (cod_empresa != '')) THEN
+		INSERT INTO tb_sobre(titulo, descricao, img_sobre, video, cod_empresa) 
+        VALUES (titulo, descricao, img_sobre, video, cod_empresa);
+    ELSE
+		select 'Preencha todos os campos.';
+    END IF;
+END $$
+DELIMITER ;
+
+####### SELECIONAR TODOS OS DADOS SOBRE ESPECIFICO #######
+DELIMITER $$
+CREATE PROCEDURE sel_sobre_especifico(cod_sobre INT)
+BEGIN
+	SELECT s.*
+	FROM tb_sobre as s, tb_empresa as e
+	WHERE s.cod_empresa = e.cod_empresa
+    AND s.cod_sobre = cod_sobre;
+END$$
+DELIMITER ;
+
+####### ATUALIZAR TODOS OS DADOS SOBRE#######
+DELIMITER $$
+CREATE PROCEDURE update_sobre (cod_sobre INT, titulo TEXT,descricao TEXT,img_sobre TEXT,video TEXT,cod_empresa INTEGER)
+BEGIN
+    IF ((cod_sobre != '') AND (titulo != '') AND (descricao != '') AND (img_sobre != '') AND (video != '') AND (cod_empresa != '')) THEN
+		UPDATE tb_sobre SET titulo=titulo,descricao=descricao,img_sobre=img_sobre,video=video,cod_empresa=cod_empresa 
+        WHERE cod_sobre=cod_sobre;
+    ELSE
+        SELECT 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;
+
 ####### SELECIONAR TODOS OS DADOS BANNER #######
 DELIMITER $$
 CREATE PROCEDURE sel_banner()
