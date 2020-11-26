@@ -91,12 +91,49 @@ DELIMITER ;
 
 ####### SELECIONAR TODOS OS DADOS BANNER #######
 DELIMITER $$
-CREATE PROCEDURE sel_banner()
+CREATE PROCEDURE sel_banner(titulo TEXT, descricao TEXT, img_sobre TEXT,video TEXT,cod_empresa INT)
 BEGIN
 	SELECT b.*
 	FROM tb_banner as b, tb_empresa as e
 	WHERE b.cod_empresa = e.cod_empresa
 	ORDER BY b.cod_empresa ASC;
+END$$
+DELIMITER ;
+
+####### SELECIONAR TODOS OS DADOS BANNER ESPECÍFICO #######
+DELIMITER $$
+CREATE PROCEDURE sel_banner_especifico(cod_banner INT)
+BEGIN
+	SELECT b.*
+	FROM tb_banner as b, tb_empresa as e
+	WHERE b.cod_empresa = e.cod_empresa
+    AND b.cod_banner = cod_banner;
+END$$
+DELIMITER ;
+
+####### INSERIR NOVO BANNER ######################
+DELIMITER $$
+CREATE PROCEDURE insere_banner(titulo VARCHAR(150), descricao TEXT, fl_ativo BOOLEAN, img_banner TEXT,cod_empresa INT)
+BEGIN
+	IF ((titulo != '') AND (descricao != '') AND (fl_ativo != '') AND (img_banner != '') AND (cod_empresa != '')) THEN
+		INSERT INTO tb_banner (titulo, descricao, fl_ativo, img_banner, cod_empresa) 
+		VALUES (titulo,descricao,fl_ativo,img_banner,cod_empresa);
+	ELSE
+		select 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;
+
+####### ATUALIZAR TODOS OS DADOS BANNER#######
+DELIMITER $$
+CREATE PROCEDURE update_banner(cod_banner INT, titulo VARCHAR(150), descricao TEXT, fl_ativo bool, img_banner TEXT, cod_empresa INT)
+BEGIN
+    IF ((cod_banner != '') AND (titulo != '') AND (descricao != '') AND (fl_ativo != '') AND (img_banner != '') AND (cod_empresa != '')) THEN
+		UPDATE tb_banner as b SET b.titulo=titulo, b.descricao=descricao, b.fl_ativo=fl_ativo, b.img_banner=img_banner, b.cod_empresa=cod_empresa 
+        WHERE b.cod_banner=cod_banner;
+    ELSE
+        SELECT 'Preencha todos os campos.';
+    END IF;
 END$$
 DELIMITER ;
 
@@ -111,14 +148,86 @@ BEGIN
 END$$
 DELIMITER ;
 
+####### SELECIONAR TODOS OS DADOS QUALIDADE ESPECÍFICO #######
+DELIMITER $$
+CREATE PROCEDURE sel_qualidade_especifico(cod_qualidade INT)
+BEGIN
+	SELECT q.*
+	FROM tb_qualidade as q, tb_empresa as e
+	WHERE q.cod_empresa = e.cod_empresa
+	AND q.cod_qualidade = cod_qualidade;
+END$$
+DELIMITER ;
+
+####### INSERE TODOS OS DADOS QUALIDADE #######
+DELIMITER $$
+CREATE PROCEDURE insere_qualidade(nome VARCHAR(100), descricao TEXT, cod_empresa INT)
+BEGIN
+	IF ((nome != '') AND (descricao != '')) THEN
+		INSERT INTO tb_qualidade(nome, descricao, cod_empresa) VALUES (nome, descricao, cod_empresa);
+    ELSE
+		SELECT 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;
+
+####### ATUALIZA TODOS OS DADOS QUALIDADE #######
+DELIMITER $$
+CREATE PROCEDURE update_qualidade(cod_qualidade INT, nome VARCHAR(100), descricao TEXT, cod_empresa INT)
+BEGIN
+	IF ((nome != '') AND (descricao != '')) THEN
+		UPDATE tb_qualidade SET nome=nome, descricao=descricao, cod_empresa=cod_empresa 
+        WHERE cod_qualidade = cod_qualidade;
+    ELSE
+		SELECT 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;
+
 ####### SELECIONAR TODOS OS DADOS CATALOGO #######
 DELIMITER $$
 CREATE PROCEDURE sel_catalogo()
 BEGIN
-	SELECT c.*
-	FROM tb_catalogo as c, tb_empresa as e
-	WHERE c.cod_catalogo = e.cod_catalogo
-	ORDER BY c.cod_catalogo ASC;
+	SELECT *
+	FROM tb_catalogo 
+	ORDER BY cod_catalogo ASC;
+END$$
+DELIMITER ;
+
+####### INSERE TODOS OS DADOS CATALOGO #######
+DELIMITER $$
+CREATE PROCEDURE insere_catalogo(nome VARCHAR(150), descricao TEXT)
+BEGIN
+	IF ((nome != '') AND (descricao != '')) THEN
+		INSERT INTO tb_catalogo(nome, descricao) VALUES (nome, descricao);
+    ELSE
+		SELECT 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;
+
+####### SELECIONAR TODOS OS DADOS CATALOGO ESPECIFICO #######
+DELIMITER $$
+CREATE PROCEDURE sel_catalogo_especifico(cod_catalogo INT)
+BEGIN
+	SELECT *
+	FROM tb_catalogo 
+    WHERE cod_catalogo = cod_catalogo;
+END$$
+DELIMITER ;
+
+####### ATUALIZA TODOS OS DADOS DO CATALOGO #######
+DELIMITER $$
+CREATE PROCEDURE update_catalogo(cod_catalogo INT, nome VARCHAR(150), descricao TEXT, cod_empresa INT)
+BEGIN
+	IF ((cod_catalogo != '') AND (nome != '') AND (descricao != '') AND (cod_empresa != '')) THEN
+		UPDATE tb_catalogo as c, tb_empresa as e SET
+        c.nome = nome, c.descricao = descricao 
+        WHERE c.cod_catalogo = cod_catalogo
+        AND e.cod_empresa = cod_empresa;
+    ELSE
+		SELECT 'Preencha todos os campos.';
+    END IF;
 END$$
 DELIMITER ;
 

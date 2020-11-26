@@ -20,7 +20,8 @@ CRONOGRAMA DE DESENVOLVIMETO
     ORCAMENTO
 R$10.00 / hora
 
-17 dias minimos para o desenvolvimento
+4hr por dia 
+17 dias minimos para o desenvolvimento 
     R$680.00
 
 30 dias maximos para o desenvolvimento
@@ -42,8 +43,13 @@ DIA         TEMPO
 12/11       03:20   
 13/11       01:00   
 16/11       01:00   
-18/11       01:23
-20/11       01:35   total 17:58
+18/11       01:25
+20/11       01:35   
+24/11       02:10  
+25/11       01:45   total 21:55 
+
+min 68hrs
+max 120hrs
 
 --------------------------------------------------
 VARIAVEIS DE LINKS

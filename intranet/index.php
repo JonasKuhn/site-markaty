@@ -117,16 +117,25 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./banner.php');
                 break;
-            /*
-              case 'edtloja.php':
-              $menu = 'Editar Loja';
-              include './navegacao.php';
-              include ('./edit/loja/edtloja.php');
-              break;
-              case 'edtbdloja.php':
-              include ('./edit/loja/edtbdloja.php');
-              break;
-              ` */
+            case 'adc_banner.php':
+                $menu = 'Adicionar Banner';
+                include './navegacao.php';
+                include ('./adc/adc_banner.php');
+                break;
+            case 'adcbd_banner.php':
+                include ('./adc/adcbd_banner.php');
+                break;
+            case 'dropbd_banner.php':
+                include ('./drop/dropbd_banner.php');
+                break;
+            case 'edt_banner.php':
+                $menu = '<a href="?url=banner.php">Banner de Destaque </a> / Editar Banner';
+                include './navegacao.php';
+                include ('./edit/edt_banner.php');
+                break;
+            case 'edtbd_banner.php':
+                include ('./edit/edtbd_banner.php');
+                break;
 
             ##-----------------------QUALIDADE--------------------##
             case 'qualidade.php':
@@ -134,33 +143,50 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./qualidade.php');
                 break;
-            /*
-              case 'edtloja.php':
-              $menu = 'Editar Loja';
-              include './navegacao.php';
-              include ('./edit/loja/edtloja.php');
-              break;
-              case 'edtbdloja.php':
-              include ('./edit/loja/edtbdloja.php');
-              break;
-              ` */
-
+            case 'adc_qualidade.php':
+                $menu = 'Adicionar Qualidade da Empresa';
+                include './navegacao.php';
+                include ('./adc/adc_qualidade.php');
+                break;
+            case 'adcbd_qualidade.php':
+                include ('./adc/adcbd_qualidade.php');
+                break;
+            case 'dropbd_qualidade.php':
+                include ('./drop/dropbd_qualidade.php');
+                break;
+            case 'edt_qualidade.php':
+                $menu = '<a href="?url=qualidade.php">Qualidades da Empresa </a> / Editar Qualidade';
+                include './navegacao.php';
+                include ('./edit/edt_qualidade.php');
+                break;
+            case 'edtbd_qualidade.php':
+                include ('./edit/edtbd_qualidade.php');
+                break;
             ##-----------------------CATALOGO--------------------##
             case 'catalogo.php':
-                $menu = 'Catálogo';
+                $menu = 'Meu Catálogo';
                 include './navegacao.php';
                 include ('./catalogo.php');
                 break;
-            /*
-              case 'edtloja.php':
-              $menu = 'Editar Loja';
-              include './navegacao.php';
-              include ('./edit/loja/edtloja.php');
-              break;
-              case 'edtbdloja.php':
-              include ('./edit/loja/edtbdloja.php');
-              break;
-              ` */
+            case 'adc_catalogo.php':
+                $menu = 'Adicionar Catálogo';
+                include './navegacao.php';
+                include ('./adc/adc_catalogo.php');
+                break;
+            case 'adcbd_catalogo.php':
+                include ('./adc/adcbd_catalogo.php');
+                break;
+            case 'dropbd_catalogo.php':
+                include ('./drop/dropbd_catalogo.php');
+                break;
+            case 'edt_catalogo.php':
+                $menu = '<a href="?url=catalogo.php">Meu Catálogo </a> / Editar Catálogo';
+                include './navegacao.php';
+                include ('./edit/edt_catalogo.php');
+                break;
+            case 'edtbd_catalogo.php':
+                include ('./edit/edtbd_catalogo.php');
+                break;
 
             ##-----------------------LISTA DE PRODUTOS--------------------##
             case 'lista_produto.php':

@@ -24,7 +24,6 @@ if ($img_sobre != '') {
     }
 } else if ($img_sobre == '') {
     @$img_sobre = $var2;
-    echo 'aqui sem adc nova foto';
 }
 
 $titulo = trim($_POST['titulo']);

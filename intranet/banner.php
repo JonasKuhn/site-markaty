@@ -6,6 +6,10 @@ $MyCripty = new MyCripty();
 @$msg = $_GET['msg'];
 if (isset($msg) && $msg != false && $msg == "alt") {
     echo "<script type='text/javascript'>alert('Cadastro alterado com Sucesso!');</script>";
+} else if (isset($msg) && $msg != false && $msg == "adc") {
+    echo "<script type='text/javascript'>alert('Cadastro realizado com Sucesso!');</script>";
+} else if (isset($msg) && $msg != false && $msg == "drop") {
+    echo "<script type='text/javascript'>alert('O cadastro foi apagado com sucesso!');</script>";
 }
 ?>
 <div class="container-fluid">
@@ -43,11 +47,15 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                             <tr>
                                 <td><?= $titulo; ?></td>
                                 <td><?= $descricao; ?></td>
-                                <td><?= $fl_ativo; ?></td>
-                                <td><img style=" max-height:50px;" src="imagens/banner/<?= $img_banner; ?>" alt="<?= $img_banner; ?>"/></td>
+                                <td><?php if ($fl_ativo == '1') { ?>
+                                        ATIVADO
+                                    <?php } else if ($fl_ativo == '2'){ ?>
+                                        DESATIVADO
+                                    <?php } ?></td>
+                                <td><img style=" max-height:50px;" src="./imagens/banner/<?= $img_banner; ?>" alt="<?= $img_banner; ?>"/></td>
                                 <td>
-                                    <a href="?url=edtbanner.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
-                                    <a href="?url=delbdbanner.php&ldl=<?= $var; ?>" 
+                                    <a href="?url=edt_banner.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
+                                    <a href="?url=dropbd_banner.php&ldl=<?= $var; ?>&ldk=<?= $img_banner; ?>" 
                                        onclick="return excluir('<?= $titulo; ?>');" title="EXCLUIR">
                                         <i class="fa fa-2x fa-trash-o"></i>
                                     </a>
