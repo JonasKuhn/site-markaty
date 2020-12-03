@@ -194,6 +194,17 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./lista_produto.php');
                 break;
+            case 'adc_produto.php':
+                $menu = '<a href="?url=lista_produto.php">Lista De Produto </a> / Adicionar Novo Produto';
+                include './navegacao.php';
+                include ('./adc/adc_produto.php');
+                break;
+            case 'adcbd_produto.php':
+                include ('./adc/adcbd_produto.php');
+                break;
+            case 'dropbd_produto.php':
+                include ('./drop/dropbd_produto.php');
+                break;
             /*
               case 'edtloja.php':
               $menu = 'Editar Loja';
@@ -272,6 +283,7 @@ require_once './sessao.php';
         <?php include './home_modal.php'; ?>
 
         <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
         <script src="vendor/jquery/jquery.min.js" type="text/javascript"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script src="vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>

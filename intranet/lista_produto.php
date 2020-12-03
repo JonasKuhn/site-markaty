@@ -6,6 +6,10 @@ $MyCripty = new MyCripty();
 @$msg = $_GET['msg'];
 if (isset($msg) && $msg != false && $msg == "alt") {
     echo "<script type='text/javascript'>alert('Cadastro alterado com Sucesso!');</script>";
+}if (isset($msg) && $msg != false && $msg == "adc") {
+    echo "<script type='text/javascript'>alert('Cadastro realizado com Sucesso!');</script>";
+}else if (isset($msg) && $msg != false && $msg == "drop") {
+    echo "<script type='text/javascript'>alert('O cadastro foi apagado com sucesso!');</script>";
 }
 ?>
 <div class="container-fluid">
@@ -23,7 +27,6 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                             <th>Descrição</th>
                             <th>Ativo</th>
                             <th>Tipo de Produto</th>
-                            <th>Imagem</th>
                             <th>Editar / Excluir</th>
                         </tr>
                     </thead>
@@ -39,18 +42,22 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                             $descricao = $dados['descricao'];
                             $fl_ativo = $dados['fl_ativo'];
                             $nome_tipo_produto = $dados['nome_tipo_item'];
-                            $nome_imagem = $dados['img_nome'];
                             $var = $MyCripty->enc($cod);
                             ?>
                             <tr>
                                 <td><?= $nome; ?></td>
                                 <td><?= $descricao; ?></td>
-                                <td><?= $fl_ativo; ?></td>
+                                <td>
+                                    <?php if ($fl_ativo == '1') { ?>
+                                        ATIVADO
+                                    <?php } else if ($fl_ativo == '0') { ?>
+                                        DESATIVADO
+                                    <?php } ?>
+                                </td>
                                 <td><?= $nome_tipo_produto; ?></td>
-                                <td><img style=" max-height:50px;" src="imagens/produtos/<?= $nome_imagem; ?>" alt="<?= $nome_imagem; ?>"/></td>
                                 <td>
                                     <a href="?url=edtproduto.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
-                                    <a href="?url=delbdproduto.php&ldl=<?= $var; ?>" 
+                                    <a href="?url=dropbd_produto.php&ldl=<?= $var; ?>" 
                                        onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
                                         <i class="fa fa-2x fa-trash-o"></i>
                                     </a>

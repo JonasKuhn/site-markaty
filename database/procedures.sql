@@ -235,15 +235,82 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE sel_produto()
 BEGIN
-	SELECT p.*, tp.descricao, i.nome as img_nome, c.nome as nome_tipo_item
-	FROM tb_produto as p, tb_empresa as e, tb_catalogo as c, tb_catalogo_produto as cp, tb_produto_imagem as pi, tb_imagem as i, tb_tipo_produto as tp
+	SELECT p.*, tp.descricao, c.nome as nome_tipo_item
+	FROM tb_produto as p, tb_empresa as e, tb_catalogo as c, tb_catalogo_produto as cp, tb_tipo_produto as tp
 	WHERE p.cod_produto = cp.cod_produto
     AND cp.cod_catalogo = c.cod_catalogo
     AND c.cod_catalogo = e.cod_catalogo
     AND tp.cod_tipo_produto = p.cod_tipo_produto
-    AND p.cod_produto = pi.cod_produto
-    AND pi.cod_imagem = i.cod_imagem
 	ORDER BY p.cod_produto ASC;
+END$$
+DELIMITER ;
+
+####### INSERIR TODOS OS DADOS PRODUTO E CATOLOGO PRODUTO #######
+DELIMITER $$
+CREATE PROCEDURE insere_produto(nome VARCHAR(150),descricao TEXT,fl_ativo BOOL,cod_tipo_produto INTEGER, cod_catalogo INTEGER)
+BEGIN
+	DECLARE var_cod_produto INT;
+    SET var_cod_produto = 0;
+    
+	IF((nome != '') AND (fl_ativo != '') AND (cod_tipo_produto != '') AND (cod_catalogo != '')) THEN
+		INSERT INTO tb_produto(nome, descricao, fl_ativo, cod_tipo_produto) 
+		VALUES (nome,descricao,fl_ativo,cod_tipo_produto);
+
+        SELECT cod_produto FROM tb_produto as p
+        WHERE p.nome = nome
+        INTO var_cod_produto;
+        
+        IF(var_cod_produto != 0) THEN
+			INSERT tb_catalogo_produto(cod_catalogo, cod_produto) 
+			VALUES (cod_catalogo,var_cod_produto);
+		ELSE 
+			SELECT 'Erro de SQL!';
+        END IF;
+        
+	ELSE
+		SELECT 'Preencha todos os campos!';
+    END IF;
+END$$
+DELIMITER ;
+
+####### INSERIR TODOS OS DADOS IMAGEM E PRODUTO IMAGEM #######
+DELIMITER $$
+CREATE PROCEDURE insere_imagem(nome VARCHAR(150),cod_produto INTEGER)
+BEGIN
+	DECLARE var_cod_imagem INT;
+    SET var_cod_imagem = 0;
+    
+	IF((nome != '') AND (cod_produto != '')) THEN
+		INSERT INTO tb_imagem(nome) 
+		VALUES (nome);
+        
+        SELECT cod_imagem FROM tb_imagem as i
+        WHERE i.nome = nome
+        INTO var_cod_imagem;
+        
+        IF(var_cod_imagem != 0) THEN
+			INSERT tb_produto_imagem(cod_produto, cod_imagem) 
+			VALUES (cod_produto,var_cod_imagem);
+		ELSE 
+			SELECT 'Erro de SQL!';
+        END IF;
+        
+	ELSE
+		SELECT 'Preencha todos os campos!';
+    END IF;
+END$$
+DELIMITER ;
+
+####### BUSCAR COD DO PRODUTO PELO NOME #######
+DELIMITER $$
+CREATE PROCEDURE sel_produto_nome(nome VARCHAR(150))
+BEGIN
+	IF((nome != '')) THEN
+		SELECT cod_produto FROM tb_produto as p
+        WHERE p.nome = nome;
+	ELSE
+		SELECT 'Preencha todos os campos!';
+    END IF;
 END$$
 DELIMITER ;
 
@@ -251,10 +318,9 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE sel_tipo_produto()
 BEGIN
-	SELECT tp.*
-	FROM tb_tipo_produto as tp, tb_produto as p
-	WHERE tp.cod_tipo_produto = p.cod_tipo_produto
-	ORDER BY tp.cod_tipo_produto ASC;
+	SELECT *
+	FROM tb_tipo_produto
+	ORDER BY cod_tipo_produto ASC;
 END$$
 DELIMITER ;
 
