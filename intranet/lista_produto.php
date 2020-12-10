@@ -56,7 +56,7 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                                 </td>
                                 <td><?= $nome_tipo_produto; ?></td>
                                 <td>
-                                    <a href="?url=edtproduto.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
+                                    <a href="?url=edt_produto.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
                                     <a href="?url=dropbd_produto.php&ldl=<?= $var; ?>" 
                                        onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
                                         <i class="fa fa-2x fa-trash-o"></i>

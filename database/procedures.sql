@@ -2,7 +2,7 @@
 DELIMITER $$
 CREATE PROCEDURE sel_empresa()
 BEGIN
-	SELECT e.*
+	SELECT e.cod_empresa, e.nome_fantasia,e.cnpj, e.email, e.logradouro, e.nr, e.logomarca, ci.nome_cidade, es.uf
 	FROM tb_empresa as e, tb_cidade as ci, tb_estado as es
 	WHERE e.cod_cidade = ci.cod_cidade
 	AND ci.cod_estado = es.cod_estado
@@ -78,11 +78,11 @@ DELIMITER ;
 
 ####### ATUALIZAR TODOS OS DADOS SOBRE#######
 DELIMITER $$
-CREATE PROCEDURE update_sobre (cod_sobre INT, titulo TEXT,descricao TEXT,img_sobre TEXT,video TEXT,cod_empresa INTEGER)
+CREATE PROCEDURE update_sobre (cod_sobre INT, titulo TEXT, descricao TEXT, img_sobre TEXT, video TEXT, cod_empresa INT)
 BEGIN
     IF ((cod_sobre != '') AND (titulo != '') AND (descricao != '') AND (img_sobre != '') AND (video != '') AND (cod_empresa != '')) THEN
-		UPDATE tb_sobre SET titulo=titulo,descricao=descricao,img_sobre=img_sobre,video=video,cod_empresa=cod_empresa 
-        WHERE cod_sobre=cod_sobre;
+		UPDATE tb_sobre as s SET s.titulo=titulo, s.descricao=descricao, s.img_sobre=img_sobre, s.video=video, s.cod_empresa=cod_empresa 
+        WHERE s.cod_sobre=cod_sobre;
     ELSE
         SELECT 'Preencha todos os campos.';
     END IF;
@@ -91,7 +91,7 @@ DELIMITER ;
 
 ####### SELECIONAR TODOS OS DADOS BANNER #######
 DELIMITER $$
-CREATE PROCEDURE sel_banner(titulo TEXT, descricao TEXT, img_sobre TEXT,video TEXT,cod_empresa INT)
+CREATE PROCEDURE sel_banner()
 BEGIN
 	SELECT b.*
 	FROM tb_banner as b, tb_empresa as e
@@ -256,9 +256,8 @@ BEGIN
 		INSERT INTO tb_produto(nome, descricao, fl_ativo, cod_tipo_produto) 
 		VALUES (nome,descricao,fl_ativo,cod_tipo_produto);
 
-        SELECT cod_produto FROM tb_produto as p
-        WHERE p.nome = nome
-        INTO var_cod_produto;
+        SELECT cod_produto INTO var_cod_produto FROM tb_produto as p
+        WHERE p.nome = nome;
         
         IF(var_cod_produto != 0) THEN
 			INSERT tb_catalogo_produto(cod_catalogo, cod_produto) 
@@ -313,6 +312,64 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
+
+####### SELECIONA TODOS OS DADOS DO PRODUTO ESPECIFICO #######
+DELIMITER $$
+CREATE PROCEDURE sel_produto_especifico (cod_produto INT)
+BEGIN
+    IF ((cod_produto != '')) THEN
+		SELECT p.*, c.cod_catalogo FROM tb_produto as p, tb_catalogo_produto as cp, tb_catalogo as c
+        WHERE p.cod_produto = cp.cod_produto
+        AND cp.cod_catalogo = c.cod_catalogo
+        AND p.cod_produto = cod_produto;
+    ELSE
+        SELECT 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;
+
+####### SELECIONA TODOS AS IMAGENS DO PRODUTO apenas o nome #######
+DELIMITER $$
+CREATE PROCEDURE sel_imagens_produto_nome (cod_produto INT)
+BEGIN
+    IF ((cod_produto != '')) THEN
+		select i.nome from tb_produto as p, tb_produto_imagem as pi, tb_imagem as i
+		where p.cod_produto=pi.cod_produto
+		and pi.cod_imagem=i.cod_imagem
+		and p.cod_produto = cod_produto;
+	ELSE
+        SELECT 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;	
+
+####### SELECIONA TODOS AS IMAGENS DO PRODUTO  apenas o CODIGO #######
+DELIMITER $$
+CREATE PROCEDURE sel_imagens_produto_cod (cod_produto INT)
+BEGIN
+    IF ((cod_produto != '')) THEN
+		select i.cod_imagem from tb_produto as p, tb_produto_imagem as pi, tb_imagem as i
+		where p.cod_produto=pi.cod_produto
+		and pi.cod_imagem=i.cod_imagem
+		and p.cod_produto = cod_produto;
+	ELSE
+        SELECT 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;	
+
+####### SELECIONA TODOS OS DADOS DA IMAGEM ESPECIFICA #######
+DELIMITER $$
+CREATE PROCEDURE sel_imagens_cod (cod_imagem INT)
+BEGIN
+    IF ((cod_imagem != '')) THEN
+		select nome from tb_imagem as i
+		where i.cod_imagem=cod_imagem;
+	ELSE
+        SELECT 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;	
 
 ####### SELECIONAR TODOS OS DADOS TIPO PRODUTO #######
 DELIMITER $$

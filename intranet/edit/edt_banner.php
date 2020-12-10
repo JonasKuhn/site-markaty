@@ -21,7 +21,7 @@ $fl_ativo = $dados['fl_ativo'];
 $var2 = $MyCripty->enc($fl_ativo);
 ?>
 <div class="container col-sm-6">
-    <form class="form-horizontal" method="POST" action="?url=edtbd_banner.php&ldl=<?= $var1; ?>&ldk=<?= $img_banner; ?>&ldj=<?= $var2; ?>" enctype="multipart/form-data">
+    <form class="form-horizontal" method="POST" action="?url=edtbd_produto.php&ldl=<?= $var1; ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label class="col-sm-8 control-label">Título:</label>
             <div class="col-sm-12">

@@ -15,6 +15,10 @@ require_once './sessao.php';
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
     <link href="vendor/css/sb-admin.css" rel="stylesheet" type="text/css"/>
     <link href="vendor/bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet" type="text/css"/>
+    <link href="vendor/bootstrap/css/bootstrap-image-checkbox.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <script src="vendor/bootstrap/js/source.js" type="text/javascript"></script>
     <script>
         function excluir(valor) {
             return confirm('Deseja realmente excluir o registro \n' + valor + '?');
@@ -205,16 +209,14 @@ require_once './sessao.php';
             case 'dropbd_produto.php':
                 include ('./drop/dropbd_produto.php');
                 break;
-            /*
-              case 'edtloja.php':
-              $menu = 'Editar Loja';
-              include './navegacao.php';
-              include ('./edit/loja/edtloja.php');
+            case 'edt_produto.php':
+                $menu = '<a href="?url=lista_produto.php">Lista De Produto </a> / Editar Produto';
+                include './navegacao.php';
+                include ('./edit/edt_produto.php');
+                break;
+            case 'edtbd_produto.php':
+              include ('./edit/edtbd_produto.php');
               break;
-              case 'edtbdloja.php':
-              include ('./edit/loja/edtbdloja.php');
-              break;
-              ` */
 
             ##-----------------------TIPO DE PRODUTO----------------------##
             case 'tipo_produto.php':
@@ -339,6 +341,15 @@ require_once './sessao.php';
                 });
             });
         </script>
+
+
+
+        <script>
+            function myFunction(id) {
+                id.style.display = "none";
+            }
+        </script>
+
         <script type="text/javascript">$("#tel_whatsapp").mask("(99) 99999-9999");</script>
         <script type="text/javascript">$("#tel_fixo").mask("(99) 9999-9999");</script>
         <script type="text/javascript">

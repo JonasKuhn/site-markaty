@@ -36,7 +36,7 @@ try {
         unset($cmd);
         $nome_produto = $value['nome'];
     }
-    
+
     $dir = "./imagens/produtos/" . $nome_produto . "/";
 
     $iterator = new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS);
@@ -47,13 +47,12 @@ try {
     }
 
     rmdir($dir);
-
-
+    
     $cmd = $pdo->prepare("DELETE FROM tb_produto WHERE cod_produto = '$cod_produto';");
     $cmd->execute();
     unset($cmd);
 
-    echo "<script>location.href = 'index.php?url=lista_catalogo.php&msg=drop';</script>";
+    echo "<script>location.href = 'index.php?url=lista_produto.php&msg=drop';</script>";
 } catch (PDOException $ex) {
     echo("<br/>"
     . "<div class='container'>"
