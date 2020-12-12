@@ -1,20 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="?url=home.php">Dashboard</a>
+    <a class="navbar-brand" href="?url=empresa.php">Dashboard</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Painel de Controle">
-                <a class="nav-link" href="?$url=home.php">
-                    <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Painel de Controle</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Empresa">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dados da Empresa">
                 <a class="nav-link" href="?url=empresa.php">
                     <i class="fa fa-fw fa-building"></i>
-                    <span class="nav-link-text">Empresa</span>
+                    <span class="nav-link-text">Dados da Empresa</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sobre a Empresa">
@@ -35,24 +29,23 @@
                     <span class="nav-link-text">Qualidades da Empresa</span>
                 </a>
             </li>
-
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Catálogo">
-                <a class="nav-link nav-link-collapse collapsed"  data-toggle="collapse" 
-                   href="#menuCatalogo" data-parent="#menuCatalogo">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Catálogo de Produtos">
+                <a class="nav-link" href="?url=catalogo.php">
                     <i class="fa fa-fw fa-book"></i>
-                    <span class="nav-link-text">Catálogo</span>
+                    <span class="nav-link-text">Catálogo de Produtos</span>
                 </a>
-                <ul class="sidenav-second-level collapse" id="menuCatalogo">
-                    <li>
-                        <a href="?url=catalogo.php">Meu Catálogo</a>
-                    </li>
-                    <li>
-                        <a href="?url=lista_produto.php">Lista de Produtos</a>
-                    </li>
-                    <li>
-                        <a href="?url=tipo_produto.php">Tipo de Produto</a>
-                    </li>
-                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Lista de Produtos">
+                <a class="nav-link" href="?url=lista_produto.php">
+                    <i class="fa fa-fw fa-list-ul"></i>
+                    <span class="nav-link-text">Lista de Produtos</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tipos de Produto">
+                <a class="nav-link" href="?url=tipo_produto.php">
+                    <i class="fa fa-fw fa-tasks"></i>
+                    <span class="nav-link-text">Tipos de Produto</span>
+                </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Usuários">
                 <a class="nav-link" href="?url=admin.php">

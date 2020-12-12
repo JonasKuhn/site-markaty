@@ -50,7 +50,7 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                                 <td>
                                     <?php if ($fl_ativo == '1') { ?>
                                         ATIVADO
-                                    <?php } else if ($fl_ativo == '0') { ?>
+                                    <?php } else if ($fl_ativo == '2') { ?>
                                         DESATIVADO
                                     <?php } ?>
                                 </td>

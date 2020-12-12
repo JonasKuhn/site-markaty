@@ -236,10 +236,9 @@ DELIMITER $$
 CREATE PROCEDURE sel_produto()
 BEGIN
 	SELECT p.*, tp.descricao, c.nome as nome_tipo_item
-	FROM tb_produto as p, tb_empresa as e, tb_catalogo as c, tb_catalogo_produto as cp, tb_tipo_produto as tp
+	FROM tb_produto as p, tb_catalogo as c, tb_catalogo_produto as cp, tb_tipo_produto as tp
 	WHERE p.cod_produto = cp.cod_produto
     AND cp.cod_catalogo = c.cod_catalogo
-    AND c.cod_catalogo = e.cod_catalogo
     AND tp.cod_tipo_produto = p.cod_tipo_produto
 	ORDER BY p.cod_produto ASC;
 END$$
@@ -274,7 +273,7 @@ DELIMITER ;
 
 ####### INSERIR TODOS OS DADOS IMAGEM E PRODUTO IMAGEM #######
 DELIMITER $$
-CREATE PROCEDURE insere_imagem(nome VARCHAR(150),cod_produto INTEGER)
+CREATE PROCEDURE insere_imagem(nome VARCHAR(150), cod_produto INTEGER)
 BEGIN
 	DECLARE var_cod_imagem INT;
     SET var_cod_imagem = 0;
@@ -283,9 +282,8 @@ BEGIN
 		INSERT INTO tb_imagem(nome) 
 		VALUES (nome);
         
-        SELECT cod_imagem FROM tb_imagem as i
-        WHERE i.nome = nome
-        INTO var_cod_imagem;
+        SELECT i.cod_imagem INTO var_cod_imagem FROM tb_imagem as i
+        WHERE i.nome = nome ORDER BY i.cod_imagem DESC limit 1;
         
         IF(var_cod_imagem != 0) THEN
 			INSERT tb_produto_imagem(cod_produto, cod_imagem) 
@@ -293,7 +291,6 @@ BEGIN
 		ELSE 
 			SELECT 'Erro de SQL!';
         END IF;
-        
 	ELSE
 		SELECT 'Preencha todos os campos!';
     END IF;
@@ -358,6 +355,22 @@ BEGIN
 END$$
 DELIMITER ;	
 
+####### ATUALIZA TODOS OS DADOS PRODUTO #######
+DELIMITER $$
+CREATE PROCEDURE update_produto(cod_produto INT, nome VARCHAR(150), descricao TEXT, fl_ativo BOOL, cod_tipo_produto INT, cod_catalogo INT)
+BEGIN
+	IF((cod_produto != '') AND (nome != '') AND (descricao != '') AND (fl_ativo != '') AND (cod_tipo_produto != '') AND (cod_catalogo != ''))THEN
+		UPDATE tb_produto as p SET p.nome=nome, p.descricao=descricao, p.fl_ativo=fl_ativo, p.cod_tipo_produto=cod_tipo_produto
+		WHERE p.cod_produto = cod_produto;
+        
+        UPDATE tb_catalogo_produto as cp SET cp.cod_catalogo=cod_catalogo 
+        WHERE cp.cod_produto = cod_produto;
+	ELSE
+		select 'Preencha todos os campos.';
+    END IF;
+END$$
+DELIMITER ;
+
 ####### SELECIONA TODOS OS DADOS DA IMAGEM ESPECIFICA #######
 DELIMITER $$
 CREATE PROCEDURE sel_imagens_cod (cod_imagem INT)
@@ -380,6 +393,40 @@ BEGIN
 	ORDER BY cod_tipo_produto ASC;
 END$$
 DELIMITER ;
+
+####### INSERIR TODOS OS DADOS TIPO PRODUTO #######
+DELIMITER $$
+CREATE PROCEDURE insere_tipo_produto(descricao TEXT)
+BEGIN
+	IF((descricao != '')) THEN
+		INSERT INTO tb_tipo_produto(descricao) VALUES (descricao);
+	ELSE
+		SELECT 'Preencha todos os campos!';
+    END IF;
+END$$
+DELIMITER ;
+
+####### SELECIONAR DADOS TIPO PRODUTO ESPECIFICO #######
+DELIMITER $$
+CREATE PROCEDURE sel_tipo_produto_especifico(cod_tipo_produto INT)
+BEGIN
+	SELECT * FROM tb_tipo_produto as tp
+    WHERE tp.cod_tipo_produto=cod_tipo_produto;
+END$$
+DELIMITER ;
+
+####### ATUALIZA DADOS TIPO PRODUTO ESPECIFICO #######
+#######DELIMITER $$
+#######CREATE PROCEDURE update_tipo_produto(cod_tipo_produto INT, descricao TEXT)
+#######BEGIN
+#######	IF((descricao != '') AND (cod_tipo_produto != '')) THEN
+#######		UPDATE tb_tipo_produto as tp SET tp.descricao=descricao 
+#######        WHERE tp.cod_tipo_produto = cod_tipo_produto;
+#######	ELSE
+#######		SELECT 'Preencha todos os campos!';
+#######    END IF;
+#######END$$
+#######DELIMITER ;
 
 ####### SELECIONAR TODOS OS DADOS ADMIN #######
 DELIMITER $$

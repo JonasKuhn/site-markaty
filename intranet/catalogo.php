@@ -15,7 +15,7 @@ if (isset($msg) && $msg != false && $msg == "adc") {
 <div class="container-fluid">
     <div class="card mb-3">
         <div class="card-header text-center">
-            <h3>Catálogo</h3>
+            <h3>Catálogo de Produtos</h3>
         </div>
         <div class="card-body">
             <a href="?url=adc_catalogo.php" title="Novo - <?= $menu; ?>"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>

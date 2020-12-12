@@ -1,10 +1,21 @@
 <html lang="pt-br">
     <head>
+        <?php
+        include './connection.php';
+
+        $sql = "select nome_fantasia, logomarca from tb_empresa";
+        $cmd = $pdo->prepare($sql);
+        $cmd->execute();
+        $dados = $cmd->fetch();
+        $nome_fantasia = $dados['nome_fantasia'];
+        $logomarca = $dados['logomarca'];
+        $cod_empresa_para_insert = 1;
+        ?>
         <title>Entrar</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--===============================================================================================-->	
-        <link rel="icon" type="image/png" href="../img/marca/marca-icone.png"/>
+        <link rel="icon" type="image/png" href="./imagens/logomarca/<?= $logomarca ?>"/>
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <!--===============================================================================================-->
@@ -33,7 +44,7 @@
                     <div class="wrap-login100">
                         <form class="login100-form validate-form" action="login_validation.php" method="post" target="_self" name="form" id="form">
                             <div class="login100-pic js-tilt" data-tilt>
-                                <img src="../img/marca/marca-2.png" alt="IMG">
+                                <img src="./imagens/logomarca/<?= $logomarca ?>" alt="Logo Marca">
                             </div>
 
                             <div class="wrap-input100 validate-input" data-validate = "Digite o nome do usuário">

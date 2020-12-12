@@ -1,10 +1,20 @@
 <?php
 require_once './sessao.php';
+
+include './connection.php';
+
+$sql = "select nome_fantasia, logomarca from tb_empresa";
+$cmd = $pdo->prepare($sql);
+$cmd->execute();
+$dados = $cmd->fetch();
+$nome_fantasia = $dados['nome_fantasia'];
+$logomarca = $dados['logomarca'];
+$cod_empresa_para_insert = 1;
 ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="../img/marca/marca-icone.png">
+    <link rel="shortcut icon" href="imagens/logomarca/<?= $logomarca; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Jonas Kuhn">
     <meta property="og:url" content="www.sassoinformatica.com.br/intranet/index.php">
@@ -17,42 +27,16 @@ require_once './sessao.php';
     <link href="vendor/bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet" type="text/css"/>
     <link href="vendor/bootstrap/css/bootstrap-image-checkbox.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <script src="vendor/bootstrap/js/source.js" type="text/javascript"></script>
     <script>
         function excluir(valor) {
-            return confirm('Deseja realmente excluir o registro \n' + valor + '?');
+            return confirm('Deseja realmente excluir o registro ' + valor + '?');
         }
-    </script>
-    <script>
-        function editar(valor) {
-            return confirm('Deseja realmente editar o registro \n' + valor + '?');
-        }
-    </script>
-    <script>
-        function salvar() {
-            return confirm('Os dados informados estão corretos?');
-        }
-    </script>
-    <script>
+
         function naoexcluir() {
             return confirm('Não é possível apagar esse item!');
         }
     </script>
-
-    <?php
-    include '../connection.php';
-    $sql = "select nome_fantasia from tb_empresa";
-    $r = $pdo->query($sql);
-    foreach ($r as $row) {
-        $nome_fantasia = $row["nome_fantasia"];
-        ?>
-        <title>Dashboard - <?= $nome_fantasia; ?></title>
-        <?php
-    }
-
-    $cod_empresa_para_insert = 1;
-    ?>
+    <title>Dashboard - <?= $nome_fantasia; ?></title>
 </head>
 <!-- ---------------------CORPO PRINCIPAL------------------ -->
 <!-- RESPONSAVEL POR DEIXAR O MENU RECOLHIDO sidenav-toggled -->
@@ -66,25 +50,22 @@ require_once './sessao.php';
 
         switch ($url) {
             ##-----------------------CASE PARA OS MENUS--------------------##
-            case 'home.php':
-                $menu = 'Home';
-                include './navegacao.php';
-                include ('./home.php');
-                break;
-
-            ##-----------------------LOJA--------------------##
+            //case 'home.php':
+            //    $menu = 'Home';
+            //    include './navegacao.php';
+            //    include ('./home.php');
+            //    break;
+            ##-----------------------EMPRESA--------------------##
             case 'empresa.php':
                 $menu = 'Empresa';
                 include './navegacao.php';
                 include ('./empresa.php');
                 break;
-
             case 'edt_empresa.php':
-                $menu = 'Editar Empresa';
+                $menu = '<a href="?url=empresa.php">Empresa </a> / Editar Empresa';
                 include './navegacao.php';
                 include ('./edit/edt_empresa.php');
                 break;
-
             case 'edtbd_empresa.php':
                 include ('./edit/edtbd_empresa.php');
                 break;
@@ -96,7 +77,7 @@ require_once './sessao.php';
                 include ('./sobre.php');
                 break;
             case 'adc_sobre.php':
-                $menu = 'Adicionar Sobre';
+                $menu = '<a href="?url=sobre.php">Sobre a Empresa </a> / Adicionar Sobre';
                 include './navegacao.php';
                 include ('./adc/adc_sobre.php');
                 break;
@@ -122,7 +103,7 @@ require_once './sessao.php';
                 include ('./banner.php');
                 break;
             case 'adc_banner.php':
-                $menu = 'Adicionar Banner';
+                $menu = '<a href="?url=banner.php">Banner de Destaque </a> / Adicionar Banner';
                 include './navegacao.php';
                 include ('./adc/adc_banner.php');
                 break;
@@ -148,7 +129,7 @@ require_once './sessao.php';
                 include ('./qualidade.php');
                 break;
             case 'adc_qualidade.php':
-                $menu = 'Adicionar Qualidade da Empresa';
+                $menu = '<a href="?url=qualidade.php">Qualidades da Empresa </a> / Adicionar Qualidade';
                 include './navegacao.php';
                 include ('./adc/adc_qualidade.php');
                 break;
@@ -166,6 +147,7 @@ require_once './sessao.php';
             case 'edtbd_qualidade.php':
                 include ('./edit/edtbd_qualidade.php');
                 break;
+
             ##-----------------------CATALOGO--------------------##
             case 'catalogo.php':
                 $menu = 'Meu Catálogo';
@@ -173,7 +155,7 @@ require_once './sessao.php';
                 include ('./catalogo.php');
                 break;
             case 'adc_catalogo.php':
-                $menu = 'Adicionar Catálogo';
+                $menu = '<a href="?url=catalogo.php">Meu Catálogo </a> / Adicionar Catálogo';
                 include './navegacao.php';
                 include ('./adc/adc_catalogo.php');
                 break;
@@ -215,8 +197,8 @@ require_once './sessao.php';
                 include ('./edit/edt_produto.php');
                 break;
             case 'edtbd_produto.php':
-              include ('./edit/edtbd_produto.php');
-              break;
+                include ('./edit/edtbd_produto.php');
+                break;
 
             ##-----------------------TIPO DE PRODUTO----------------------##
             case 'tipo_produto.php':
@@ -224,16 +206,25 @@ require_once './sessao.php';
                 include './navegacao.php';
                 include ('./tipo_produto.php');
                 break;
-            /*
-              case 'edtloja.php':
-              $menu = 'Editar Loja';
-              include './navegacao.php';
-              include ('./edit/loja/edtloja.php');
-              break;
-              case 'edtbdloja.php':
-              include ('./edit/loja/edtbdloja.php');
-              break;
-              ` */
+            case 'adc_tipo_produto.php':
+                $menu = '<a href="?url=tipo_produto.php">Tipo de Produto </a> / Adicionar Tipo Produto';
+                include './navegacao.php';
+                include ('./adc/adc_tipo_produto.php');
+                break;
+            case 'adcbd_tipo_produto.php':
+                include ('./adc/adcbd_tipo_produto.php');
+                break;
+            case 'dropbd_tipo_produto.php':
+                include './drop/dropbd_tipo_produto.php';
+
+            case 'edt_tipo_produto.php':
+                $menu = '<a href="?url=tipo_produto.php">Tipo de Produto </a> / Editar Tipo de Produto';
+                include './navegacao.php';
+                include ('./edit/edt_tipo_produto.php');
+                break;
+            case 'edtbd_tipo_produto.php':
+                include ('./edit/edtbd_tipo_produto.php');
+                break;
 
             ##-----------------------ADMIN--------------------##
             case 'admin.php':
@@ -242,7 +233,7 @@ require_once './sessao.php';
                 include ('./admin.php');
                 break;
             case 'adc_admin.php':
-                $menu = 'Adicionar Usuário';
+                $menu = '<a href="?url=admin.php">Usuários </a> / Adicionar Usuário';
                 include './navegacao.php';
                 include ('./adc/adc_admin.php');
                 break;
@@ -260,10 +251,12 @@ require_once './sessao.php';
             case 'edtbd_admin.php':
                 include ('./edit/edtbd_admin.php');
                 break;
+
             default :
-                $menu = 'Home';
+                $menu = 'Empresa';
                 include './navegacao.php';
-                include ('./home.php');
+                include ('./empresa.php');
+                break;
         }
         ?>
 
@@ -298,21 +291,15 @@ require_once './sessao.php';
         <script src="vendor/jquery/jquery.maskMoney.js" type="text/javascript"></script>
         <script src="vendor/jquery/jquery.mask.min.js" type="text/javascript"></script>
         <script src="vendor/bootstrap/js/bootstrap-toggle.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
-        $(function () {
-            $("#valor").maskMoney({symbol: '',
-                showSymbol: true, thousands: '.', decimal: '.', symbolStay: true});
-        });
-        </script>
         <script>
-            function somenteNumeros(num) {
-                var er = /[^0-9.]/;
-                er.lastIndex = 0;
-                var campo = num;
-                if (er.test(campo.value)) {
-                    campo.value = "";
-                }
+        function somenteNumeros(num) {
+            var er = /[^0-9.]/;
+            er.lastIndex = 0;
+            var campo = num;
+            if (er.test(campo.value)) {
+                campo.value = "";
             }
+        }
         </script>
 
         <!-- RESPONSAVEL POR FAZER APARECER E SUMIR A SENHA NO CAMPO SENHA -->
@@ -342,24 +329,16 @@ require_once './sessao.php';
             });
         </script>
 
-
-
-        <script>
-            function myFunction(id) {
-                id.style.display = "none";
-            }
-        </script>
-
         <script type="text/javascript">$("#tel_whatsapp").mask("(99) 99999-9999");</script>
         <script type="text/javascript">$("#tel_fixo").mask("(99) 9999-9999");</script>
         <script type="text/javascript">
             function cnpj(v) {
-                v = v.replace(/\D/g, "")                           //Remove tudo o que não é dígito
-                v = v.replace(/^(\d{2})(\d)/, "$1.$2")             //Coloca ponto entre o segundo e o terceiro dígitos
-                v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3") //Coloca ponto entre o quinto e o sexto dígitos
-                v = v.replace(/\.(\d{3})(\d)/, ".$1/$2")           //Coloca uma barra entre o oitavo e o nono dígitos
-                v = v.replace(/(\d{4})(\d)/, "$1-$2")              //Coloca um hífen depois do bloco de quatro dígitos
-                return v
+                v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
+                v = v.replace(/^(\d{2})(\d)/, "$1.$2"); //Coloca ponto entre o segundo e o terceiro dígitos
+                v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3"); //Coloca ponto entre o quinto e o sexto dígitos
+                v = v.replace(/\.(\d{3})(\d)/, ".$1/$2"); //Coloca uma barra entre o oitavo e o nono dígitos
+                v = v.replace(/(\d{4})(\d)/, "$1-$2"); //Coloca um hífen depois do bloco de quatro dígitos
+                return v;
             }
         </script>
         <script type="text/javascript">$("#cep").mask("99999-999");</script>

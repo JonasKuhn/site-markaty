@@ -42,7 +42,7 @@ try {
         @$img_banner = $var2;
     }
 
-    //$sqlbanner = "CALL update_banner ('$cod_banner', '$titulo', '$descricao', '$fl', '$img_banner', '$cod_empresa_para_insert');";
+    $sqlbanner = "CALL update_banner ('$cod_banner', '$titulo', '$descricao', '$fl', '$img_banner', '$cod_empresa_para_insert');";
 
 
     //echo $var1 . "<br>" . $var2 . "<br>" . $var3 . "<br>" . $fl_ativo . "<br>" . $titulo . "<br>" . $descricao . "<br>" . $cod_banner . "<br>" . $fl_ativodescripto . "<br>" . $fl . "<br>" . $sqlbanner;
