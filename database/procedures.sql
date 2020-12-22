@@ -2,7 +2,7 @@
 DELIMITER $$
 CREATE PROCEDURE sel_empresa()
 BEGIN
-	SELECT e.cod_empresa, e.nome_fantasia,e.cnpj, e.email, e.logradouro, e.nr, e.logomarca, ci.nome_cidade, es.uf
+	SELECT e.cod_empresa, e.nome_fantasia,e.cnpj, e.email, e.logradouro, e.nr, e.logomarca, ci.nome_cidade, es.uf, e.cod_catalogo
 	FROM tb_empresa as e, tb_cidade as ci, tb_estado as es
 	WHERE e.cod_cidade = ci.cod_cidade
 	AND ci.cod_estado = es.cod_estado
@@ -416,17 +416,17 @@ END$$
 DELIMITER ;
 
 ####### ATUALIZA DADOS TIPO PRODUTO ESPECIFICO #######
-#######DELIMITER $$
-#######CREATE PROCEDURE update_tipo_produto(cod_tipo_produto INT, descricao TEXT)
-#######BEGIN
-#######	IF((descricao != '') AND (cod_tipo_produto != '')) THEN
-#######		UPDATE tb_tipo_produto as tp SET tp.descricao=descricao 
-#######        WHERE tp.cod_tipo_produto = cod_tipo_produto;
-#######	ELSE
-#######		SELECT 'Preencha todos os campos!';
-#######    END IF;
-#######END$$
-#######DELIMITER ;
+DELIMITER $$
+CREATE PROCEDURE update_tipo_produto(cod_tipo_produto INT, descricao TEXT)
+BEGIN
+	IF((descricao != '') AND (cod_tipo_produto != '')) THEN
+		UPDATE tb_tipo_produto as tp SET tp.descricao=descricao 
+        WHERE tp.cod_tipo_produto = cod_tipo_produto;
+	ELSE
+		SELECT 'Preencha todos os campos!';
+    END IF;
+END$$
+DELIMITER ;
 
 ####### SELECIONAR TODOS OS DADOS ADMIN #######
 DELIMITER $$

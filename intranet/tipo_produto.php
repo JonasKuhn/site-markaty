@@ -8,7 +8,7 @@ if (isset($msg) && $msg != false && $msg == "alt") {
     echo "<script type='text/javascript'>alert('Cadastro alterado com Sucesso!');</script>";
 }if (isset($msg) && $msg != false && $msg == "adc") {
     echo "<script type='text/javascript'>alert('Cadastro realizado com Sucesso!');</script>";
-}else if (isset($msg) && $msg != false && $msg == "drop") {
+} else if (isset($msg) && $msg != false && $msg == "drop") {
     echo "<script type='text/javascript'>alert('O cadastro foi apagado com sucesso!');</script>";
 }
 ?>
@@ -37,15 +37,31 @@ if (isset($msg) && $msg != false && $msg == "alt") {
                             $cod = $dados['cod_tipo_produto'];
                             $nome = $dados['descricao'];
                             $var = $MyCripty->enc($cod);
+                            
+                            $codigos = array_column($arrayTipoProdutoAtivos, 'cod_tipo_produto');
+                            $valor = array_search($cod, $codigos);
                             ?>
                             <tr>
                                 <td><?= $nome; ?></td>
                                 <td>
                                     <a href="?url=edt_tipo_produto.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
-                                    <a href="?url=dropbd_tipo_produto.php&ldl=<?= $var; ?>" 
-                                       onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
-                                        <i class="fa fa-2x fa-trash-o"></i>
-                                    </a>
+                                    <?php
+                                    if ($valor != '') {
+                                        ?>
+                                        <a href="#" 
+                                           onclick="return naoexcluirtipoproduto();" title="EXCLUIR">
+                                            <i class="fa fa-2x fa-trash-o"></i>
+                                        </a> 
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <a href="?url=dropbd_tipo_produto.php&ldl=<?= $var; ?>" 
+                                           onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
+                                            <i class="fa fa-2x fa-trash-o"></i>
+                                        </a>
+                                        <?php
+                                    }
+                                    ?>
                                 </td>
                             </tr>
                             <?php

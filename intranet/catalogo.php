@@ -45,10 +45,19 @@ if (isset($msg) && $msg != false && $msg == "adc") {
                                 <td><?= $descricao; ?></td>
                                 <td>
                                     <a href="?url=edt_catalogo.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
-                                    <a href="?url=dropbd_catalogo.php&ldl=<?= $var; ?>" 
-                                       onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
-                                        <i class="fa fa-2x fa-trash-o"></i>
-                                    </a>
+                                    <?php
+                                    if ($cod == $cod_catalogo_ativo) {
+                                        ?>
+                                        <a href="#" 
+                                           onclick="return naoexcluircatalogo();" title="EXCLUIR">
+                                            <i class="fa fa-2x fa-trash-o"></i>
+                                        </a>
+                                    <?php } else { ?>
+                                        <a href="?url=dropbd_catalogo.php&ldl=<?= $var; ?>" 
+                                           onclick="return excluir('<?= $nome; ?>');" title="EXCLUIR">
+                                            <i class="fa fa-2x fa-trash-o"></i>
+                                        </a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                             <?php

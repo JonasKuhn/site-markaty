@@ -33,7 +33,13 @@ $cod_empresa_para_insert = 1;
         }
 
         function naoexcluir() {
-            return confirm('Não é possível apagar esse item!');
+            return confirm('Não é possível apagar esse item! Esse item está sendo usado em outro cadastro, verifique onde essa informação está sendo usada.');
+        }
+        function naoexcluircatalogo() {
+            return confirm('Não é possível apagar esse item! Esse item está sendo usado no cadastro da empresa, para apagá-lo altere o cadastro da empresa e tente novamente.');
+        }
+        function naoexcluirtipoproduto() {
+            return confirm('Não é possível apagar esse item! Esse item está sendo usado no cadastro de produtos, para apagá-lo altere o cadastro do produto e tente novamente.');
         }
     </script>
     <title>Dashboard - <?= $nome_fantasia; ?></title>
@@ -46,6 +52,24 @@ $cod_empresa_para_insert = 1;
 
     <div class="content-wrapper">
         <?php
+        ## ITENS QUE SÃO CHAVES ESTRANGEIRAS ##
+        ## CATALOGO ATIVO
+        $selectCatalogoAtivo = "CALL sel_empresa;";
+        $cmd = $pdo->prepare($selectCatalogoAtivo);
+        $cmd->execute();
+        $dados = $cmd->fetch();
+        $cod_catalogo_ativo = $dados['cod_catalogo'];
+        unset($cmd);
+
+
+        ## TIPO PRODUTO ATIVO
+        $selectTipoProdutoAtivo = "select tp.cod_tipo_produto from tb_tipo_produto as tp, tb_produto as p where tp.cod_tipo_produto = p.cod_tipo_produto;";
+        $cmd = $pdo->prepare($selectTipoProdutoAtivo);
+        $cmd->execute();
+
+        $arrayTipoProdutoAtivos = $cmd->fetchAll(PDO::FETCH_ASSOC);
+        unset($cmd);
+
         @$url = $_GET['url'];
 
         switch ($url) {
