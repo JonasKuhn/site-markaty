@@ -36,7 +36,7 @@ $var1 = $MyCripty->enc($cod_qualidade);
                     <div class="form-group">
                         <label class="col-sm-8 control-label">Descrição:</label>
                         <div class="col-sm-12">
-                            <textarea class="md-textarea form-control" name="descricao" rows="4" required placeholder="Digite uma Descrição da Qualidade da Empresa..."><?= $descricao; ?></textarea>
+                            <textarea id="edit" class="md-textarea form-control" name="descricao" rows="4" required placeholder="Digite uma Descrição da Qualidade da Empresa..."><?= $descricao; ?></textarea>
                         </div>
                     </div>
                 </div>

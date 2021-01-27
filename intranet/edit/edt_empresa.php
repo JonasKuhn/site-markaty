@@ -52,9 +52,8 @@ $var2 = $logomarca;
                             <div class="form-group col-sm-6">
                                 <label class="col-sm-8 control-label">CNPJ:</label>
                                 <div class="col-sm-12">
-                                    <input onkeyup="mascara(this, cnpj);" 
+                                    <input onkeyup="cnpj(this);" 
                                            maxlength="18"  
-                                           ng-model="numero.valor"
                                            id="cnpj"
                                            name="cnpj" type="text" 
                                            placeholder="Digite o Cnpj da empresa..." value="<?= $cnpj; ?>"

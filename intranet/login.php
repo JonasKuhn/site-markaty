@@ -17,7 +17,7 @@
         <!--===============================================================================================-->	
         <link rel="icon" type="image/png" href="./imagens/logomarca/<?= $logomarca ?>"/>
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/__css/bootstrap.min.css">
         <!--===============================================================================================-->
         <link href="vendor/fonts/awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->
@@ -93,8 +93,8 @@
         <!--===============================================================================================-->
         <script src="vendor/animsition/js/animsition.min.js"></script>
         <!--===============================================================================================-->
-        <script src="vendor/bootstrap/js/popper.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/bootstrap/__js/popper.js"></script>
+        <script src="vendor/bootstrap/__js/bootstrap.min.js"></script>
         <!--===============================================================================================-->
         <script src="vendor/select2/select2.min.js"></script>
         <!--===============================================================================================-->

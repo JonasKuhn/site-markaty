@@ -39,7 +39,7 @@ unset($cmd);
                         <div class="form-group">
                             <label class="col-sm-12 control-label">Descrição do Produto:</label>
                             <div class="col-sm-12">
-                                <textarea class="md-textarea form-control" name="descricao" rows="4" placeholder="Digite uma Descrição para o Catálogo..."><?= $descricao_produto; ?></textarea>
+                                <textarea id="edit" class="md-textarea form-control" name="descricao" rows="4" placeholder="Digite uma Descrição para o Catálogo..."><?=$descricao_produto;?></textarea>
                             </div>
                         </div> 
                         <div class="form-group">
@@ -141,7 +141,7 @@ unset($cmd);
                                             <div class="custom-control custom-checkbox image-checkbox">
                                                 <input type="checkbox" checked="" class="custom-control-input" id="<?= $id ?>" name="<?= $id ?>">
                                                 <label class="custom-control-label" for="<?= $id ?>">
-                                                    <img  src="./imagens/produtos/<?= $nome_produto; ?>/<?= $val; ?>" alt="#" class="img-fluid">
+                                                    <img  src="./imagens/produtos/<?= $nome_produto; ?>/<?= $val; ?>" alt="<?= $nome_produto; ?>" class="img-fluid">
                                                 </label>
                                             </div>
                                         </div>

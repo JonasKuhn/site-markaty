@@ -14,6 +14,8 @@ $descricao = trim($_POST['descricao']);
 
 try {
     $cmd = $pdo->prepare("CALL update_qualidade('$cod_qualidade', '$nome', '$descricao', '$cod_empresa_para_insert');");
+    
+    //echo "CALL update_qualidade('$cod_qualidade', '$nome', '$descricao', '$cod_empresa_para_insert');";
     $cmd->execute();
     unset($cmd);
     

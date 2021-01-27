@@ -98,11 +98,14 @@ audio:not([controls]) {
     display: none; }
 
 html {
+    scroll-behavior: smooth;
     font-size: 100%;
     overflow-y: scroll;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%; }
-
+:target {
+    scroll-margin-top: 100px;
+}
 html,
 button,
 input,
@@ -531,7 +534,7 @@ Helper Class
     color: #e59285; }
 
 ul {
-    list-style: none; }
+    /*list-style: none;*/ }
 /*
 a#scrollUp {
     background: #e59285;
@@ -626,6 +629,9 @@ a {
     background: #f7f7f7; }
 .md__dec--30 {
     margin-bottom: -30px; }
+.bg--rgbgray {
+    background: rgb(211,211,211,0.8); }
+
 
 /* Background Image */
 .bg-image--1 {
@@ -818,7 +824,7 @@ a {
 
 /* Height and width */
 .fullscreen {
-    min-height: 85vh;
+    min-height: 110vh;
     width: 100%; }
 .w--100 {
     width: 100%; }
@@ -999,6 +1005,21 @@ Elements Styles
     margin: 0 auto;
     max-width: 650px;
 }
+
+.section__title h2::before {
+    content: "";
+    display: inline-block;
+    height: 3px;
+    width: 150px;
+    background-color: #e59285;
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
 .section__title.title--white h2 {
     color: #fff; }
 .section__title.title--white h2.title__be--2::after {
@@ -1237,7 +1258,7 @@ Elements Styles
 .social__net--4 li a {
     color: #a2a2a2;
     display: inline-block;
-    font-size: 20px;
+    font-size: 40px;
     line-height: 30px;
     padding: 0 10px;
     text-align: center; }
@@ -1248,7 +1269,7 @@ Elements Styles
   Popup Styles
 ---------------------------------*/
 .block-bg {
-    background: rgba(22, 22, 27, 0.97) none repeat scroll 0 0;
+    /*background: rgba(22, 22, 27, 0.97) none repeat scroll 0 0;*/
     height: 100%;
     left: 0;
     opacity: 0;
@@ -1266,8 +1287,8 @@ Elements Styles
     -webkit-transform: scale(1);
     transform: scale(1);
     visibility: visible; }
-.block-bg .close__wrap {
-    color: white;
+.field__search .close__wrap {
+    color: black;
     cursor: pointer;
     font-size: 12px;
     font-weight: 700;
@@ -1279,10 +1300,12 @@ Elements Styles
     text-transform: uppercase;
     top: 50%;
     z-index: 11;
-    transition: 0.4s; }
-.block-bg .close__wrap:hover {
+    transition: 0.4s; 
+}
+
+.field__search .close__wrap:hover {
     color: #e59285; }
-.block-bg .close__wrap::after {
+.field__search .close__wrap::after {
     content: "\f136";
     font-family: Material-Design-Iconic-Font;
     font-size: 24px;
@@ -1410,17 +1433,17 @@ Elements Styles
     font-size: 15px;
     position: absolute;
     right: 0; }
-.block-bg.close__top .close__wrap {
-    right: 90px;
-    top: 50px; }
+.field__search.close__top .close__wrap {
+    right: 33px;
+    top: 695px; }
 .minisearch .field__search {
     left: 0;
     margin: 0 auto auto;
-    max-width: 1000px;
     padding: 0 5px;
     position: fixed;
     right: 0;
-    top: 50%; }
+    bottom: 32%;
+    z-index: 999;}
 .minisearch .field__search input {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
@@ -1445,7 +1468,7 @@ Elements Styles
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 2; }
+}
 .minisearch .field__search .action a i {
     color: #fff;
     display: inline-block;
@@ -1456,15 +1479,15 @@ Elements Styles
     text-align: center;
     top: 0;
     width: 60px; }
-.yellow--color.block-bg .close__wrap:hover,
+.yellow--color.field__search .close__wrap:hover,
 .yellow--color.box-menu-content .ppnav .ppmainmenu li:hover a,
 .yellow--color.box-menu-content .ppnav .ppmainmenu li.drop .ppmegamenu .item li a:hover {
     color: #ffa800; }
-.color--pink.block-bg .close__wrap:hover,
+.color--pink.field__search .close__wrap:hover,
 .color--pink.box-menu-content .ppnav .ppmainmenu li:hover a,
 .color--pink.box-menu-content .ppnav .ppmainmenu li.drop .ppmegamenu .item li a:hover {
     color: #da7187; }
-.brown--color.block-bg .close__wrap:hover,
+.brown--color.field__search .close__wrap:hover,
 .brown--color.box-menu-content .ppnav .ppmainmenu li:hover a,
 .brown--color.box-menu-content .ppnav .ppmainmenu li.drop .ppmegamenu .item li a:hover {
     color: #ce7852; }
@@ -2726,9 +2749,10 @@ nav.menu ul li a {
 .modal-body {
     padding: 20px;
 }
-.modal-dialog.modal__container {
-    max-width: 1170px;
-    background: #fff; }
+.modal__container {
+    max-width: 200vh;
+    margin: 10px -7px 10px 10px;
+}
 .modal-product {
     display: flex; }
 .product-images {
@@ -3014,7 +3038,7 @@ h3.widget-title-modal {
     align-items: center;
     display: flex; }
 .slider__content {
-    margin-top: 60px;
+    margin-top: 22%;
 }
 .contentbox > h3 {
     color: #ce7852;
@@ -4671,7 +4695,7 @@ h3.widget-title-modal {
   Portfolio Styles
 ----------------------------*/
 .gallery__menu {
-    padding: 60px 0 25px;
+    /*padding: 35px 0 25px;*/
     text-align: center;
     text-transform: capitalize;
 }
@@ -4992,7 +5016,7 @@ h3.widget-title-modal {
 }
 .contact-form-wrap p {
     color: #333;
-    margin-bottom: 35px;
+    /*margin-bottom: 35px;*/
 }
 .contact-form-wrap .single-contact-form {
     margin: 0 0 35px; }
@@ -5022,7 +5046,7 @@ h3.widget-title-modal {
     border-radius: 0;
     max-width: 100%;
     padding: 10px;
-    height: 180px;
+    height: 80px;
     padding: 0px;
     border-left: 0;
     border-right: 0;
@@ -6024,7 +6048,7 @@ a.checkout__title {
 -------------------------*/
 .ft__logo {
     margin: 0 auto 25px;
-    max-width: 615px;
+    max-width: 120px;
 }
 .social__net {
     margin-bottom: 30px;
@@ -6091,7 +6115,7 @@ a.checkout__title {
         padding: 80px 0;
     }
     section.wn_contact_area {
-        padding-bottom: 60px;
+        /*padding-bottom: 60px;*/
     }
     .header__area .header__sidebar__right {
         margin-right: 45px;
@@ -6131,7 +6155,7 @@ a.checkout__title {
         padding: 30px 30px 25px;
     }
     section.wn_contact_area {
-        padding-bottom: 60px;
+        /*padding-bottom: 60px;*/
     }
 }
 .tab-content .tab-pane {
@@ -6258,7 +6282,7 @@ a.checkout__title {
         padding-bottom: 80px;
     }
     section.wn_contact_area {
-        padding-bottom: 60px;
+        /*padding-bottom: 60px;*/
     }
 }
 
@@ -6277,4 +6301,26 @@ a.checkout__title {
     .sticky__header .logo{
         max-width: 50%;
     }
+}
+
+.form-output{
+    text-align: center;
+
+}
+.copyright p{
+    color: white;
+}
+.copyright p a{
+    color: white;
+}
+.copyright p a:hover{
+    color: #e59285;
+}
+
+.produtos:hover{
+    transform: scale(1.1);
+    transition: 100ms linear; 
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 16px 10px rgb(255 163 156 / 45%);
 }

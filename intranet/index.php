@@ -21,17 +21,27 @@ $cod_empresa_para_insert = 1;
     <meta property="og:title" content="Dashboard">
     <meta property="og:description" content="Painel de Controle">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
     <link href="vendor/fonts/awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
     <link href="vendor/css/sb-admin.css" rel="stylesheet" type="text/css"/>
     <link href="vendor/bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- PLUGIN DO CHECK BOX EDITAR IMAGENS DOS PRODUTOS -->
     <link href="vendor/bootstrap/css/bootstrap-image-checkbox.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- PLUGIN DO SIMDITOR -->
+    <link href="vendor/simditor/assets/styles/simditor.css" rel="stylesheet" type="text/css"/> 
+    <script src="vendor/simditor/assets/scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="vendor/simditor/assets/scripts/module.js" type="text/javascript"></script>
+    <script src="vendor/simditor/assets/scripts/hotkeys.js" type="text/javascript"></script>
+    <script src="vendor/simditor/assets/scripts/uploader.js" type="text/javascript"></script>
+    <script src="vendor/simditor/assets/scripts/simditor.js" type="text/javascript"></script>
+    <script src="vendor/simditor/assets/scripts/simditor.js" type="text/javascript"></script>
     <script>
         function excluir(valor) {
             return confirm('Deseja realmente excluir o registro ' + valor + '?');
         }
-
         function naoexcluir() {
             return confirm('Não é possível apagar esse item! Esse item está sendo usado em outro cadastro, verifique onde essa informação está sendo usada.');
         }
@@ -42,6 +52,7 @@ $cod_empresa_para_insert = 1;
             return confirm('Não é possível apagar esse item! Esse item está sendo usado no cadastro de produtos, para apagá-lo altere o cadastro do produto e tente novamente.');
         }
     </script>
+
     <title>Dashboard - <?= $nome_fantasia; ?></title>
 </head>
 <!-- ---------------------CORPO PRINCIPAL------------------ -->
@@ -74,11 +85,6 @@ $cod_empresa_para_insert = 1;
 
         switch ($url) {
             ##-----------------------CASE PARA OS MENUS--------------------##
-            //case 'home.php':
-            //    $menu = 'Home';
-            //    include './navegacao.php';
-            //    include ('./home.php');
-            //    break;
             ##-----------------------EMPRESA--------------------##
             case 'empresa.php':
                 $menu = 'Empresa';
@@ -301,7 +307,6 @@ $cod_empresa_para_insert = 1;
         <!-- Sair Modal-->
         <?php include './home_modal.php'; ?>
 
-        <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
         <script src="vendor/jquery/jquery.min.js" type="text/javascript"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
@@ -311,10 +316,10 @@ $cod_empresa_para_insert = 1;
         <script src="vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="vendor/js/sb-admin.min.js" type="text/javascript"></script>
         <script src="vendor/js/sb-admin-datatables.min.js" type="text/javascript"></script>
-        <script src="vendor/js/sb-admin-charts.min.js" type="text/javascript"></script>
         <script src="vendor/jquery/jquery.maskMoney.js" type="text/javascript"></script>
         <script src="vendor/jquery/jquery.mask.min.js" type="text/javascript"></script>
         <script src="vendor/bootstrap/js/bootstrap-toggle.min.js" type="text/javascript"></script>
+
         <script>
         function somenteNumeros(num) {
             var er = /[^0-9.]/;
@@ -366,5 +371,14 @@ $cod_empresa_para_insert = 1;
             }
         </script>
         <script type="text/javascript">$("#cep").mask("99999-999");</script>
+
+        <script>
+            var edit = new Simditor({
+                //textarea ID
+                textarea: $('#edit'),
+                pasteImage: false,
+                toolbar: ['title', 'bold', 'italic', 'underline', 'fontScale', 'color', 'ol', 'ul', 'blockquote', 'hr', 'outdent', 'alignment']
+            });
+        </script>
     </div>
 </body>

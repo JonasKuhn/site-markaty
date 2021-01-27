@@ -1,13 +1,10 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 04/09/2019, 19:56:47
-    Author     : Usuário
-*/
-
+/*! ========================================================================
+ * Bootstrap Toggle: bootstrap-toggle.css v2.2.0
+ * http://www.bootstraptoggle.com
+ * ========================================================================
+ * Copyright 2014 Min Hur, The New York Times Company
+ * Licensed under MIT
+ * ======================================================================== */
 .checkbox label .toggle,.checkbox-inline .toggle{margin-left:-20px;margin-right:5px}
 .toggle{position:relative;overflow:hidden}
 .toggle input[type=checkbox]{display:none}

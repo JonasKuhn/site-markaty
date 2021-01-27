@@ -713,8 +713,8 @@ $(function() {
   var form = $('#contact-form');
 
   // Get the messages div.
-  var formMessages = $('.form-messege');
-
+  var formAlert = $('.form-alert');
+  var formMessages = $('.form-messege')
   // Set up an event listener for the contact form.
   $(form).submit(function(e) {
     // Stop the browser from submitting the form.
@@ -731,19 +731,18 @@ $(function() {
     })
     .done(function(response) {
       // Make sure that the formMessages div has the 'success' class.
-      $(formMessages).removeClass('error');
-      $(formMessages).addClass('success');
+      $(formAlert).removeClass('alert-danger show');
+      $(formAlert).addClass('alert-success show');
 
       // Set the message text.
-      $(formMessages).text(response);
-
+      $(formMessages).text('Mensagem enviada com Sucesso!!!');
       // Clear the form.
       $('#contact-form input,#contact-form textarea').val('');
     })
     .fail(function(data) {
       // Make sure that the formMessages div has the 'error' class.
-      $(formMessages).removeClass('success');
-      $(formMessages).addClass('error');
+      $(formAlert).removeClass('alert-success show');
+      $(formAlert).addClass('alert-danger show');
 
       // Set the message text.
       if (data.responseText !== '') {

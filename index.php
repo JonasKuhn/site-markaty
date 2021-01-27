@@ -24,6 +24,16 @@
         $logomarca = $dados['logomarca'];
         $cod_cat = $dados['cod_catalogo'];
         $cod_ci = $dados['cod_cidade'];
+
+        $cmd = $pdo->prepare("CALL sel_cidade_cod('1', '$cod_ci')");
+        $cmd->execute();
+        $dados = $cmd->fetch();
+        unset($cmd);
+
+        $nome_cidade = $dados['nome_cidade'];
+        $cep = $dados['cep'];
+        $nome_estado = $dados['nome_estado'];
+        $uf = $dados['uf'];
         ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,7 +57,7 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> 
-
+        <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/plugins.css">
@@ -58,400 +68,235 @@
 
         <!-- Modernizer js -->
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="js/wow.js" type="text/javascript"></script>
     </head>
     <body>
         <!--[if lte IE 9]>
                 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <!-- Main wrapper -->
+        <!-- INICIO HOME -->
         <div class="wrapper" id="wrapper">
-
-            <!-- Header -->
+            <!-- INICIO CABECALHO -->
             <header id="wn__header" class="header__area header__absolute sticky__header">
-                <div class="container-fluid">
+                <div class="container-fluid" id="inicio">
+                    <!-- INICIO MENU -->
                     <div class="row">
                         <div class="col-md-2 col-sm-2 col-3 col-lg-2">
                             <div class="logo">
-                                <a href="#">
+                                <a href="?url=inicio">
                                     <img src="./intranet/imagens/logomarca/<?= $logomarca; ?>" alt="Logo Marca">
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-10 d-none d-lg-block">
-                            <nav class="mainmenu__nav">
-                                <ul class="meninmenu d-flex justify-content-end">
-                                    <li class="drop with--one--item"><a href="#">Início</a></li>
-                                    <li class="drop with--one--item"><a href="#">Sobre a Empresa</a></li>
-                                    <li class="drop with--one--item"><a href="#">Produtos</a></li>
-                                    <li class="drop with--one--item"><a href="#">Contato</a></li>
-                                    <li class="drop with--one--item"><a href="#">Orçamento Online</a></li>
+                            <nav class="mainmenu__nav ">
+                                <ul class="meninmenu d-flex justify-content-end nav">
+                                    <li class="drop with--one--item"><a href="?url=inicio">Início</a></li>
+                                    <li class="drop with--one--item"><a href="?url=historia">História</a></li>
+                                    <li class="drop with--one--item"><a href="?url=produtos">Produtos</a></li>
+                                    <li class="drop with--one--item"><a href="#contato">Contato/Localização</a></li>
+                                    <li class="drop with--one--item"><a href="https://api.whatsapp.com/send?phone=5549998051551&text=Seja%20Bem-Vindo!!" target="_blank">Orçamento Online</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <!-- Start Mobile Menu -->
+                    <!-- FIM MENU -->
+                    <!-- INICIO MENU CELULAR -->
                     <div class="row d-none">
                         <div class="col-lg-12 d-none">
                             <nav class="mobilemenu__nav">
                                 <ul class="meninmenu">
-                                    <li><a href="#">Início</a></li>
-                                    <li><a href="#">Sobre a Empresa</a></li>
-                                    <li><a href="#">Produtos</a></li>
-                                    <li><a href="#">Contato</a></li>
-                                    <li><a href="#">Orçamento Online</a></li>
+                                    <li><a href="?url=inicio">Início</a></li>
+                                    <li><a href="?url=historia">História</a></li>
+                                    <li><a href="?url=produtos">Produtos</a></li>
+                                    <li><a href="#contato">Contato/Localização</a></li>
+                                    <li><a href="https://api.whatsapp.com/send?phone=5549998051551&text=Seja%20Bem-Vindo!!" target="_blank">Orçamento Online</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <!-- End Mobile Menu -->
                     <div class="mobile-menu d-block d-lg-none">
                     </div>
-                    <!-- Mobile Menu -->	
+                    <!-- FIM MENU CELULAR -->	
                 </div>		
             </header>
-            <!-- //Header -->
+            <!-- FIM CABECALHO -->
 
-            <!-- Start Slider area -->
-            <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
-                <?php
-                $selectBannerAtivo = "select b.* from tb_banner as b where b.fl_ativo = 1;";
+            <?php
+            @$url = $_GET['url'];
 
-                $queryBannerAtivo = $pdo->prepare($selectBannerAtivo);
-                $queryBannerAtivo->execute();
+            switch ($url) {
+                ##-----------------------CASE PARA OS MENUS--------------------##
+                ##-----------------------SOBRE A EMPRESA--------------------##
+                case 'historia':
+                    include ('./historia.php');
+                    break;
+                case 'produtos':
+                    include ('./produtos.php');
+                    break;
+                case 'inicio':
+                    include ('./inicio.php');
+                    break;
+                default :
+                    include ('./inicio.php');
+                    break;
+            }
+            ?>
 
-                while ($dados = $queryBannerAtivo->fetch()) {
-                    $tituloBanner = $dados['titulo'];
-                    $descricaoBanner = $dados['descricao'];
-                    $imgBanner = $dados['img_banner'];
-                    ?>
-
-                    <!-- Start Single Slide -->
-                    <div class="slide animation__style10 fullscreen align__center--left" 
-                         style="
-                         background-image: url(intranet/imagens/banner/<?= $imgBanner; ?>);
-                         background-repeat: no-repeat;
-                         background-size: cover;
-                         background-position: center center;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="slider__content">
-                                        <div class="contentbox">
-                                            <h2><?= $tituloBanner; ?></span></h2>
-                                            <h2><?= $descricaoBanner; ?></h2>
-                                            <h2>from <span>Here </span></h2>
-                                            <a class="shopbtn" href="#">Veja Mais</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Slide -->
-                    <?php
-                }
-                unset($cmd);
-                ?>
-            </div>
-            <!-- Start Portfolio Area -->
-
-            <!-- Start About Area -->
-            <div class="page-about about_area bg--white mt--40 wedget__title">
+            <!-- INICIO CONTATO -->
+            <section id="contato" class="wn_contact_area bg--white wow fadeIn mt--30" data-wow-delay="0.5s">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section__title text-center pb--30">
-                                <h2>Sobre A empresa</h2>
-                                <p>Conheça A Nossa História</p>
-                            </div>
-                        </div>
+                    <div class="section__title text-center">
+                        <h2>CONTATO</h2>
                     </div>
-                    <div class="row align-items-center">
-                        <div class="col-lg-4 col-sm-12 col-12">
-                            <div class="content">
-                                <div class="skill-container">
-                                    <?php
-                                    $cmd = $pdo->prepare("select q.* from tb_qualidade as q, tb_empresa as e "
-                                            . "where q.cod_empresa = e.cod_empresa "
-                                            . "order by q.nome ASC;");
-                                    $cmd->execute();
-
-                                    while ($dados = $cmd->fetch()) {
-                                        $nomeQualidade = $dados['nome'];
-                                        $descricaoQualidade = $dados['descricao'];
-                                        ?>
-                                        <!-- Start single skill -->
-                                        <div class="single-skill">
-                                            <h4><?= $nomeQualidade; ?></h4>
-                                            <p class="mt--20 mb--20"><?= $descricaoQualidade; ?></p>
-                                        </div>
-                                        <!-- End single skill -->
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-sm-12 col-12">
-                            <?php
-                            $cmd = $pdo->prepare("select s.* from tb_sobre as s, tb_empresa as e "
-                                    . "where s.cod_empresa = e.cod_empresa "
-                                    . "order by s.cod_sobre ASC LIMIT 1;");
-                            $cmd->execute();
-
-                            while ($dados = $cmd->fetch()) {
-                                $tituloSobre = $dados['titulo'];
-                                $descricaoSobre = $dados['descricao'];
-                                $imgSobre = $dados['img_sobre'];
-                                $videoSobre = $dados['video'];
-                                ?>
-                                <div class="content thumb" style="text-align: center;">
-                                    <h4 class=""><?= $tituloSobre; ?></h4>
-                                    <div class="row mt--20">
-                                        <div class="col-md-6">
-                                            <img class="img-thumbnail" src="intranet/imagens/sobre/<?= $imgSobre; ?>" alt="<?= $imgSobre; ?>">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="mt--20 mb--20" style="text-align: justify;"><?= $descricaoSobre; ?></p>
-                                        </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="contact-form-wrap">
+                                <h5 style="text-align: center;" class="pb--30">Estamos sempre prontos para atender você</h5>
+                                <form id="contact-form" method="POST" action="contact_me.php" enctype="multipart/form-data">
+                                    <div class="single-contact-form space-between">
+                                        <input type="text" name="nome" required placeholder="Nome Completo...">
+                                    </div>
+                                    <div class="single-contact-form space-between">
+                                        <input type="email" name="email" required placeholder="Email...">
+                                    </div>
+                                    <div class="single-contact-form space-between">
+                                        <input required type="telefone" 
+                                               name="telefone" 
+                                               id="tel_whatsapp" 
+                                               placeholder="(11) 12345-6789">
+                                    </div>
+                                    <div class="single-contact-form message">
+                                        <textarea required name="mensagem" placeholder="Digite sua mensagem..."></textarea>
+                                    </div>
+                                    <div class="contact-btn">
+                                        <button type="submit">ENVIAR MENSAGEM</button>
+                                    </div>
+                                </form>
+                                <div class="form-output pt-3">
+                                    <div class="form-alert alert alert-danger alert-dismissible fade" role="alert">
+                                        <p class="form-messege"></p>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            </div> 
+                        </div>
+                        <div class="col-md-4">
+                            <div class="wn__address">
+                                <h5 class="pb--30" style="text-align: center;">Aonde nos encontrar</h5>
+                                <div class="wn__addres__wreapper">
+                                    <div class="ft__logo" style="text-align: center;">
+                                        <a href="#">
+                                            <img src="intranet/imagens/logomarca/<?= $logomarca; ?>" alt="<?= $logomarca; ?>">
+                                        </a>
+                                    </div>
+                                    <div class="single__address">
+                                        <i class="icon-location-pin icons"></i>
+                                        <div class="content">
+                                            <span>Endereço:</span>
+                                            <p><?= $logradouro; ?>, Nr <?= $nr; ?>, <?= $bairro; ?>, <?= $nome_cidade; ?> - <?= $nome_estado; ?> / <?= $uf; ?> </p>
+                                        </div>
+                                    </div>
+                                    <div class="single__address">
+                                        <i class="icon-phone icons"></i>
+                                        <div class="content">
+                                            <span>Telefone:</span>
+                                            <p><?= $tel_fixo; ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="single__address">
+                                        <i class="icon-envelope icons"></i>
+                                        <div class="content">
+                                            <span>E-mail:</span>
+                                            <p> <?= $email; ?></p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <ul class="social__net--4 d-flex justify-content-center">
+                                            <li><a href="<?= $facebook; ?>" target="_blank"><img src="images/facebook_icon.png" alt="Facebook" style="width: 40px;"></a></li>
+                                            <li><a href="<?= $instagram; ?>" target="_blank"><img src="images/instagram_icon.png" alt="Instagram" style="width: 40px;"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- End About Area -->
-
-            <!-- Produtos -->
-            <section class="wn__portfolio__area gallery__masonry__activation bg--white mt--40 pb--100">
+                </div>  
+            </section>
+            <section class="wow fadeIn mt--20" data-wow-delay="0.5s">        
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <?php
-                            $cmd = $pdo->prepare("select c.* from tb_empresa as e, tb_catalogo as c where e.cod_catalogo = c.cod_catalogo");
-                            $cmd->execute();
-                            $dados = $cmd->fetch();
-                            unset($cmd);
-                            $nomeCatalogo = $dados['nome'];
-                            $descricaoCatalogo = $dados['descricao'];
-                            ?>
-                            <div class="section__title text-center">
-                                <h2><?= $nomeCatalogo; ?></h2>
-                                <p><?= $descricaoCatalogo; ?></p>
-                            </div>
-                            <div class="gallery__menu">
-                                <button data-filter="*" class="is-checked">Filtrar - Todos</button>
-                                <?php
-                                $cmd = $pdo->prepare("select DISTINCT tp.cod_tipo_produto, tp.* "
-                                        . "from tb_tipo_produto as tp, tb_produto as p, tb_catalogo_produto as cp, tb_catalogo as c, tb_empresa as e "
-                                        . "where tp.cod_tipo_produto = p.cod_tipo_produto "
-                                        . "and p.cod_produto = cp.cod_produto "
-                                        . "and cp.cod_catalogo = c.cod_catalogo "
-                                        . "and c.cod_catalogo = e.cod_catalogo "
-                                        . "and p.fl_ativo = 1 "
-                                        . "order by tp.cod_tipo_produto ASC;");
-                                $cmd->execute();
-
-                                $i = 1;
-                                while ($dados = $cmd->fetch()) {
-                                    $descricaoTipoProduto = $dados['descricao'];
-                                    ?>
-                                    <button data-filter=".cat--<?= $i; ?>"><?= $descricaoTipoProduto; ?></button>
-                                    <?php
-                                    $i++;
-                                }
-                                unset($cmd);
-                                ?>
-
+                    <div class="section__title text-center">
+                        <h2>LOCALIZAÇÃO</h2>
+                    </div>
+                    <div class="google__map ">
+                        <div class="row">
+                            <div id="googleMap">
+                                <iframe width="100%" height="100%" src="<?= $maps; ?>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                             </div>
                         </div>
-                    </div>
-                    <div class="row masonry__wrap">
-                        <!-- Start Single Portfolio -->
-                        <?php
-                        $cmdd = $pdo->prepare("select DISTINCT tp.cod_tipo_produto "
-                                . "from tb_tipo_produto as tp, tb_produto as p, tb_catalogo_produto as cp, tb_catalogo as c, tb_empresa as e "
-                                . "where tp.cod_tipo_produto = p.cod_tipo_produto "
-                                . "and p.cod_produto = cp.cod_produto "
-                                . "and cp.cod_catalogo = c.cod_catalogo "
-                                . "and c.cod_catalogo = e.cod_catalogo "
-                                . "and p.fl_ativo = 1 "
-                                . "order by tp.cod_tipo_produto ASC;");
-                        $cmdd->execute();
-                        $arrayCodTipoProduto = $cmdd->fetchAll(PDO::FETCH_ASSOC);
-                        unset($cmdd);
-
-                        $i = 1;
-                        foreach ($arrayCodTipoProduto as &$value) {
-                            $codTipoProduto = $value['cod_tipo_produto'];
-
-                            $cmd = $pdo->prepare("select p.cod_produto, p.nome as nomeproduto, p.descricao, i.nome as nomeimagem, tp.cod_tipo_produto "
-                                    . "from tb_tipo_produto as tp, tb_produto as p, tb_catalogo_produto as cp, tb_catalogo as c, tb_empresa as e, tb_produto_imagem as pi, tb_imagem as i "
-                                    . "where tp.cod_tipo_produto = p.cod_tipo_produto "
-                                    . "and p.cod_produto = cp.cod_produto "
-                                    . "and cp.cod_catalogo = c.cod_catalogo "
-                                    . "and c.cod_catalogo = e.cod_catalogo "
-                                    . "and p.cod_produto = pi.cod_produto "
-                                    . "and pi.cod_imagem = i.cod_imagem "
-                                    . "and p.fl_ativo = 1 "
-                                    . "AND tp.cod_tipo_produto = '$codTipoProduto' group by p.cod_produto;");
-                            $cmd->execute();
-
-                            while ($dados = $cmd->fetch()) {
-                                $codProduto = $dados['cod_produto'];
-                                $nomeProduto = $dados['nomeproduto'];
-                                $descricaoProduto = $dados['descricao'];
-                                $codTipoProduto = $dados['cod_tipo_produto'];
-                                $nomeImagemProduto = $dados['nomeimagem'];
-                                ?>
-                                <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--<?= $i; ?>">
-                                    <div class="portfolio">
-                                        <div class="thumb">
-                                            <img src="./intranet/imagens/produtos/<?= $nomeProduto; ?>/<?= $nomeImagemProduto; ?>" alt="<?= $nomeImagemProduto; ?>">
-
-                                            <div class="search">
-                                                <a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal<?= $codProduto; ?>">
-                                                    <i class="bi bi-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail mt-2">
-                                            <h6><?= $nomeProduto; ?></h6>
-                                            <p>Veja mais detalhes clicando na Imagem</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- QUICKVIEW PRODUCT -->
-                                <div id="quickview-wrapper">
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="productmodal<?= $codProduto; ?>" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog modal__container" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header modal__header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="modal-product">
-                                                        <!-- Start product images -->
-                                                        <div class="product-images">
-                                                            <div class="main-image images">
-                                                                <div class="wn__fotorama__wrapper">
-                                                                    <div class="fotorama wn__fotorama__action" data-nav="thumbs">
-                                                                        <?php
-                                                                        $selectImagensProduto = "select i.nome from tb_produto as p, tb_produto_imagem as pi, tb_imagem as i "
-                                                                                . "where p.cod_produto = pi.cod_produto "
-                                                                                . "and pi.cod_imagem = i.cod_imagem "
-                                                                                . "and p.cod_produto = '$codProduto';";
-
-                                                                        $cmdd = $pdo->prepare($selectImagensProduto);
-                                                                        $cmdd->execute();
-                                                                        $arrayImagensProduto = $cmdd->fetchAll(PDO::FETCH_ASSOC);
-                                                                        unset($cmdd);
-                                                                        foreach ($arrayImagensProduto as &$value) {
-                                                                            $nomeImagem = $value['nome'];
-                                                                            ?>
-                                                                            <a href="<?= $nomeImagem; ?>">
-                                                                                <img src="./intranet/imagens/produtos/<?= $nomeProduto; ?>/<?= $nomeImagem; ?>" alt="<?= $nomeImagem; ?>">
-                                                                            </a>
-                                                                        <?php } ?>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- end product images -->
-                                                        <div class="product-info">
-                                                            <h2><?= $nomeProduto; ?></h2>
-                                                            <div class="quick-desc" style="text-align: justify;">
-                                                                <?= $descricaoProduto; ?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END QUICKVIEW PRODUCT -->
-                                <?php
-                            }
-                            $i++;
-                        }
-                        ?>
-                        <!-- End Single Portfolio -->
                     </div>
                 </div>
             </section>
-            <!-- Fim Produtos -->
-
-            <!-- End Portfolio Area -->
-            <footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-                <div class="footer-static-top">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="footer__widget footer__menu">
-                                    <div class="ft__logo">
-                                        <a href="index.html">
-                                            <img src="images/logo/3.png" alt="logo">
-                                        </a>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
-                                    </div>
-                                    <div class="footer__content">
-                                        <ul class="social__net social__net--2 d-flex justify-content-center">
-                                            <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                                            <li><a href="#"><i class="bi bi-google"></i></a></li>
-                                            <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-                                            <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="bi bi-youtube"></i></a></li>
-                                        </ul>
-                                        <ul class="mainmenu d-flex justify-content-center">
-                                            <li><a href="index.html">Trending</a></li>
-                                            <li><a href="index.html">Best Seller</a></li>
-                                            <li><a href="index.html">All Product</a></li>
-                                            <li><a href="index.html">Wishlist</a></li>
-                                            <li><a href="index.html">Blog</a></li>
-                                            <li><a href="index.html">Contact</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="copyright__wrapper">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="copyright">
-                                    <div class="copy__right__inner text-left">
-                                        <p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="payment text-right">
-                                    <img src="images/icons/payment.png" alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- //Footer Area -->            
+            <!-- FIM CONTATO -->
         </div>
-        <!-- //Main wrapper -->
-        <a style="bottom: 10px;
-           right: 10px;
-           font-size: 69px;
-           text-align: center;
-           transition: 0.3s;
-           position: fixed;" id="" href="" style="position: fixed; z-index: 2147483647;"><img src="intranet/imagens/balao-duvidas-contato-whatsapp.png"></a>
+        <!-- INICIO RODAPE -->
+        <footer id="wn__footer" class="footer__area bg__cat--5 brown--color">
+            <div class="copyright__wrapper">
+                <div class="container">
+                    <div class="copyright" style="text-align: center;">
+                        <p>Copyright <i class="fa fa-copyright"></i> <a href="?url=inicio"><?php echo $nome_fantasia; ?>. </a> Todos os direitos reservados. <?php echo date("Y"); ?></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- FIM RODAPE -->  
+
+        <!-- INICIO POPUP WPP -->
+        <div class="wow slideInRight" data-wow-delay="0.5s" id="popupWpp" style="
+              margin: 0 auto auto;
+              position: fixed;
+              right: 0;
+              bottom: 20%;
+              z-index: 999;
+              padding-top: 20px;
+              ">
+
+            <div class="close__wrap" onclick="Mudarestado()"
+                 style="
+                 font-size: 24px;
+                 position: absolute;
+                 top: 0;
+                 font-size: 24px;
+                 font-weight: bold;
+                 position: absolute;
+                 right: 10px;
+                 color: black;
+                 cursor: pointer;
+                 "
+                 >X
+            </div>
+            <a id="whatsapp-pg-produto" href="https://api.whatsapp.com/send?phone=5549998051551&text=Seja%20Bem-Vindo!!" target="_blank">
+                <img src="https://connectparts.vteximg.com.br/arquivos/balao-duvidas-contato-whatsapp.png?v=637245533625270000" alt="Whatsapp" title="Whatsapp">
+            </a>
+
+        </div>
+        <!-- FIM POPUP WPP -->
+
+        <script>
+            function Mudarestado() {
+                document.getElementById("popupWpp").style.display = 'none';
+            }
+        </script>
+
         <!-- JS Files -->
+
         <script src="js/vendor/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/active.js"></script>
-
     </body>
 </html>

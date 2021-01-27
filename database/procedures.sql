@@ -497,3 +497,16 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
+
+####### SELECIONAR CIDADE VIA COD  #######
+DELIMITER $$
+CREATE PROCEDURE sel_cidade_cod(cod_empresa INT, cod_cidade INT)
+BEGIN
+	SELECT ci.nome_cidade, ci.cep, es.nome_estado, es.uf
+	FROM tb_empresa as e, tb_cidade as ci, tb_estado as es
+	WHERE e.cod_cidade = ci.cod_cidade
+	AND ci.cod_estado = es.cod_estado
+	AND e.cod_empresa = cod_empresa
+    AND ci.cod_cidade = cod_cidade;
+END$$
+DELIMITER ;
