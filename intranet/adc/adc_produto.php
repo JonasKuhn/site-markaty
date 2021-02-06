@@ -18,11 +18,11 @@ include_once './sessao.php';
                         </div>
                         <hr class="b-s-dashed">
                         <div class="form-group">
-                            <label class="col-sm-8 control-label">Descrição do Produto:</label>
+                            <label class="col-sm-12 control-label">Descrição do Produto:</label>
                             <div class="col-sm-12">
-                                <textarea class="md-textarea form-control" name="descricao" rows="4" placeholder="Digite uma Descrição para o Catálogo..."></textarea>
+                                <textarea id="edit" class="md-textarea form-control" name="descricao" rows="4" placeholder="Digite uma Descrição para o Catálogo..."></textarea>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     <div class="container col-sm-6">
                         <div class="form-group">

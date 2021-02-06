@@ -10,12 +10,23 @@
         $nome_fantasia = $dados['nome_fantasia'];
         $logomarca = $dados['logomarca'];
         $cod_empresa_para_insert = 1;
+        unset($cmd);
+        
+        $cmd = $pdo->prepare("select s.img_sobre from tb_sobre as s, tb_empresa as e "
+                . "where s.cod_empresa = e.cod_empresa "
+                . "order by s.cod_sobre ASC LIMIT 1;");
+        $cmd->execute();
+
+        $dados = $cmd->fetch();
+        $imgSobre = $dados['img_sobre'];
+        unset($cmd);
         ?>
+        
         <title>Entrar</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/png" href="./imagens/logomarca/mini_logo_markaty.png"/>
+        <link rel="icon" type="image/png" href="./imagens/mini_logo_markaty.png"/>
         <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="vendor/css/util.css">
         <link rel="stylesheet" type="text/css" href="vendor/css/main.css">
@@ -23,7 +34,7 @@
     <body>
         <div class="limiter">
             <div class="container-login100" 
-                 style="background-image: url(imagens/banner/imagem-empresa.jpg);
+                 style="background-image: url(imagens/sobre/<?=$imgSobre;?>);
                  background-repeat: no-repeat;  
                  background-attachment: fixed;
                  background-size: cover;

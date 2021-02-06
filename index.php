@@ -46,12 +46,12 @@
         <meta property="og:description" content="Conheça a nossa empresa, nossas variedades de produtos e entre em contato conosco.">
 
         <!-- Tamanho que o FB recomenda 1200x630 máximo 5mb-->
-        <meta property="og:image" content="./intranet/imagens/logomarca/mini_logo_markaty.png">
+        <meta property="og:image" content="./images/mini_logo_markaty.png">
 
         <title><?= $nome_fantasia; ?></title>
-        <link rel="shortcut icon" href="./intranet/imagens/logomarca/mini_logo_markaty.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="./images/mini_logo_markaty.png" type="image/x-icon"/>
 
-        <link rel="apple-touch-icon" href="./intranet/imagens/logomarca/mini_logo_markaty.png">
+        <link rel="apple-touch-icon" href="./images/mini_logo_markaty.png">
 
         <!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
@@ -196,7 +196,7 @@
                                 <h5 class="pb--30 wow fadeIn" data-wow-delay="0.5s" style="text-align: center;">Aonde nos encontrar</h5>
                                 <div class="wn__addres__wreapper">
                                     <div class="ft__logo wow fadeInRight" data-wow-delay="0.5s" style="text-align: center;">
-                                        <a href="#">
+                                        <a href="?url=inicio">
                                             <img src="intranet/imagens/logomarca/<?= $logomarca; ?>" alt="<?= $logomarca; ?>">
                                         </a>
                                     </div>
@@ -272,7 +272,7 @@
              padding-top: 20px;
              ">
 
-            <div class="close__wrap" onclick="Mudarestado()"
+            <div class="close__wrap wpp" onclick="Mudarestado()"
                  style="
                  font-size: 24px;
                  position: absolute;

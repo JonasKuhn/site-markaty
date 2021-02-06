@@ -1,6 +1,17 @@
-<section id="produtos" class="wn__portfolio__area gallery__masonry__activation pt--130 pb--30" 
+<?php
+$cmd = $pdo->prepare("select s.img_sobre from tb_sobre as s, tb_empresa as e "
+        . "where s.cod_empresa = e.cod_empresa "
+        . "order by s.cod_sobre ASC LIMIT 1;");
+$cmd->execute();
+
+$dados = $cmd->fetch();
+$imgSobre = $dados['img_sobre'];
+unset($cmd);
+?>
+
+<section id="produtos" class="wn__portfolio__area gallery__masonry__activation pt--130 pb--30 wow fadeInDown" data-wow-delay="0.2s"
          style="min-height: 65vh;
-         background-image: url(intranet/imagens/sobre/imagem-empresa.jpg);
+         background-image: url(intranet/imagens/sobre/<?= $imgSobre; ?>);
          background-repeat: no-repeat;  
          background-attachment: fixed;
          background-size: cover;
@@ -234,7 +245,7 @@
      padding-top: 20px;
      ">
 
-    <div class="close__wrap" onclick="removercatalogo()"
+    <div class="close__wrap wpp" onclick="removercatalogo()"
          style="
          position: absolute;
          top: 0;

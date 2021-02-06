@@ -37,6 +37,9 @@ a.meanmenu-reveal {
     background: #da251c none repeat scroll 0 0;
 }
 .is-sticky .mean-container a.meanmenu-reveal {
+    color: black;
+}
+.is-sticky .mean-container a.meanmenu-reveal:hover {
     color: #da251c;
 }
 .mean-container a.meanmenu-reveal {
@@ -83,7 +86,7 @@ a.meanmenu-reveal {
     margin-bottom: 0;
     margin-left: 0;
     margin-top: 66px;
-    max-height: 255px;
+/*    max-height: 255px;*/
     overflow-y: auto;
     width: 100%;
 }

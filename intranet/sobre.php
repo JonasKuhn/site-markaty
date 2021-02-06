@@ -20,7 +20,7 @@ if (isset($msg) && $msg != false && $msg == "adc") {
             <h3>Imformações Sobre a História da Empresa</h3>
         </div>
         <div class="card-body">
-            <a href="?url=adc_sobre.php" title="Novo - <?= $menu; ?>"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>
+<!--            <a href="?url=adc_sobre.php" title="Novo - <?= $menu; ?>"><i class="fa fa-2x pb-2 pl-2 fa-plus-square"></i></a>-->
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
@@ -53,10 +53,10 @@ if (isset($msg) && $msg != false && $msg == "adc") {
                                 <td><?= $video; ?></td>
                                 <td>
                                     <a href="?url=edt_sobre.php&ldl=<?= $var; ?>" title="EDITAR"><i class="fa fa-2x fa-edit pr-3 pl-3"></i></a>
-                                    <a href="?url=dropbd_sobre.php&ldl=<?= $var; ?>&ldk=<?= $img_sobre; ?>" 
+<!--                                    <a href="?url=dropbd_sobre.php&ldl=<?= $var; ?>&ldk=<?= $img_sobre; ?>" 
                                        onclick="return excluir('<?= $titulo; ?>');" title="EXCLUIR">
                                         <i class="fa fa-2x fa-trash-o"></i>
-                                    </a>
+                                    </a>-->
                                 </td>
                             </tr>
                             <?php
