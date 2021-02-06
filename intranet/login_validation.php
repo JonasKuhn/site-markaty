@@ -9,7 +9,7 @@ $login = trim(preg_replace('/[^[:alpha:]_]/', '', $_POST['login']));
 $senha = trim($_POST["senha"]);
 $senha_crypt = $MyCripty->enc($senha);
 
-if ($login == "" || $senha == "") {
+if (empty($login) || empty($senha )) {
     header("Location: index.php?msg=empty");
 }
 $sql = "SELECT cod_admin, login, nome, senha FROM tb_admin WHERE login = ('$login');";
@@ -29,5 +29,5 @@ foreach ($result as $row) {
         }
     }
 }
-header("Location: index.php?msg=bad_aut");
+header("Location: index.php?msg=empty");
 exit;

@@ -14,21 +14,24 @@ $cod_empresa_para_insert = 1;
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="imagens/logomarca/<?= $logomarca; ?>">
+    <link rel="shortcut icon" href="imagens/logomarca/mini_logo_markaty.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Jonas Kuhn">
-    <meta property="og:url" content="www.sassoinformatica.com.br/intranet/index.php">
+    <meta property="og:url" content="www.mksuinos.com.br/intranet/index.php">
     <meta property="og:title" content="Dashboard">
     <meta property="og:description" content="Painel de Controle">
+    
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
-    <link href="vendor/fonts/awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
-    <link href="vendor/css/sb-admin.css" rel="stylesheet" type="text/css"/>
-    <link href="vendor/bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet" type="text/css"/>
-
     <!-- PLUGIN DO CHECK BOX EDITAR IMAGENS DOS PRODUTOS -->
     <link href="vendor/bootstrap/css/bootstrap-image-checkbox.css" rel="stylesheet" type="text/css"/>
+    
+    <link href="vendor/bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet" type="text/css"/>
+    
+    <link href="vendor/fonts/awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
+    
+    <link href="vendor/css/sb-admin.css" rel="stylesheet" type="text/css"/>
 
     <!-- PLUGIN DO SIMDITOR -->
     <link href="vendor/simditor/assets/styles/simditor.css" rel="stylesheet" type="text/css"/> 
@@ -38,6 +41,7 @@ $cod_empresa_para_insert = 1;
     <script src="vendor/simditor/assets/scripts/uploader.js" type="text/javascript"></script>
     <script src="vendor/simditor/assets/scripts/simditor.js" type="text/javascript"></script>
     <script src="vendor/simditor/assets/scripts/simditor.js" type="text/javascript"></script>
+    
     <script>
         function excluir(valor) {
             return confirm('Deseja realmente excluir o registro ' + valor + '?');
@@ -309,16 +313,20 @@ $cod_empresa_para_insert = 1;
 
         <script src="vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
         <script src="vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="vendor/jquery/jquery.mask.min.js" type="text/javascript"></script>
+        
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <script src="vendor/bootstrap/js/bootstrap-toggle.min.js" type="text/javascript"></script>
+        
         <script src="vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
+        
         <script src="vendor/chart.js/Chart.min.js" type="text/javascript"></script>
+        
         <script src="vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
         <script src="vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        
         <script src="vendor/js/sb-admin.min.js" type="text/javascript"></script>
         <script src="vendor/js/sb-admin-datatables.min.js" type="text/javascript"></script>
-        <script src="vendor/jquery/jquery.maskMoney.js" type="text/javascript"></script>
-        <script src="vendor/jquery/jquery.mask.min.js" type="text/javascript"></script>
-        <script src="vendor/bootstrap/js/bootstrap-toggle.min.js" type="text/javascript"></script>
 
         <script>
         function somenteNumeros(num) {

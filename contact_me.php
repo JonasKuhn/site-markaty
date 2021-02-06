@@ -14,7 +14,7 @@ $email = strip_tags(htmlspecialchars($_POST['email']));
 $telefone = strip_tags(htmlspecialchars($_POST['telefone']));
 $mensagem = strip_tags(htmlspecialchars($_POST['mensagem']));
 
-$destino = 'jonaskuhn220@gmail.com'; 
+$destino = 'vendas@mksuinos.com.br'; 
 $assunto = "Formulário de contato do site:  $nome";
 $corpo_email = "Você recebeu uma nova mensagem do formulário de contato do seu site. \n \n "
         . "Aqui estão os detalhes:\n\n"

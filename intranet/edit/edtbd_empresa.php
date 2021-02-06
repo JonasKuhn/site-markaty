@@ -43,6 +43,11 @@ $cod_cat = trim($_POST['cod_catalogo']);
 $cod_ci = trim($_POST['cod_cidade']);
 
 try {
+//    $test = "CALL update_empresa('$cod_empresa', '$nome_fantasia','$cnpj','$logradouro','$nr',"
+//            . "'$complemento','$bairro','$tel_whatsapp','$tel_fixo','$email','$instagram','$facebook','$maps',"
+//            . "'$nome_logo','$cod_cat','$cod_ci');";
+//    echo $test;
+    
     $cmd = $pdo->prepare("CALL update_empresa('$cod_empresa', '$nome_fantasia','$cnpj','$logradouro','$nr',"
             . "'$complemento','$bairro','$tel_whatsapp','$tel_fixo','$email','$instagram','$facebook','$maps',"
             . "'$nome_logo','$cod_cat','$cod_ci');");

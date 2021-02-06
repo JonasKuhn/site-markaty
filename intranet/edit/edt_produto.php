@@ -36,12 +36,14 @@ unset($cmd);
                                 <input type="text" class="form-control" name="nome" value="<?= $nome_produto; ?>" required placeholder="Digite um Nome para o Produto...">
                             </div>
                         </div>
+                        <hr class="b-s-dashed">
                         <div class="form-group">
                             <label class="col-sm-12 control-label">Descrição do Produto:</label>
                             <div class="col-sm-12">
                                 <textarea id="edit" class="md-textarea form-control" name="descricao" rows="4" placeholder="Digite uma Descrição para o Catálogo..."><?=$descricao_produto;?></textarea>
                             </div>
                         </div> 
+                        <hr class="b-s-dashed">
                         <div class="form-group">
                             <div class="col-11">
                                 <label>Status do Cadastro:</label>
@@ -50,10 +52,11 @@ unset($cmd);
                                     <label > ATIVADO </label>
                                 <?php } else if ($fl_ativo == '2') { ?>
                                     <input  name="fl_ativo" type="checkbox" > 
-                                    <label> DESATIVADO </label>
+                                    <label> ATIVADO </label>
                                 <?php } ?>
                             </div>
                         </div>
+                        <hr class="b-s-dashed">
                         <div class="form-group">
                             <div class="row">
                                 <div class="form-group col-sm-6 control-label">
@@ -137,7 +140,7 @@ unset($cmd);
                                         $val = $value['nome'];
                                         $id = 'ck1' . $letrinha;
                                         ?>
-                                        <div class="col-md-4">
+                                        <div class="col-6 mb-1">
                                             <div class="custom-control custom-checkbox image-checkbox">
                                                 <input type="checkbox" checked="" class="custom-control-input" id="<?= $id ?>" name="<?= $id ?>">
                                                 <label class="custom-control-label" for="<?= $id ?>">
@@ -152,6 +155,7 @@ unset($cmd);
                                 </div>
                             </div>
                         </div>
+                        <hr class="b-s-dashed">
                         <div class="form-group">
                             <label class="col-sm-8 control-label">Carregar Novas Imagens:</label>
                             <div class="col-sm-12">

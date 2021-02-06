@@ -39,19 +39,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Jonas Kuhn">
 
-        <meta property="og:url" content="www.jaboticabaeventos.com.br">
+        <meta property="og:url" content="www.mksuinos.com.br">
         <meta property="og:type" content="corporation">
         <!-- no type existem vários tipos article/wesite....-->
         <meta property="og:title" content="<?= $nome_fantasia; ?>">
         <meta property="og:description" content="Conheça a nossa empresa, nossas variedades de produtos e entre em contato conosco.">
 
         <!-- Tamanho que o FB recomenda 1200x630 máximo 5mb-->
-        <meta property="og:image" content="./intranet/imagens/logomarca/<?= $logomarca; ?>">
+        <meta property="og:image" content="./intranet/imagens/logomarca/mini_logo_markaty.png">
 
         <title><?= $nome_fantasia; ?></title>
-        <link rel="shortcut icon" href="./intranet/imagens/logomarca/<?= $logomarca; ?>" type="image/x-icon"/>
+        <link rel="shortcut icon" href="./intranet/imagens/logomarca/mini_logo_markaty.png" type="image/x-icon"/>
 
-        <link rel="apple-touch-icon" href="./intranet/imagens/logomarca/<?= $logomarca; ?>">
+        <link rel="apple-touch-icon" href="./intranet/imagens/logomarca/mini_logo_markaty.png">
 
         <!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
@@ -71,10 +71,6 @@
         <script src="js/wow.js" type="text/javascript"></script>
     </head>
     <body>
-        <!--[if lte IE 9]>
-                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
         <!-- INICIO HOME -->
         <div class="wrapper" id="wrapper">
             <!-- INICIO CABECALHO -->
@@ -82,7 +78,7 @@
                 <div class="container-fluid" id="inicio">
                     <!-- INICIO MENU -->
                     <div class="row">
-                        <div class="col-md-2 col-sm-2 col-3 col-lg-2">
+                        <div class="col-md-2 col-sm-2 col-3 col-lg-2 col-xl-2 wow fadeInLeft" data-wow-delay="0.5s">
                             <div class="logo">
                                 <a href="?url=inicio">
                                     <img src="./intranet/imagens/logomarca/<?= $logomarca; ?>" alt="Logo Marca">
@@ -90,13 +86,18 @@
                             </div>
                         </div>
                         <div class="col-lg-10 d-none d-lg-block">
-                            <nav class="mainmenu__nav ">
-                                <ul class="meninmenu d-flex justify-content-end nav">
-                                    <li class="drop with--one--item"><a href="?url=inicio">Início</a></li>
-                                    <li class="drop with--one--item"><a href="?url=historia">História</a></li>
-                                    <li class="drop with--one--item"><a href="?url=produtos">Produtos</a></li>
-                                    <li class="drop with--one--item"><a href="#contato">Contato/Localização</a></li>
-                                    <li class="drop with--one--item"><a href="https://api.whatsapp.com/send?phone=5549998051551&text=Seja%20Bem-Vindo!!" target="_blank">Orçamento Online</a></li>
+                            <nav class="mainmenu__nav">
+                                <ul class="meninmenu d-flex justify-content-lg-center nav">
+                                    <li class="drop with--one--item wow fadeInRight" data-wow-delay="0.5s"><a href="?url=inicio">Início</a></li>
+                                    <li class="drop with--one--item wow fadeInRight" data-wow-delay="0.7s"><a href="?url=historia">História</a></li>
+                                    <li class="drop with--one--item wow fadeInRight" data-wow-delay="0.9s"><a href="?url=produtos">Produtos</a></li>
+                                    <li class="drop with--one--item wow fadeInRight" data-wow-delay="1.1s"><a href="#contato">Contato</a></li>
+                                    <li class="drop with--one--item wow fadeInRight" data-wow-delay="1.3s"><a href="#localizacao">Localização</a></li>
+                                    <li class="drop with--one--item wow fadeInRight" data-wow-delay="1.5s">
+                                        <a href="https://api.whatsapp.com/send?phone=55<?= $tel_whatsapp; ?>&text=Olá! Markaty. Estou precisando de mais informações sobre seus serviços." target="_blank">
+                                            Orçamento Online
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -110,8 +111,14 @@
                                     <li><a href="?url=inicio">Início</a></li>
                                     <li><a href="?url=historia">História</a></li>
                                     <li><a href="?url=produtos">Produtos</a></li>
-                                    <li><a href="#contato">Contato/Localização</a></li>
-                                    <li><a href="https://api.whatsapp.com/send?phone=5549998051551&text=Seja%20Bem-Vindo!!" target="_blank">Orçamento Online</a></li>
+                                    <li><a href="#contato">Contato</a></li>
+                                    <li><a href="#localizacao">Localização</a></li>
+                                    <li>
+                                        <a href="https://api.whatsapp.com/send?phone=55<?= $tel_whatsapp; ?>&text=Olá! Markaty. Estou precisando de mais informações sobre seus serviços." 
+                                           target="_blank">
+                                            Orçamento Online
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -145,32 +152,32 @@
             ?>
 
             <!-- INICIO CONTATO -->
-            <section id="contato" class="wn_contact_area bg--white wow fadeIn mt--30" data-wow-delay="0.5s">
+            <section id="contato" class="wn_contact_area pt--30 col-xl-10" style="margin: 0 auto;">
                 <div class="container">
-                    <div class="section__title text-center">
+                    <div class="section__title text-center wow fadeIn" data-wow-delay="0.5s">
                         <h2>CONTATO</h2>
                     </div>
                     <div class="row">
                         <div class="col-md-8">
                             <div class="contact-form-wrap">
-                                <h5 style="text-align: center;" class="pb--30">Estamos sempre prontos para atender você</h5>
+                                <h5 style="text-align: center;" class="pb--30 wow fadeIn" data-wow-delay="0.5s">Estamos sempre prontos para atender você</h5>
                                 <form id="contact-form" method="POST" action="contact_me.php" enctype="multipart/form-data">
-                                    <div class="single-contact-form space-between">
+                                    <div class="single-contact-form space-between wow fadeInLeft" data-wow-delay="0.5s">
                                         <input type="text" name="nome" required placeholder="Nome Completo...">
                                     </div>
-                                    <div class="single-contact-form space-between">
+                                    <div class="single-contact-form space-between wow fadeInLeft" data-wow-delay="0.7s">
                                         <input type="email" name="email" required placeholder="Email...">
                                     </div>
-                                    <div class="single-contact-form space-between">
+                                    <div class="single-contact-form space-between wow fadeInLeft" data-wow-delay="0.9s">
                                         <input required type="telefone" 
                                                name="telefone" 
                                                id="tel_whatsapp" 
                                                placeholder="(11) 12345-6789">
                                     </div>
-                                    <div class="single-contact-form message">
+                                    <div class="single-contact-form message wow fadeInLeft" data-wow-delay="1.1s">
                                         <textarea required name="mensagem" placeholder="Digite sua mensagem..."></textarea>
                                     </div>
-                                    <div class="contact-btn">
+                                    <div class="contact-btn wow fadeInLeft" data-wow-delay="1.1s">
                                         <button type="submit">ENVIAR MENSAGEM</button>
                                     </div>
                                 </form>
@@ -186,49 +193,51 @@
                         </div>
                         <div class="col-md-4">
                             <div class="wn__address">
-                                <h5 class="pb--30" style="text-align: center;">Aonde nos encontrar</h5>
+                                <h5 class="pb--30 wow fadeIn" data-wow-delay="0.5s" style="text-align: center;">Aonde nos encontrar</h5>
                                 <div class="wn__addres__wreapper">
-                                    <div class="ft__logo" style="text-align: center;">
+                                    <div class="ft__logo wow fadeInRight" data-wow-delay="0.5s" style="text-align: center;">
                                         <a href="#">
                                             <img src="intranet/imagens/logomarca/<?= $logomarca; ?>" alt="<?= $logomarca; ?>">
                                         </a>
                                     </div>
-                                    <div class="single__address">
+                                    <div class="single__address wow fadeInRight" data-wow-delay="0.5s">
                                         <i class="icon-location-pin icons"></i>
                                         <div class="content">
                                             <span>Endereço:</span>
-                                            <p><?= $logradouro; ?>, Nr <?= $nr; ?>, <?= $bairro; ?>, <?= $nome_cidade; ?> - <?= $nome_estado; ?> / <?= $uf; ?> </p>
+                                            <p><?= $logradouro; ?>, <?= $bairro; ?>, <?= $nome_cidade; ?> / <?= $uf; ?> </p>
                                         </div>
                                     </div>
-                                    <div class="single__address">
+                                    <div class="single__address wow fadeInRight" data-wow-delay="0.7s">
                                         <i class="icon-phone icons"></i>
                                         <div class="content">
-                                            <span>Telefone:</span>
-                                            <p><?= $tel_fixo; ?></p>
+                                            <span>Telefones:</span>
+                                            <p><?= $tel_fixo; ?> <br> <?= $tel_whatsapp; ?></p>
                                         </div>
                                     </div>
-                                    <div class="single__address">
+                                    <div class="single__address wow fadeInRight" data-wow-delay="0.9s">
                                         <i class="icon-envelope icons"></i>
                                         <div class="content">
                                             <span>E-mail:</span>
                                             <p> <?= $email; ?></p>
                                         </div>
                                     </div>
-                                    <div>
+                                    <!--
+                                        <div>
                                         <ul class="social__net--4 d-flex justify-content-center">
-                                            <li><a href="<?= $facebook; ?>" target="_blank"><img src="images/facebook_icon.png" alt="Facebook" style="width: 40px;"></a></li>
-                                            <li><a href="<?= $instagram; ?>" target="_blank"><img src="images/instagram_icon.png" alt="Instagram" style="width: 40px;"></a></li>
+                                        <li><a href="<?= $facebook; ?>" target="_blank"><img src="images/facebook_icon.png" alt="Facebook" style="width: 40px;"></a></li>
+                                        <li><a href="<?= $instagram; ?>" target="_blank"><img src="images/instagram_icon.png" alt="Instagram" style="width: 40px;"></a></li>
                                         </ul>
-                                    </div>
+                                        </div>
+                                    -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>  
             </section>
-            <section class="wow fadeIn mt--20" data-wow-delay="0.5s">        
+            <section id="localizacao" class="wow fadeIn pt--30">        
                 <div class="container-fluid">
-                    <div class="section__title text-center">
+                    <div class="section__title text-center wow fadeIn" data-wow-delay="0.5s">
                         <h2>LOCALIZAÇÃO</h2>
                     </div>
                     <div class="google__map ">
@@ -254,15 +263,14 @@
         </footer>
         <!-- FIM RODAPE -->  
 
-        <!-- INICIO POPUP WPP -->
-        <div class="wow slideInRight" data-wow-delay="0.5s" id="popupWpp" style="
-              margin: 0 auto auto;
-              position: fixed;
-              right: 0;
-              bottom: 20%;
-              z-index: 999;
-              padding-top: 20px;
-              ">
+        <div class="wow slideInRight" data-wow-delay="2s" id="popupWpp" style="
+             margin: 0 auto auto;
+             position: fixed;
+             right: 0;
+             bottom: 20%;
+             z-index: 999;
+             padding-top: 20px;
+             ">
 
             <div class="close__wrap" onclick="Mudarestado()"
                  style="
@@ -278,12 +286,11 @@
                  "
                  >X
             </div>
-            <a id="whatsapp-pg-produto" href="https://api.whatsapp.com/send?phone=5549998051551&text=Seja%20Bem-Vindo!!" target="_blank">
-                <img src="https://connectparts.vteximg.com.br/arquivos/balao-duvidas-contato-whatsapp.png?v=637245533625270000" alt="Whatsapp" title="Whatsapp">
+            <a href="https://api.whatsapp.com/send?phone=55<?= $tel_whatsapp; ?>&text=Olá! Markaty. Estou precisando de mais informações sobre seus serviços." target="_blank">
+                <img src="images/balao-duvidas-contato-whatsapp.png" alt="Whatsapp" title="Whatsapp">
             </a>
 
         </div>
-        <!-- FIM POPUP WPP -->
 
         <script>
             function Mudarestado() {
@@ -292,7 +299,6 @@
         </script>
 
         <!-- JS Files -->
-
         <script src="js/vendor/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

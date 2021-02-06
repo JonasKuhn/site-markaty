@@ -14,7 +14,7 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sobre a Empresa">
                 <a class="nav-link" href="?url=sobre.php">
                     <i class="fa fa-fw fa-info"></i>
-                    <span class="nav-link-text">Sobre a Empresa</span>
+                    <span class="nav-link-text">História da Empresa</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banner de Destaque">

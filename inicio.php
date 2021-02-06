@@ -1,5 +1,5 @@
 <!-- INICIO BANNER -->
-<div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme wow fadeInDown" data-wow-delay="0.2s">
+<section class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme wow fadeInDown" data-wow-delay="0.2s">
     <?php
     $selectBannerAtivo = "select b.* from tb_banner as b where b.fl_ativo = 1;";
 
@@ -21,13 +21,12 @@
              background-position: center;">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-7 col-xl-6">
                         <div class="slider__content">
-                            <div class="contentbox">
+                            <div class="contentbox wow fadeInLeft" data-wow-delay="0.5s">
                                 <h2><?= $tituloBanner; ?></span></h2>
                                 <h2><?= $descricaoBanner; ?></h2>
-                                <!--<h2>from <span>Here </span></h2>
-                                <a class="shopbtn" href="#">Veja Mais</a>-->
+                                <a class="shopbtn" href="?url=produtos">Confira Nossos Produtos</a>
                             </div>
                         </div>
                     </div>
@@ -39,5 +38,5 @@
     }
     unset($cmd);
     ?>
-</div>
+</section>
 <!-- FIM BANNER -->

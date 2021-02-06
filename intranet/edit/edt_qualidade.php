@@ -25,7 +25,7 @@ $var1 = $MyCripty->enc($cod_qualidade);
         </div>
         <div class="card-body">
             <form class="form-horizontal" method="POST" action="?url=edtbd_qualidade.php&ldl=<?= $var1; ?>" enctype="multipart/form-data">
-                <div class="container col-sm-6">
+                <div class="container col-sm-8">
                     <div class="form-group">
                         <label class="col-sm-8 control-label">Título:</label>
                         <div class="col-sm-12">

@@ -1,5 +1,3 @@
-#ADICIONAR DADOS NAS TABELAS
-
 #ADICIONAR DADOS NA TABELA ESTADO
 INSERT INTO `tb_estado` (`cod_estado`, `nome_estado`, `uf`) VALUES
 (1, 'Santa Catarina', 'SC');
@@ -14,45 +12,10 @@ INSERT INTO `tb_catalogo` (`cod_catalogo`, `nome`, `descricao`) VALUES
 
 #ADICIONAR DADOS NA TABELA EMPRESA
 INSERT INTO `tb_empresa` (`cod_empresa`, `nome_fantasia`, `cnpj`, `logradouro`, `nr`, `complemento`, `bairro`, `tel_whatsapp`, `tel_fixo`, `email`, `instagram`, `facebook`, `maps`, `logomarca`, `cod_catalogo`, `cod_cidade`) VALUES
-(1, 'MARKATY', '21635445000118', 'Rua Industrial', '32', 'PAVILHAO 3', 'Bairro Industrial', '49999711289', '4936770390', 'juridico@ludwigcontabilidade.com.br', 'insta', 'face', 'maps', 'logo.png', 1, 1);
-
-#ADICIONAR DADOS NA TABELA SOBRE
-INSERT INTO `tb_sobre` (`cod_sobre`, `titulo`, `descricao`, `img_sobre`, `video`, `cod_empresa`) VALUES
-(1, 'TITULO PARA O SOBRE', 'descricao', 'sobre.png', 'link.mp4', 1);
-
-#ADICIONAR DADOS NA TABELA BANNER
-INSERT INTO `tb_banner` (`cod_banner`, `img_banner`, `fl_ativo`, `titulo`, `descricao`, `cod_empresa`) VALUES
-(1, 'banner1.png', TRUE, 'titulo banner', 'descricao banner', 1);
-
-#ADICIONAR DADOS NA TABELA QUALIDADE
-INSERT INTO `tb_qualidade` (`cod_qualidade`, `nome`, `descricao`, `cod_empresa`) VALUES
-(1, 'VALOR', 'Algo relacionado aos valores da empresa', 1);
+(1, 'MARKATY', '21635445000118', 'Rua Industrial', '', '', 'Bairro Industrial', '49988002617', '4936770390', 'compras@mksuinos.com.br', '', '', 
+'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3549.396272226444!2d-53.716460484404934!3d-27.17527941075249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fbb64b7e09e6df%3A0x249bc8a4b72f9715!2sMarkaty%20Ind%C3%BAstria%20e%20Com%C3%A9rcio!5e0!3m2!1sen!2sbr!4v1611789516111!5m2!1sen!2sbr',
+ 'logo_markaty.png', 1, 1);
 
 #ADICIONAR DADOS NA TABELA ADMIN
 INSERT INTO `tb_admin` (`cod_admin`, `login`, `senha`, `nome`, `cod_empresa`) VALUES
 (1, 'admin', 'madgjmpsvyaibehknqtwzdncfilorux', 'ADMINISTRADOR', 1);
-
-#ADICIONAR DADOS NA TABELA TIPO PRODUTO
-INSERT INTO `tb_tipo_produto` (`cod_tipo_produto`, `descricao`) VALUES
-(1, 'Suínos'),
-(2, 'Aves');
-
-#ADICIONAR DADOS NA TABELA PRODUTO
-INSERT INTO `tb_produto` (`cod_produto`, `nome`, `descricao`, `fl_ativo`, `cod_tipo_produto`) VALUES
-(1, 'Produto 1', 'alguma descricao sobre o Produto 1', TRUE, 1),
-(2, 'Produto 2', 'alguma descricao sobre o Produto 2', TRUE, 2);
-
-#ADICIONAR DADOS NA TABELA CATALOGO PRODUTO
-INSERT INTO `tb_catalogo_produto` (`cod_catalogo_produto`, `cod_catalogo`, `cod_produto`) VALUES
-(1, 1, 1),
-(2, 1, 2);
-
-#ADICIONAR DADOS NA TABELA IMAGEM
-INSERT INTO `tb_imagem` (`cod_imagem`, `nome`) VALUES
-(1, 'imagem1.png'),
-(2, 'imagem2.png');
-
-#ADICIONAR DADOS NA TABELA PRODUTO IMAGEM
-INSERT INTO `tb_produto_imagem` (`cod_produto_imagem`, `cod_produto`, `cod_imagem`) VALUES
-(1, 1, 1),
-(2, 2, 2);

@@ -38,7 +38,7 @@ $var2 = $logomarca;
             <h3>Editar Dados da Empresa</h3>
         </div>
         <div class="card-body">
-            <form class="form-horizontal" method="POST" action="?url=edtbd_empresa.php&ldl=<?= $var; ?>&ldk=<?= $logomarca; ?>" enctype="multipart/form-data">
+            <form class="form-horizontal" method="POST" action="?url=edtbd_empresa.php&ldl=<?= $var; ?>&ldk=<?= $var2; ?>" enctype="multipart/form-data">
                 <div class="row col-sm-12">
                     <div class="container col-sm-6">
                         <div class="row">
@@ -57,7 +57,7 @@ $var2 = $logomarca;
                                            id="cnpj"
                                            name="cnpj" type="text" 
                                            placeholder="Digite o Cnpj da empresa..." value="<?= $cnpj; ?>"
-                                           class="form-control input-md" required="">
+                                           class="form-control input-md">
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,6 @@ $var2 = $logomarca;
                                            minlength="1"
                                            ng-model="numero.valor"
                                            value="<?= $nr; ?>"
-                                           required
                                            placeholder="Digite o Número de Endereço da Empresa...">
                                 </div>
                             </div>

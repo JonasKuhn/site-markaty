@@ -24,17 +24,29 @@ DELIMITER ;
 
 ####### ATUALIZAR TODOS OS DADOS DA EMPRESA #######
 DELIMITER $$
-CREATE PROCEDURE update_empresa (cod_empresa INT,nome_fantasia VARCHAR(100),cnpj VARCHAR(18),logradouro VARCHAR(100),nr NUMERIC(4),complemento VARCHAR(150),bairro VARCHAR(150),
-    tel_whatsapp VARCHAR(15),tel_fixo VARCHAR(15),email TEXT,instagram TEXT,facebook TEXT,maps TEXT,logomarca TEXT,cod_catalogo INTEGER,cod_cidade INTEGER)
+CREATE PROCEDURE update_empresa (var_cod_empresa INT,var_nome_fantasia VARCHAR(100),var_cnpj VARCHAR(18),var_logradouro VARCHAR(100),var_nr NUMERIC(4),var_complemento VARCHAR(150),var_bairro VARCHAR(150),
+    var_tel_whatsapp VARCHAR(15),var_tel_fixo VARCHAR(15),var_email TEXT,var_instagram TEXT,var_facebook TEXT,var_maps TEXT,var_logomarca TEXT,var_cod_catalogo INTEGER,var_cod_cidade INTEGER)
 BEGIN
-    IF ((cod_empresa != '') AND (nome_fantasia != '') AND (cnpj != '') AND (logradouro != '') AND (nr != '') AND (complemento != '')
-    AND (bairro != '') AND (tel_whatsapp != '') AND (tel_fixo != '') AND (email != '') AND (instagram != '') AND (facebook != '') AND (maps != '') 
-    AND (logomarca != '') AND (cod_catalogo != '') AND (cod_cidade != '')) THEN
+    IF ((var_cod_empresa != '') AND (var_nome_fantasia != '') AND (var_logradouro != '') 
+    AND (var_bairro != '') AND (var_tel_whatsapp != '') AND (var_tel_fixo != '') AND (var_email != '') AND (var_maps != '') 
+    AND (var_logomarca != '') AND (var_cod_catalogo != '') AND (var_cod_cidade != '')) THEN
 		UPDATE tb_empresa
-		SET nome_fantasia=nome_fantasia,cnpj=cnpj,logradouro=logradouro,
-		nr=nr,complemento=complemento,bairro=bairro,tel_whatsapp=tel_whatsapp,tel_fixo=tel_fixo,
-		email=email,instagram=instagram,facebook=facebook,maps=maps,logomarca=logomarca,
-		cod_catalogo=cod_catalogo,cod_cidade=cod_cidade WHERE cod_empresa = cod_empresa;
+		SET nome_fantasia=var_nome_fantasia,
+        cnpj=var_cnpj,
+        logradouro=var_logradouro,
+		nr=var_nr,
+        complemento=var_complemento,
+        bairro=var_bairro,
+        tel_whatsapp=var_tel_whatsapp,
+        tel_fixo=var_tel_fixo,
+		email=var_email,
+        instagram=var_instagram,
+        facebook=var_facebook,
+        maps=var_maps,
+        logomarca=var_logomarca,
+		cod_catalogo=var_cod_catalogo,
+        cod_cidade=var_cod_cidade 
+        WHERE cod_empresa = var_cod_empresa;
     ELSE
         SELECT 'Preencha todos os campos.';
     END IF;
@@ -80,7 +92,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE update_sobre (cod_sobre INT, titulo TEXT, descricao TEXT, img_sobre TEXT, video TEXT, cod_empresa INT)
 BEGIN
-    IF ((cod_sobre != '') AND (titulo != '') AND (descricao != '') AND (img_sobre != '') AND (video != '') AND (cod_empresa != '')) THEN
+    IF ((cod_sobre != '') AND (titulo != '') AND (descricao != '') AND (cod_empresa != '')) THEN
 		UPDATE tb_sobre as s SET s.titulo=titulo, s.descricao=descricao, s.img_sobre=img_sobre, s.video=video, s.cod_empresa=cod_empresa 
         WHERE s.cod_sobre=cod_sobre;
     ELSE
@@ -115,7 +127,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE insere_banner(titulo VARCHAR(150), descricao TEXT, fl_ativo BOOLEAN, img_banner TEXT,cod_empresa INT)
 BEGIN
-	IF ((titulo != '') AND (descricao != '') AND (fl_ativo != '') AND (img_banner != '') AND (cod_empresa != '')) THEN
+	IF ((titulo != '') AND (fl_ativo != '') AND (img_banner != '') AND (cod_empresa != '')) THEN
 		INSERT INTO tb_banner (titulo, descricao, fl_ativo, img_banner, cod_empresa) 
 		VALUES (titulo,descricao,fl_ativo,img_banner,cod_empresa);
 	ELSE
@@ -128,7 +140,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE update_banner(cod_banner INT, titulo VARCHAR(150), descricao TEXT, fl_ativo bool, img_banner TEXT, cod_empresa INT)
 BEGIN
-    IF ((cod_banner != '') AND (titulo != '') AND (descricao != '') AND (fl_ativo != '') AND (img_banner != '') AND (cod_empresa != '')) THEN
+    IF ((cod_banner != '') AND (titulo != '')  AND (fl_ativo != '') AND (img_banner != '') AND (cod_empresa != '')) THEN
 		UPDATE tb_banner as b SET b.titulo=titulo, b.descricao=descricao, b.fl_ativo=fl_ativo, b.img_banner=img_banner, b.cod_empresa=cod_empresa 
         WHERE b.cod_banner=cod_banner;
     ELSE
@@ -176,13 +188,14 @@ DELIMITER $$
 CREATE PROCEDURE update_qualidade(cod_qualidade INT, nome VARCHAR(100), descricao TEXT, cod_empresa INT)
 BEGIN
 	IF ((nome != '') AND (descricao != '')) THEN
-		UPDATE tb_qualidade SET nome=nome, descricao=descricao, cod_empresa=cod_empresa 
-        WHERE cod_qualidade = cod_qualidade;
+		UPDATE tb_qualidade as q SET q.nome=nome, q.descricao=descricao, q.cod_empresa=cod_empresa 
+        WHERE q.cod_qualidade = cod_qualidade;
     ELSE
 		SELECT 'Preencha todos os campos.';
     END IF;
 END$$
 DELIMITER ;
+drop procedure update_qualidade
 
 ####### SELECIONAR TODOS OS DADOS CATALOGO #######
 DELIMITER $$
@@ -459,14 +472,12 @@ BEGIN
     SET aux_admin = 0;
     SET aux_admin_login = 0;
     
-    SELECT e.cod_empresa FROM tb_empresa as e
+    SELECT e.cod_empresa INTO aux_admin FROM tb_empresa as e
     WHERE e.cod_empresa = cod_empresa
-    AND e.cod_empresa = cod_empresa
-    INTO aux_admin;
+    AND e.cod_empresa = cod_empresa;
     
-    SELECT a.cod_admin FROM tb_admin as a
-    WHERE a.login = login
-    INTO aux_admin_login; 
+    SELECT a.cod_admin INTO aux_admin_login FROM tb_admin as a
+    WHERE a.login = login; 
     
 	IF (aux_admin_login = '') THEN
 		IF ((aux_admin != 0) AND (aux_admin != '') ) THEN

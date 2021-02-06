@@ -21,39 +21,42 @@ $video = $dados['video'];
 <div class="container-fluid">
     <div class="card mb-3">
         <div class="card-header text-center">
-            <h3>Adicionar Novo Usuário</h3>
+            <h3>Editar História</h3>
         </div>
         <div class="card-body">
             <form class="form-horizontal" method="POST" action="?url=edtbd_sobre.php&ldl=<?= $var1; ?>&ldk=<?= $img_sobre; ?>" enctype="multipart/form-data">
-                <div class="container col-sm-6">
-                    <div class="form-group">
-                        <label class="col-sm-8 control-label">Título:</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" name="titulo" value="<?= $titulo; ?>" required placeholder="Digite um Título...">
+                <div class="row col-sm-12">
+                    <div class="container col-sm-4">
+                        <div class="form-group">
+                            <label class="col-sm-8 control-label">Título:</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="titulo" value="<?= $titulo; ?>" required placeholder="Digite um Título...">
+                            </div>
                         </div>
-                    </div>
-                    <hr class="b-s-dashed">
-                    <div class="form-group">
-                        <label class="col-sm-8 control-label">Descrição:</label>
-                        <div class="col-sm-12">
-                            <textarea id="edit" class="md-textarea form-control" name="descricao" rows="4" required placeholder="Digite uma Descrição..."><?= $descricao; ?></textarea>
+                        <hr class="b-s-dashed">
+                        <div class="form-group">
+                            <div class="col-sm-12 row">
+                                <img class="col-sm-12" style="margin: 0 auto;" src="./imagens/sobre/<?= $img_sobre; ?>" >
+                                <div class="col-sm-12 row">
+                                    <label class="col-sm-12 control-label">Imagem Sobre: <?= $img_sobre; ?></label>
+                                    <input class="col-sm-12 " type="file" class="form-control" name="img_sobre" placeholder="Selecione Uma Imagem...">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <hr class="b-s-dashed">
-                    <div class="form-group">
-                        <div class="col-sm-12 row">
-                            <img class="col-sm-2 " src="./imagens/sobre/<?= $img_sobre; ?>" >
-                            <div class="col-sm-10">
-                                <label class="col-sm-4 control-label">Imagem Sobre: <?= $img_sobre; ?></label>
-                                <input class="col-sm-6 " type="file" class="form-control" name="img_sobre" placeholder="Selecione Uma Imagem...">
+                        <hr class="b-s-dashed">
+                        <div class="form-group">
+                            <label class="col-sm-8 control-label">Vídeo:</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="video" value="<?= $video; ?>" placeholder="Insira o Link do Vídeo...">
                             </div>
                         </div>
                     </div>
-                    <hr class="b-s-dashed">
-                    <div class="form-group">
-                        <label class="col-sm-8 control-label">Vídeo:</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" name="video" value="<?= $video; ?>" required placeholder="Insira o Link do Vídeo...">
+                    <div class="container col-sm-8">
+                        <div class="form-group">
+                            <label class="col-sm-8 control-label">Descrição:</label>
+                            <div class="col-sm-12">
+                                <textarea id="edit" class="md-textarea form-control" name="descricao" rows="4" required placeholder="Digite uma Descrição..."><?= $descricao; ?></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
